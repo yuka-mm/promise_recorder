@@ -76,4 +76,4 @@ SNSやRUNTEQコミュニティを通じてサービスをアピールし、サ�
 * 管理画面
 
 ### 画面遷移図
-figmaのリンク:https://www.figma.com/file/U3jWosjwUxRJwZDBnV0sVi/promise-recorder?type=design&node-id=0-1&mode=design&t=E0d5TVMiefE3FuVR-0
+figmaのリンク:https://www.figma.com/file/U3jWosjwUxRJwZDBnV0sVi/promise-recorder?type=design&node-id=0%3A1&mode=design&t=E0d5TVMiefE3FuVR-1
