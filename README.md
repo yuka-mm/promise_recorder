@@ -79,4 +79,4 @@ SNSやRUNTEQコミュニティを通じてサービスをアピールし、サ�
 figmaのリンク:https://www.figma.com/file/U3jWosjwUxRJwZDBnV0sVi/promise-recorder?type=design&node-id=0%3A1&mode=design&t=cnL2qxYZyYsLsCQK-1
 
 ### ER図
-画像リンク:https://gyazo.com/ce6610aedf512a196aea2268e26bf78c
+画像リンク:https://gyazo.com/fbf6e9e607511c50292f19335abff253
