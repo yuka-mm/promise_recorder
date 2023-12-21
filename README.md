@@ -77,3 +77,6 @@ SNSやRUNTEQコミュニティを通じてサービスをアピールし、サ�
 
 ### 画面遷移図
 figmaのリンク:https://www.figma.com/file/U3jWosjwUxRJwZDBnV0sVi/promise-recorder?type=design&node-id=0%3A1&mode=design&t=cnL2qxYZyYsLsCQK-1
+
+### ER図
+画像リンク:https://gyazo.com/99f9b43382e272eb8f58c755a6f592c8
