@@ -44,3 +44,5 @@
 .gitattributes
 .node-version
 .ruby-version
+.yarnrc
+fly.toml
