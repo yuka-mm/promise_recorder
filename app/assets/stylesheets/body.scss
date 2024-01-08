@@ -1,0 +1,31 @@
+body {
+    background-color: #fbfbe6;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    width: 100%; 
+    background-color: #a4a498;
+    color: #fff;
+}
+
+main{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.parent_main{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #d6d6d2;
+    background-size: cover;
+}
+
+footer {
+    position: sticky;
+    bottom:0;
+    width: 100%;
+    background-color: #a4a498;
+    color: #fff;
+}
