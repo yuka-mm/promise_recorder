@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'top/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # ログイン機能
+  devise_for :parents
+  devise_scope :parent do
+    get '/parents/sign_out' => 'devise/sessions#destroy'
+  end
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  root "top#index"
+  # トップページ
+  root to: 'top#top'
+  get 'top_page', to: 'top#top'
 end
