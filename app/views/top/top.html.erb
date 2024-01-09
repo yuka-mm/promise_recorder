@@ -6,10 +6,10 @@
       </div>
       <div class="p-4 d-grid gap-4 col-3 mx-auto">
         <button type="button" class="col btn btn-original btn-lg">
-          <%= link_to 'ログイン', '#', class: "body_link" %>
+          <%= link_to 'Log in', new_parent_session_path, class: 'body_link' %>
         </button>
         <button type="button" class="col btn btn-original btn-lg">
-          <%= link_to 'サービス案内', '#', class: "body_link" %>
+          <%= link_to 'ログアウト（仮）', destroy_parent_session_path, method: :delete, class: 'body_link' %>
         </button>
       </div>
     </div>
