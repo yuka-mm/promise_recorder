@@ -45,4 +45,6 @@
 .node-version
 .ruby-version
 .yarnrc
+.yarn
 fly.toml
+.DS_Store
