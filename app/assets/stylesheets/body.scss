@@ -1,6 +1,5 @@
 body {
-    background-color: #fbfbe6;
-    color: #69563e;
+    background-color: #a4a498;
 }
 
 header {
@@ -14,6 +13,8 @@ header {
 main{
     width: 100%;
     min-height: 100vh;
+    background-color: #fbfbe6;
+    color: #69563e;
 }
 
 .parent_main{
@@ -25,7 +26,7 @@ main{
 
 footer {
     position: sticky;
-    bottom:0;
+
     width: 100%;
     background-color: #a4a498;
     color: #fff;
