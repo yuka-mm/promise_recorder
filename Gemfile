@@ -46,6 +46,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -73,3 +74,4 @@ gem "dockerfile-rails", ">= 1.6", :group => :development
 
 # 機能系のgem
 gem 'devise', '~> 4.9.0'
+gem 'happybirthday'
