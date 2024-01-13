@@ -2,7 +2,7 @@
 
 # Parent represents the model for parents in the application.
 class Parent < ApplicationRecord
-  has_many :child, dependent: :destroy
+  has_many :children, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

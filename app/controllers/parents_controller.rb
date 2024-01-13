@@ -2,5 +2,7 @@
 
 # ParentsController is responsible for managing parent resources.
 class ParentsController < ApplicationController
-  def show; end
+  def show
+    @parent = Parent.find(params[:id])
+  end
 end

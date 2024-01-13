@@ -12,6 +12,10 @@
     color: #db7133;
 }
 
+.name-link {
+    color: #a4a498
+}
+
 ul {
     list-style: none;
     color: #db7133;
@@ -23,8 +27,8 @@ ul {
     background-color: #69563e;
 }
 
-.btn-original:hover {
+.btn-original:hover,
+.btn-original:active {
     color: #fff;
     background: #a4a498;   
 }
-
