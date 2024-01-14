@@ -1,2 +1,48 @@
-<h1>Parents#show</h1>
-<p>Find me in app/views/parents/show.html.erb</p>
+<div class="parent_main">
+  <div class="container">
+    <div class="row grid gap-3">
+      <div class="text-center">
+          <br />
+          <br />
+          <br />
+          <br />
+        <div class="d-flex justify-content-between align-items-center">
+          <span class="h3">お子様の登録情報</span>
+          <button type="button" class="btn btn-original  btn-lg">
+            <%= link_to "お子様を登録", new_child_path, class: 'body-link' %>
+          </button>
+        </div>
+          <br/>
+        <div class="row clo-8 bg-white p-3 mb-2 ">
+          <div class="d-flex align-items-center">
+            <% @parent_children.each do |child| %>
+              <div class="text-left">
+                <%= child %>
+              </div>
+              <div class="text-right">
+                <button type="button" class="btn btn-original btn-lg">
+                  <%= link_to "管理", child_path, class: 'body-link' %>
+                </button>
+                <button type="button" class="btn btn-original btn-lg">
+                  <%= link_to "編集", edit_child_path, class: 'body-link' %>
+                </button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+          <br />
+          <br />
+          <br />
+        <div class="actions p-2 d-grid gap-4  col-3 mx-auto">
+          <button type="button" class="btn btn-original btn-lg">
+            <%= link_to "管理者情報変更", edit_parent_registration_path, class: 'body-link' %>
+          </button>
+            <br />
+
+          <%# LINE連携はここに入れる %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

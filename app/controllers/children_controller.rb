@@ -15,8 +15,7 @@ class ChildrenController < ApplicationController
 
   # セッションに選択された子供の名前を保存
   def select_child
-    child_id = params[:child_id]
-    @selected_child = @children.find(child_id)
+    @selected_child = @children.find(params[:child_id])
     session[:selected_child_name] = @selected_child.name
     redirect_to children_path
   end
