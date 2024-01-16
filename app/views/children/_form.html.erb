@@ -1,0 +1,17 @@
+<%= form_with model: @child do |f| %>
+  <div class="field h3 p-2 col">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+    <br />
+    <br />
+  <div class="field h3 p-2 col">
+    <%= f.label :birth_date %><br />
+    <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1960, default: Date.new(2024, 1, 1) %>
+  </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <%= f.submit %>
+  <% end %>

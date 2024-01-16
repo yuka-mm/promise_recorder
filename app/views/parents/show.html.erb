@@ -14,21 +14,25 @@
         </div>
           <br/>
         <div class="row clo-8 bg-white p-3 mb-2 ">
-          <div class="d-flex align-items-center">
-            <% @parent_children.each do |child| %>
-              <div class="text-left">
-                <%= child %>
-              </div>
-              <div class="text-right">
-                <button type="button" class="btn btn-original btn-lg">
-                  <%= link_to "管理", child_path, class: 'body-link' %>
+          <% @parent_children.each do |child| %>
+            <div class="d-flex">
+              <div class="d-flex justify-content-between  align-items-center">
+                <button type="button" class="btn btn-original btn-lg m-3">
+                  <%= link_to "管理", child_path(child), class: 'body-link' %>
                 </button>
-                <button type="button" class="btn btn-original btn-lg">
-                  <%= link_to "編集", edit_child_path, class: 'body-link' %>
+                <button type="button" class="btn btn-original btn-lg m-3">
+                  <%= link_to "編集", edit_child_path(child), class: 'body-link' %>
                 </button>
+                <div class="h2 p-2 m-3">
+                  <%= child.name %>
+                </div>
+                <div class="h4 p-2 m-3">
+                  <%= child.birth_date.strftime('%Y/%m/%d') %>
+                  <%= "(#{calculate_age(child.birth_date)}才）" %>
+                </div>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
           <br />
           <br />

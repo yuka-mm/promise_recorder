@@ -5,21 +5,23 @@
       <br />
       <br />
       <br />
-    <div class="h6 col">⇩マイページはこちらから⇩</div>
+    <div class="h5 col">⇩マイページはこちらから⇩</div>
     <div class="display-5 p-2">
-      <%= link_to @current_parent.name, parents_path(@current_parent), class: 'name-link' %>
+      <%= link_to @current_parent.name, parents_path, class: 'name-link' %>
     </div>
       <br />
       <br />
       <br />
       <br />
-    <div class="h6 col">⇩お名前を選択してください⇩</div>
-    <div class="display-5 p-2">
-      <% @children.each do |child| %>
-        <button type="button" class="btn btn-original  btn-lg">
-          <%= link_to child, child_path, class: 'body-link' %>
+    <div class="h5 col">⇩お名前を選択してください⇩</div>
+    <% @children.each do |child| %>
+      <div class="d-grid gap-2 p-2 m-4">
+        <button type="button" class="btn btn-original col-4 mx-auto">
+          <div class="display-5 p-2">
+            <%= link_to child.name, child_path(child), class: 'body-link' %>
+          </div>
         </button>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
