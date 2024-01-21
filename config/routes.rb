@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   # トップページ
   get 'top_page', to: 'top#top'
 
-  resources :children
-
+  resources :children do
+    post 'check_password', on: :collection
+  end
 
 end

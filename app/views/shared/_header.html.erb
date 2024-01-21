@@ -1,6 +1,6 @@
-<header class="container-fluid p-3">
+<header class="container-fluid p-2">
   <div class="d-flex justify-content-between align-items-center">
-    <h3><a class="navbar-brand" href="/">Promise Recorder</a></h3>
+    <a class="navbar-brand" href="/"><%= image_tag 'header.png', width: '30%' %></a>
     <span>
       <% if parent_signed_in? %>
         <%= link_to 'ログアウト', destroy_parent_session_path, method: :delete, class: 'body-link' %>
