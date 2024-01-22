@@ -1,6 +1,12 @@
-<header class="container-fluid p-3">
+<header class="container-fluid p-2">
   <div class="d-flex justify-content-between align-items-center">
-    <h3><a class="navbar-brand" href="/">Promise Recorder</a></h3>
-    <span>子どもの名前(ログインし、表示する子どもを選んだら名前が表示)</span>
+    <a class="navbar-brand" href="/"><%= image_tag 'header.png', width: '30%' %></a>
+    <span>
+      <% if parent_signed_in? %>
+        <%= link_to 'ログアウト', destroy_parent_session_path, method: :delete, class: 'body-link' %>
+      <% elsif @selected_child %>
+        <%= @selected_child.name %>
+      <% end %>
+    </span>
   </div>
 </header>

@@ -1,6 +1,5 @@
 body {
-    background-color: #fbfbe6;
-    color: #69563e;
+    background-color: #a4a498;
 }
 
 header {
@@ -9,23 +8,26 @@ header {
     width: 100%; 
     background-color: #a4a498;
     color: #fff;
+    z-index: 0;
 }
 
 main{
     width: 100%;
     min-height: 100vh;
+    background-color: #fbfbe6;
+    color: #69563e;
 }
 
 .parent_main{
     width: 100%;
     min-height: 100vh;
-    background-color: #d6d6d2;
+    background-color: #dbdbd9;
     background-size: cover;
 }
 
 footer {
     position: sticky;
-    bottom:0;
+
     width: 100%;
     background-color: #a4a498;
     color: #fff;

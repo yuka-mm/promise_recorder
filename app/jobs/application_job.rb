@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# ApplicationJob is the base class for all Active Job jobs in the application.
 class ApplicationJob < ActiveJob::Base
   # Automatically retry jobs that encountered a deadlock
   # retry_on ActiveRecord::Deadlocked

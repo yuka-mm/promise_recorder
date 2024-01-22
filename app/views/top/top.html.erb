@@ -1,17 +1,31 @@
 <div crass="container">
   <div class="row grid gap-3">
     <div class="text-center">
-      <div class="p-2 col">
+      <br />
+      <div class="col">
         <%= image_tag 'logo.png', class: 'mx-auto d-block', width: '60%' %>
       </div>
-      <div class="p-4 d-grid gap-4 col-3 mx-auto">
-        <button type="button" class="col btn btn-original btn-lg">
-          <%= link_to 'Log in', new_parent_session_path, class: 'body_link' %>
-        </button>
-        <button type="button" class="col btn btn-original btn-lg">
-          <%= link_to 'ログアウト（仮）', destroy_parent_session_path, method: :delete, class: 'body_link' %>
+      <br />
+      <br />
+      <div class="p-2 d-grid gap-4 col-3 mx-auto">
+        <button type="button" class="btn btn-original  btn-lg">
+          <%= link_to 'Log in', new_parent_session_path, class: 'body-link' %>
         </button>
       </div>
+      <br />
+      <br />
+
+      <div class="p-2">
+        <%= image_tag 'top_msg.png', width: '35%' %>
+      </div>
+      <div class="p-2 d-grid gap-4 col-3 mx-auto">
+        <button type="button" class="btn btn-original  btn-lg">
+          <%= link_to 'ログアウト（仮）', destroy_parent_session_path, method: :delete, class: 'body-link' %>
+        </button>
+      </div>
+      <br />
+      <br />
+      <br />
     </div>
   </div>
 </div>

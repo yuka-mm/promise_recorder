@@ -1,11 +1,22 @@
 Rails.application.routes.draw do
+    root to: 'children#index'
+
   # ログイン機能
-  devise_for :parents
+  devise_for :parents, controllers: {
+    sessions: 'parents/sessions',
+    passwords: 'parents/passwords',
+    registrations: 'parents/registrations',
+  }
   devise_scope :parent do
-    get '/parents/sign_out' => 'devise/sessions#destroy'
+  get '/parents/sign_out', to: 'devise/sessions#destroy'
   end
+  resource :parents, only: %i[show]
 
   # トップページ
-  root to: 'top#top'
   get 'top_page', to: 'top#top'
+
+  resources :children do
+    post 'check_password', on: :collection
+  end
+
 end
