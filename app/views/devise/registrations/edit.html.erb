@@ -1,24 +1,19 @@
 <div crass="container">
   <div class="row grid gap-3">
     <div class="text-center">
+        <br />
       <div class="display-5 p-4">Edit</div>
         <br />
-      <div class="h5">名前またはメールアドレスを変更し、パスワードを入力してください</div>
+      <div class="h5">名前またはメールアドレスを変更し<br />パスワードを入力してください</div>
 
       <%= render 'form' %>
       
         <br />
         <br />
-        <br />
- 
       <%= link_to "Back戻る", :back, class: 'main-link' %>
         <br />
         <br />
-        <br />
-        <br />
       <%= button_to 'Cancel my accountアカウントを削除する', registration_path(resource_name), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-        <br />
-        <br />
         <br />
         <br />
     </div>

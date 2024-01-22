@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 # ApplicationController is the base class for all controllers.
-class ApplicationController < ActionController::Base
-  add_flash_types :success, :info, :warning, :danger
-
+class ApplicationController < ActionController::Base  
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :login_status
+
+  add_flash_types :success, :info, :warning, :danger
 
   helper_method :calculate_age
 

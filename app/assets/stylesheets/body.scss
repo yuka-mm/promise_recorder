@@ -8,7 +8,7 @@ header {
     width: 100%; 
     background-color: #a4a498;
     color: #fff;
-    z-index: 0;
+    z-index: 9999;
 }
 
 main{
@@ -31,4 +31,14 @@ footer {
     width: 100%;
     background-color: #a4a498;
     color: #fff;
+}
+
+/* 点滅 */
+.blink {
+	animation: blinking 1s ease-in-out infinite alternate;
+}
+ 
+@keyframes blinking {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
 }

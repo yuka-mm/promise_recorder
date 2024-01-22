@@ -2,7 +2,7 @@
 
 # ChildrenController is responsible for managing child resources.
 class ChildrenController < ApplicationController
-  before_action :set_child, only: %i(show edit)
+  before_action :set_child, only: %i(show edit update destroy)
 
   def index
     @current_parent = current_parent
@@ -20,17 +20,28 @@ class ChildrenController < ApplicationController
 
   def create
     @child = current_parent.children.build(child_params)
-    if @child.save!
+    if @child.save
       redirect_to children_path
     else
       render :new
     end
   end
 
-  def update; end
+  def update
+    if @child.update(child_params)
+      redirect_to child_path(@child.id)
+    else
+      flash.now[:warning] = '登録に失敗しました'
+      render :edit
+    end
+  end
 
-  def destroy; end
+  def destroy
+    @child.destroy!
+    redirect_to root_path
+  end
 
+  # パスチェック
   def check_password
     @current_parent = current_parent
 
@@ -38,8 +49,6 @@ class ChildrenController < ApplicationController
       check_and_redirect_to_children_show
     elsif params[:source] == 'parents_show'
       check_and_redirect_to_parents_show
-    else
-      flash[:warning] = 'パスワードが違います'
     end
   end
 
@@ -58,9 +67,10 @@ class ChildrenController < ApplicationController
   end
 
   def set_child
-    @child = Child.find(params[:id])
+    @child = current_parent.children.find(params[:id])
   end
 
+  # モーダル１　管理ボタン後のパスチェック
   def check_and_redirect_to_children_show
     @children = @current_parent.children
     selected_child_id = params[:child_id]
@@ -73,6 +83,7 @@ class ChildrenController < ApplicationController
     end
   end
 
+  # モーダル３　マイページのパスチェック
   def check_and_redirect_to_parents_show
     if @current_parent.valid_password?(params[:password])
       redirect_to parents_path
@@ -81,7 +92,9 @@ class ChildrenController < ApplicationController
     end
   end
 
+  # パスチェック失敗時
   def handle_failed_password_check
+    flash[:warning] = 'パスワードが違います'
     respond_to do |format|
       format.js { render 'check_password_failed' }
     end
