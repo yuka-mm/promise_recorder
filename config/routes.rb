@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
     root to: 'children#index'
 
-  # ログイン機能
+  # 親ユーザー
   devise_for :parents, controllers: {
     sessions: 'parents/sessions',
     passwords: 'parents/passwords',
@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   end
   resource :parents, only: %i[show]
 
-  # トップページ
-  get 'top_page', to: 'top#top'
-
+  # 子ユーザー
   resources :children do
     post 'check_password', on: :collection
+    post 'select_child', on: :member
   end
 
+  # トップページ
+  get 'top_page', to: 'top#top'
 end

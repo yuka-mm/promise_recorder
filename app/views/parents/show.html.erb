@@ -3,49 +3,49 @@
     <div class="row grid gap-3">
       <div class="text-center">
           <br />
-          <br />
-          <br />
+        <div class="d-flex justify-content-center align-items-end bg-light border border-secondary rounded-pill p-3">
+          <h2 class="fw-bold"><%= @current_parent.name %></h2><h6 class="fw-bold">さん</h6>
+        </div>
           <br />
         <div class="d-flex justify-content-between align-items-center">
           <span class="h3">お子様の登録情報</span>
-          <button type="button" class="btn btn-original  btn-lg">
-            <%= link_to "お子様を登録", new_child_path, class: 'body-link' %>
-          </button>
+          <%= link_to "お子様を登録", new_child_path, class: 'btn btn-original' %>
         </div>
           <br/>
-        <div class="row clo-8 bg-white p-3 mb-2 ">
+        <div class="row p-3 mb-2 list-group">
           <% @parent_children.each do |child| %>
-            <div class="d-flex">
-              <div class="d-flex justify-content-between  align-items-center">
-                <button type="button" class="btn btn-original btn-lg m-3">
-                  <%= link_to "管理", child_path(child), class: 'body-link' %>
-                </button>
-                <button type="button" class="btn btn-original btn-lg m-3">
-                  <%= link_to "編集", edit_child_path(child), class: 'body-link' %>
-                </button>
-                <div class="h2 p-2 m-3">
-                  <%= child.name %>
-                </div>
+            <li class="list-group-item bg-light border border-secondary">
+            <div class="row">
+              <div class="h2 clo p-2 m-3 fw-bold">
+                <%= child.name %>
+              </div>
+              <div class="d-flex justify-content-end  align-items-center">
                 <div class="h4 p-2 m-3">
                   <%= child.birth_date.strftime('%Y/%m/%d') %>
                   <%= "(#{calculate_age(child.birth_date)}才）" %>
                 </div>
+                  <%= link_to "管理", child_path(child), class: 'btn btn-original m-3' %>
+                  <%= link_to "編集", edit_child_path(child), class: 'btn btn-original m-3' %>
               </div>
             </div>
+            </li>
           <% end %>
         </div>
           <br />
           <br />
-          <br />
-        <div class="actions p-2 d-grid gap-4  col-3 mx-auto">
-          <button type="button" class="btn btn-original btn-lg">
-            <%= link_to "管理者情報変更", edit_parent_registration_path, class: 'body-link' %>
-          </button>
-            <br />
+        <div class="actions p-2 d-grid gap-4 col-8 mx-auto">
+          <%= link_to "アカウント名変更", edit_parent_registration_path, class: 'btn btn-original' %>
+          <%= link_to "メールアドレス変更", '#', class: 'btn btn-original' %>
+          <%= link_to "パスワード変更", 'new_parent_session_path', class: 'btn btn-original' %>
 
           <%# LINE連携はここに入れる %>
-
         </div>
+            <br />
+            <br />
+            <br />
+        <%= button_to 'Cancel my accountアカウントを削除する', parent_registration_path, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+        <br />
+        <br />
       </div>
     </div>
   </div>

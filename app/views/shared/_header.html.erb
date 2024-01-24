@@ -1,12 +1,12 @@
 <header class="container-fluid p-2">
-  <div class="d-flex justify-content-between align-items-center">
-    <a class="navbar-brand" href="/"><%= image_tag 'header.png', width: '30%' %></a>
-    <span>
+  <div class="row">
+    <div class="col-8">
+        <a class="navbar-brand" href="/"><%= image_tag 'header.png', width: '45%' %></a>
+    </div>
+    <div class="col d-flex justify-content-end align-items-end">
       <% if parent_signed_in? %>
-        <%= link_to 'ログアウト', destroy_parent_session_path, method: :delete, class: 'body-link' %>
-      <% elsif @selected_child %>
-        <%= @selected_child.name %>
+        <%= link_to 'ログアウト', destroy_parent_session_path, method: :delete, class: 'body-link initialism' %>
       <% end %>
-    </span>
+    </div>
   </div>
 </header>

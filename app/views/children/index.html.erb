@@ -5,7 +5,7 @@
         <br />
         <br />
         <br />
-      <div class="h5 col">⇩マイページ⇩</div>
+      <div class="h3 col blink">⇩マイページ⇩</div>
       <button class="btn name-link", data-bs-target="#exampleModalToggleParent", data-bs-toggle="modal"> 
         <div class="display-5 p-2">
           <%= @current_parent.name %> 
@@ -15,20 +15,19 @@
         <br />
         <br />
         <br />
-      <div class="h5 col">⇩えらんでね☺︎⇩</div>
-        <% @children.each do |child| %>
-          <div class="d-grid gap-2 p-2 m-4">
-            <button class="btn btn-original col-4 mx-auto child-modal-trigger" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" data-child-name="<%= child.name %>" data-child-id="<%= child.id %>">
-              <div class="display-5 p-2">
+        <div class="h3 col blink">⇩えらんでね☺︎⇩</div>
+        <div class="d-grid gap-2 p-2 m-4">
+          <% @children.each do |child| %>
+            <button class="btn btn-original col-9 mx-auto child-modal-trigger" data-child-name="<%= child.name %>" data-child-id="<%= child.id %>">
+              <div class="h3 p-2" style="pointer-events: none;">
                 <%= child.name %>
               </div>
             </button>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
         
         <%= render 'modal' %>
       </div>
     </div>
   </div>
 </div>
-

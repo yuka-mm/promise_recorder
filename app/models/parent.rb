@@ -7,5 +7,6 @@ class Parent < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, length: { maximum: 15 }
+  validates :name, length: { maximum: 10 }
+  validates :password, presence: true, on: :create
 end

@@ -1,26 +1,26 @@
-<div crass="container">
-  <div class="row grid gap-3">
-    <div class="text-center">
-      <div class="display-5 p-4">Edit</div>
-        <br />
-      <div class="h5">名前またはメールアドレスを変更し、パスワードを入力してください</div>
-
-      <%= render 'form' %>
-      
-        <br />
-        <br />
-        <br />
- 
-      <%= link_to "Back戻る", :back, class: 'main-link' %>
-        <br />
-        <br />
-        <br />
-        <br />
-      <%= button_to 'Cancel my accountアカウントを削除する', registration_path(resource_name), method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-        <br />
-        <br />
-        <br />
-        <br />
+<div class="parent_main">
+  <div crass="container">
+    <div class="row grid gap-3">
+      <div class="text-center">
+          <br />
+        <div class="display-5 p-4">Edit</div>
+          <br />
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>  
+          
+          <div class="field h3 p-2 col">
+            <%= f.label :name %><br />
+            <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+          </div>  
+            <br />
+          <div class="actions p-2 d-grid gap-4 col-5 mx-auto">
+            <%= f.submit "Update", class: 'btn btn-original' %>
+          </div>
+          <br />
+          <br />
+          <%= link_to "マイページに戻る", parents_path, class: 'main-link' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
