@@ -5,9 +5,7 @@
     </div>
     <div class="col d-flex justify-content-end align-items-end">
       <% if parent_signed_in? %>
-        <%= link_to 'ログアウト', destroy_parent_session_path, method: :delete, class: 'body-link' %>
-      <% elsif @selected_child %>
-        <%= @selected_child.name %>
+        <%= link_to 'ログアウト', destroy_parent_session_path, method: :delete, class: 'body-link initialism' %>
       <% end %>
     </div>
   </div>

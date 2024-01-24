@@ -2,7 +2,7 @@
 
 # ChildrenController is responsible for managing child resources.
 class ChildrenController < ApplicationController
-  before_action :set_child, only: %i(show edit update destroy)
+  before_action :set_child, only: %i(show edit update destroy select_child)
 
   def index
     @current_parent = current_parent
@@ -21,7 +21,7 @@ class ChildrenController < ApplicationController
   def create
     @child = current_parent.children.build(child_params)
     if @child.save
-      redirect_to children_path
+      redirect_to parents_path
     else
       render :new
     end
@@ -55,9 +55,8 @@ class ChildrenController < ApplicationController
 
   # セッションに選択された子供の名前を保存
   def select_child
-    @selected_child = @children.find(params[:child_id])
-    session[:selected_child_name] = @selected_child.name
-    redirect_to children_path
+    Rails.logger.debug('select_child action called')
+    session[:selected_child_name] = @child.name
   end
 
   private
@@ -94,9 +93,8 @@ class ChildrenController < ApplicationController
 
   # パスチェック失敗時
   def handle_failed_password_check
-    flash[:warning] = 'パスワードが違います'
     respond_to do |format|
-      format.js { render 'check_password_failed' }
+      format.any { head 422 }
     end
   end
 end

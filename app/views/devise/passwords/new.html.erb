@@ -10,9 +10,11 @@
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
-        
-          <div class="actions p-2 d-grid gap-4  col-3 mx-auto">
-            <%= f.submit "Send me reset password instructions", class: 'btn btn-original btn-lg' %><br /><br />
+            <br />
+            <br />
+            <br />
+          <div class="actions p-2 d-grid gap-4 col-5 mx-auto">
+            <%= f.submit "メール送信", class: 'btn btn-original' %><br /><br />
           </div>
         <% end %>
 
