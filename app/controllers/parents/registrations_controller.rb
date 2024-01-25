@@ -28,7 +28,7 @@ class Parents::RegistrationsController < Devise::RegistrationsController
 
   # 編集後のリダイレクト先を指定するメソッド
   def after_update_path_for(resource)
-    parents_path(resource)
+    parent_path(resource)
   end
 
   # DELETE /resource

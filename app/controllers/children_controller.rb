@@ -2,7 +2,7 @@
 
 # ChildrenController is responsible for managing child resources.
 class ChildrenController < ApplicationController
-  before_action :set_child, only: %i(show edit update destroy select_child)
+  before_action :set_child, only: %i[show edit update destroy select_child]
 
   def index
     @current_parent = current_parent
@@ -21,7 +21,7 @@ class ChildrenController < ApplicationController
   def create
     @child = current_parent.children.build(child_params)
     if @child.save
-      redirect_to parents_path
+      redirect_to parent_path
     else
       render :new
     end
@@ -85,7 +85,7 @@ class ChildrenController < ApplicationController
   # モーダル３　マイページのパスチェック
   def check_and_redirect_to_parents_show
     if @current_parent.valid_password?(params[:password])
-      redirect_to parents_path
+      redirect_to parent_path
     else
       handle_failed_password_check
     end
