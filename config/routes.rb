@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-    root to: 'children#index'
+  root to: 'children#index'
 
   # 親ユーザー
   devise_for :parents, controllers: {
@@ -10,12 +10,14 @@ Rails.application.routes.draw do
   devise_scope :parent do
   get '/parents/sign_out', to: 'devise/sessions#destroy'
   end
-  resource :parents, only: %i[show]
+  resource :parent, only: %i[show]
 
   # 子ユーザー
   resources :children do
     post 'check_password', on: :collection
     post 'select_child', on: :member
+    # 設定系
+    resource :payday, only: %i[show new edit create update]
   end
 
   # トップページ

@@ -1,0 +1,64 @@
+<div id="payday-new-edit">
+  <br />
+  <%= form_with model: @payday, url: child_payday_path do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="row ms-3">
+      <div class="col-10 p-3 border border-secondary rounded bg-light">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+          <label class="form-check-label" for="flexRadioDefault1">
+            日付を指定し月に１度通知する
+          </label>
+        </div>
+        <br />
+        <!-- 日付の選択 -->
+        <div class="field" id="date_field">
+          <%= f.number_field :date, in: 1..28, step: 1 %>
+          <spam>日</spam>
+        </div>
+        <br />
+        <!-- 月末指定のチェックボックス -->
+        <div class="field" id="end_month_field">
+          <%= f.check_box :end_month %>
+          <%= f.label :end_month %>
+          <div class="initialism">※28日以降の場合は月末にチェックをお願いします</div>
+          <div class="initialism">※月末にチェックをつけた場合チェックが優先され、日付を入力しても適応されませんのでご注意ください</div>
+        </div>
+      </div>
+  
+      <div class="col-10 p-3 border border-secondary rounded bg-light">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+          <label class="form-check-label" for="flexRadioDefault2">
+            曜日を指定し週に1度通知する
+          </label>
+        </div>
+        <br />
+        <!-- 曜日の選択 -->
+        <div class="field" id="week_field">
+          <% Payday.weeks.keys.each do |w| %>
+            <%= f.radio_button :week, w %>
+            <%= I18n.t("date.day_names")[Payday.weeks[w]] %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  
+    <br />
+    <!-- メール通知の選択 -->
+    <div class="field ms-4 px-2">
+      <div class="">通知方法をお選びください</div>
+      <% Payday.action_types.keys.each do |action_type| %>
+        <%= f.radio_button :action_type, action_type %>
+        <%= action_type.humanize %>
+      <% end %>
+    </div>
+    <br />
+    <div class="col-10 d-flex justify-content-between align-items-center px-2">
+      <div class="actions ms-4">
+        <%= f.submit '登録', class: 'btn btn-original' %>
+      </div>
+      <%= link_to '戻る', child_payday_path(@child), class: 'main-link ' %>
+    </div>
+  <% end %>
+</div>
