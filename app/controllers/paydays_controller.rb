@@ -2,16 +2,15 @@
 
 # PaydaysController is responsible for managing payday resources.
 class PaydaysController < ApplicationController
-    before_action :set_payday, only: %i[show edit update destroy]
-  def show
-  end
+    before_action :set_payday, only: %i[show edit update]
+
+  def show; end
 
   def new
     @payday =  Payday.new(child_id: params[:child_id])
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @child = Child.find(params[:child_id])
@@ -27,9 +26,12 @@ class PaydaysController < ApplicationController
   end
 
   def update
-  end
-
-  def destroy
+    if @payday.update(payday_params)
+      redirect_to child_payday_path(@payday.child)
+    else
+      flash.now[:warning] = '登録に失敗しました'
+      render :edit
+    end
   end
 
   private
