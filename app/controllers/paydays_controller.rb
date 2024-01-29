@@ -4,7 +4,6 @@
 class PaydaysController < ApplicationController
     before_action :set_payday, only: %i[show edit update destroy]
   def show
-    @payday_child = payday.child
   end
 
   def new
@@ -15,6 +14,16 @@ class PaydaysController < ApplicationController
   end
 
   def create
+    @child = Child.find(params[:child_id])
+    @payday = Payday.new(payday_params.merge(child_id: @child.id, parent_id: @current_parent.id)) 
+
+    if @payday.save
+      flash[:notice] = "通知日を設定しました"
+      redirect_to child_payday_path(@child)
+    else
+      puts "@payday.errors: #{@payday.errors.full_messages}"
+      render 'new'
+    end
   end
 
   def update
@@ -25,11 +34,12 @@ class PaydaysController < ApplicationController
 
   private
 
-  #def payday_params
-  #  params.require(:payday).permit(:name, :birth_date)
-  #end
+  def payday_params
+    params.require(:payday).permit(:date, :week, :end_month, :action_type)
+  end
 
   def set_payday
-    @payday = Payday.find(params[:id])
+    @child = Child.find(params[:child_id])
+    @payday = @child.payday
   end
 end

@@ -36,8 +36,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_25_103025) do
   create_table "paydays", force: :cascade do |t|
     t.integer "parent_id", null: false
     t.integer "child_id", null: false
-    t.datetime "date"
-    t.datetime "week"
+    t.integer "date"
+    t.integer "week"
+    t.boolean "end_month"
     t.integer "action_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

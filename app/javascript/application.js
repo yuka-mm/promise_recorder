@@ -1,8 +1,9 @@
 // Entry point for the build script in your package.json
 import { Dropdown } from 'bootstrap';
-import "@hotwired/turbo-rails"
-import "./controllers"
+import "@hotwired/turbo-rails";
+import "./controllers";
 import "./modal.js";
+import "./payday.js";
 
 document.addEventListener('turbolinks:load', () => {
   // Bootstrap initialization code

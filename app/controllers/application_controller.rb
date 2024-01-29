@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # ApplicationController is the base class for all controllers.
-class ApplicationController < ActionController::Base  
+class ApplicationController < ActionController::Base
   before_action :login_status
   add_flash_types :success, :info, :warning, :danger
   helper_method :calculate_age
@@ -13,10 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  
+
   def login_status
-    if !parent_signed_in? && request.path != top_page_path
-      redirect_to top_page_path
-    end
+    return unless !parent_signed_in? && request.path != top_page_path
+
+    redirect_to top_page_path
   end
 end

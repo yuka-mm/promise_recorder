@@ -10,7 +10,10 @@ class ChildrenController < ApplicationController
     @parent_password = current_parent.encrypted_password
   end
 
-  def show; end
+  def show
+    @current_parent = current_parent
+    @children = @current_parent.children
+  end
 
   def new
     @child = Child.new
@@ -41,8 +44,7 @@ class ChildrenController < ApplicationController
     redirect_to root_path
   end
 
-  # パスチェック
-  def check_password
+  def check_password  # パスチェック
     @current_parent = current_parent
 
     if params[:source] == 'children_show'
@@ -52,9 +54,7 @@ class ChildrenController < ApplicationController
     end
   end
 
-
-  # セッションに選択された子供の名前を保存
-  def select_child
+  def select_child  # セッションに選択された子供の名前を保存
     Rails.logger.debug('select_child action called')
     session[:selected_child_name] = @child.name
   end
@@ -69,8 +69,7 @@ class ChildrenController < ApplicationController
     @child = current_parent.children.find(params[:id])
   end
 
-  # モーダル１　管理ボタン後のパスチェック
-  def check_and_redirect_to_children_show
+  def check_and_redirect_to_children_show  # モーダル１　管理ボタン後のパスチェック
     @children = @current_parent.children
     selected_child_id = params[:child_id]
     selected_child = @children.find_by(id: selected_child_id)
@@ -82,8 +81,7 @@ class ChildrenController < ApplicationController
     end
   end
 
-  # モーダル３　マイページのパスチェック
-  def check_and_redirect_to_parents_show
+  def check_and_redirect_to_parents_show  # モーダル３　マイページのパスチェック
     if @current_parent.valid_password?(params[:password])
       redirect_to parent_path
     else
@@ -91,8 +89,7 @@ class ChildrenController < ApplicationController
     end
   end
 
-  # パスチェック失敗時
-  def handle_failed_password_check
+  def handle_failed_password_check  # パスチェック失敗時
     respond_to do |format|
       format.any { head 422 }
     end

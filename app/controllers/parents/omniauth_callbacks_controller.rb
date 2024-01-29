@@ -1,11 +1,9 @@
 # frozen_string_literal: true
-
 class Parents::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  #GitHub認証などを行うコントローラ
-
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
-
+  #GitHub認証などを行うコントローラ
+  
   # You should also create an action method in this controller like this:
   # def twitter
   # end

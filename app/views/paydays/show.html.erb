@@ -1,2 +1,24 @@
-<h1>Paydays#show</h1>
-<p>Find me in app/views/paydays/show.html.erb</p>
+<div class="parent_main">
+  <div class="container">
+    <div class="grid gap-3">
+        <%= @child.name %>の通知設定
+        <br />
+        <% if @payday.date? %>
+          <%= @payday.date %>日
+        <% elsif @payday.week? %>
+          <%= I18n.t("date.day_names")[@payday.week.to_i] %>
+        <% elsif @payday.end_month? %>
+          <%= @payday.end_month %>
+        <% end %>
+        <br />
+        <%= @payday.action_type %>
+        <br />
+        <br />
+        <br />
+        <%= link_to "編集", edit_child_payday_path(@child), class: 'btn btn-original m-3' %>
+        <%= button_to '削除', child_payday_path(@child), class: 'btn btn-original m-3',
+                       method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+                       <%= link_to '戻る', child_path(@child.id), class: 'main-link ' %>
+    </div>
+  </div>
+</div>

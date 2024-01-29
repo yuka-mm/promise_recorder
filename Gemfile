@@ -68,10 +68,8 @@ group :production do
 end
 
 # 設定系のgem
-# gem 'bootstrap', '~> 5.3'
 gem 'dockerfile-rails', '>= 1.6', group: :development
 gem 'font-awesome-sass'
-gem 'happybirthday'
 gem 'mini_racer'
 gem 'rails-i18n'
 gem 'sassc-rails'

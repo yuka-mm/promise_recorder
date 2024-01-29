@@ -16,11 +16,10 @@ Rails.application.routes.draw do
   resources :children do
     post 'check_password', on: :collection
     post 'select_child', on: :member
+    # 設定系
+    resource :payday, only: %i[show new edit create update destroy]
   end
 
   # トップページ
   get 'top_page', to: 'top#top'
-
-  # 設定系
-  resource :payday, only: %i[show new edit create update destroy]
 end
