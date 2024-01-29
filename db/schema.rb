@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_25_103025) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_29_153523) do
   create_table "children", force: :cascade do |t|
     t.integer "parent_id", null: false
     t.string "name", null: false
@@ -46,7 +46,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_25_103025) do
     t.index ["parent_id"], name: "index_paydays_on_parent_id"
   end
 
+  create_table "rewards", force: :cascade do |t|
+    t.integer "payday_id", null: false
+    t.integer "child_id", null: false
+    t.string "body", null: false
+    t.integer "pieces"
+    t.integer "pt_range"
+    t.integer "pt_addition"
+    t.string "unit", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_rewards_on_child_id"
+    t.index ["payday_id"], name: "index_rewards_on_payday_id"
+  end
+
   add_foreign_key "children", "parents"
   add_foreign_key "paydays", "children"
   add_foreign_key "paydays", "parents"
+  add_foreign_key "rewards", "children"
+  add_foreign_key "rewards", "paydays"
 end

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'children#index'
-
   # 親ユーザー
   devise_for :parents, controllers: {
     sessions: 'parents/sessions',
@@ -18,8 +16,11 @@ Rails.application.routes.draw do
     post 'select_child', on: :member
     # 設定系
     resource :payday, only: %i[show new edit create update]
+    resources :rewards, only: %i[new edit]
   end
 
   # トップページ
   get 'top_page', to: 'top#top'
+
+  root to: 'children#index'
 end
