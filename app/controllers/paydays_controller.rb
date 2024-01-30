@@ -2,9 +2,7 @@
 
 # PaydaysController is responsible for managing payday resources.
 class PaydaysController < ApplicationController
-    before_action :set_payday, only: %i[show edit update]
-
-  def show; end
+  before_action :set_payday, only: %i[edit update]
 
   def new
     @payday =  Payday.new(child_id: params[:child_id])
