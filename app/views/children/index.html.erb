@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row grid gap-3">
+  <div class="grid gap-3">
     <div class="text-center">
       <br />
       <br />
@@ -17,7 +17,7 @@
       <div class="h3 col blink">⇩えらんでね☺︎✻⇩</div>
       <div class="d-grid gap-2 p-2 m-4">
         <% @children.each do |child| %>
-          <button class="btn btn-original col-9 mx-auto child-modal-trigger fw-bold" data-child-name="<%= child.name %>" data-child-id="<%= child.id %>">
+          <button class="btn btn-original col-9 mx-auto child-modal-trigger fw-bold shadow-sm" data-child-name="<%= child.name %>" data-child-id="<%= child.id %>">
             <div class="h3 p-2" style="pointer-events: none;">
               <%= child.name %>
             </div>

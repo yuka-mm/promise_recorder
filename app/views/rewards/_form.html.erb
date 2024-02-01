@@ -4,9 +4,9 @@
   <%= render 'shared/error_messages', object: @reward %>
   <%= form_with model: @reward, url: @reward.new_record? ? child_rewards_path(@child) : child_reward_path(@child, @reward),
                 local: true, method: @reward.new_record? ? :post : :patch do |f| %>
-    <div class="row ms-3">
+    <div class="row justify-content-center">
       <% if @reward.new_record? || @reward.pieces.present? %>
-        <div class="col-10 p-3 border border-secondary rounded bg-light">
+        <div class="col-10 p-3 border border-secondary rounded bg-light shadow-sm m-1">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
             <label class="form-check-label" for="flexRadioDefault3">
@@ -23,10 +23,9 @@
           </div>
           <div class="initialism">例: 『5』個以上達成で『お菓子』get!!</div>
         </div>
-        <br />
       <% end %>
       <% if @reward.new_record? || @reward.pt_range.present? %>
-        <div class="col-10 p-3 border border-secondary rounded bg-light">
+        <div class="col-10 p-3 border border-secondary rounded bg-light shadow-sm m-1">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
             <label class="form-check-label" for="flexRadioDefault4">
@@ -43,10 +42,9 @@
           </div>
           <div class="initialism">例: 『100』ポイント以上達成で『ゲームの時間を1時間』get!!</div>
         </div>
-        <br />
       <% end %>
       <% if @reward.new_record? || @reward.pt_addition.present? %>
-        <div class="col-10 p-3 border border-secondary rounded bg-light">
+        <div class="col-10 p-3 border border-secondary rounded bg-light shadow-sm m-1">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
             <label class="form-check-label" for="flexRadioDefault5">
@@ -62,12 +60,11 @@
           </div>
           <div class="initialism">例: 『おこづかい』を〇〇『円』GET!!</div>
         </div>
-        <br />
       <% end %>
-    <div class="col-10 d-flex justify-content-between align-items-center px-2">
-      <%= link_to '戻る', child_rewards_path, class: 'main-link ' %>
+    <div class="col-10 d-flex justify-content-between align-items-center px-2 m-1">
+      <%= link_to '戻る', child_rewards_path, class: 'main-link' %>
       <div class="actions p-2">
-        <%= f.submit '登録', class: 'btn btn-original' %>
+        <%= f.submit '登録', class: 'btn btn-original shadow-sm' %>
       </div>
     </div>
   <% end %>

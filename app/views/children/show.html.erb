@@ -4,22 +4,22 @@
       <br />
       <div class="d-flex">
         <div class="h3">お子様情報管理</div>
-        <div class="dropdown ms-5 px-1">
+        <div class="dropdown ms-5 px-2">
           <button class="btn btn-original dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             お子様の変更
           </button>
-          <ul class="dropdown-menu text-center">
+          <ul class="dropdown-menu text-center shadow-sm">
             <% @children.each do |child| %>
-              <li><hr class="dropdown-divider"></li>
-              <% unless child == @child %>
-                <li><%= link_to "#{child.name}", child_path(child), class: 'main-link' %></li>
-              <% end %>
+                <% unless child == @child %>
+                  <li><%= link_to "#{child.name}", child_path(child), class: 'main-link' %></li>
+                <% end %>
+                <li><hr class="dropdown-divider"></li>
             <% end %>
           </ul>
         </div>
       </div>
       <div class="row d-flex align-items-start">
-        <div class="col-7 p-2 bg-light border border-secondary rounded m-2">
+        <div class="col-7 p-2 bg-light border border-secondary shadow-sm rounded m-2">
           <div class="d-flex justify-content-center">
             <div class="h3 m-2 fw-bold">
               <%= @child.name %>
@@ -31,13 +31,13 @@
             <%= "(#{calculate_age(@child.birth_date)}才）" %>
           </div>
           <div class="d-flex justify-content-end align-items-center">
-            <%= link_to "編集", edit_child_path(@child), class: 'btn btn-original m-4' %>
-            <%= button_to '削除', child_path(@child), class: 'btn btn-original m-3',
+            <%= link_to "編集", edit_child_path(@child), class: 'btn btn-original m-4 shadow-sm' %>
+            <%= button_to '削除', child_path(@child), class: 'btn btn-original m-3 shadow-sm',
                            method: :delete, data: { turbo_confirm: "Are you sure?" } %>
           </div>
         </div>
         <div class="col-4 m-2">
-          <ul class="list-group text-center">
+          <ul class="list-group text-center shadow-sm">
             <li class="list-group-item list-group-item-action list-group-item-secondary border border-secondary">
               <%= link_to "やくそく登録", '#', class: 'main-link text-wrap' %>
             </li>
@@ -50,7 +50,7 @@
       <br />
       <h3> 今日のおやくそく</h3>
       <ul class="list-group">
-        <li class="list-group-item bg-light border border-secondary">
+        <li class="list-group-item bg-light border border-secondary shadow-sm">
             aaa
         </li>
       </ul>

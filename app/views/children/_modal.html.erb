@@ -1,4 +1,4 @@
-<%# 子どもの名前をクリックすると出るモーダル %>
+<!-- 子どもの名前をクリックすると出るモーダル -->
 <% @children.each do |child| %>
   <div class="modal fade" id="exampleModalToggle_<%= child.id %>" aria-hidden="true" aria-labelledby="exampleModalToggleLabel_<%= child.id %>" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -12,13 +12,13 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-4 p-2">
-              <%= link_to 'カレンダー', '#', class: 'btn btn-original' %>
+              <%= link_to 'カレンダー確認', '#', class: 'btn btn-original shadow-sm' %>
             </div>
             <div class="col-sm-4 p-2">
-              <%= link_to '今日のお約束', '#', class: 'btn btn-original' %>
+              <%= link_to '今日のやくそく', '#', class: 'btn btn-original shadow-sm' %>
             </div>
             <div class="col-sm-4 p-2">
-              <button id="openModal2Button_<%= child.id %>" data-child-id="<%= child.id %>" class="btn btn-original">管理</button>
+              <button id="openModal2Button_<%= child.id %>" data-child-id="<%= child.id %>" class="btn btn-original shadow-sm">お子様情報管理</button>
               <%= form_with url: check_password_children_path, method: :post do |f| %>
                 <%= f.hidden_field :child_id, id: "child_id_input_#{child.id}" %>
               <% end %>
@@ -30,7 +30,7 @@
   </div>
 <% end %>
 
-<%# 上のモーダル内にある管理をクリックすると出るモーダル %>
+<!-- 上のモーダル内にある管理をクリックすると出るモーダル -->
 <% @children.each do |child| %>
   <div class="modal fade" id="exampleModalTogglePass_<%= child.id %>" aria-hidden="true" aria-labelledby="exampleModalToggleLabelPass_<%= child.id %>" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -47,7 +47,7 @@
                 <%= f.password_field :password, class: 'form-control', autocomplete: 'new-password', id: "parent_password_#{child.id}" %>
               </div>
               <%= f.hidden_field :child_id, id: "child_id_input_pass_#{child.id}" %>
-              <%= f.submit '送信', class: 'btn btn-original' %>
+              <%= f.submit '送信', class: 'btn btn-original shadow-sm' %>
             <% end %>
           </div>
         </div>
@@ -56,7 +56,7 @@
   </div>
 <% end %>
 
-<%# 親の名前をクリックすると出るモーダル モーダル３ %>
+<!-- 親の名前をクリックすると出るモーダル モーダル３ -->
 <div class="modal fade" id="exampleModalToggleParent" aria-hidden="true" aria-labelledby="exampleModalToggleLabelParent" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -71,7 +71,7 @@
             <%= f.label :password, 'パスワード' %>
             <%= f.password_field :password, class: 'form-control', autocomplete: 'new-password' %>
           </div>
-          <%= f.submit '送信', class: 'btn btn-original' %>
+          <%= f.submit '送信', class: 'btn btn-original shadow-sm' %>
         <% end %>
       </div>
     </div>
