@@ -27,10 +27,12 @@ function setDisabledStatus() {
   if (radio1.checked) {
     dateField.querySelectorAll('input').forEach(input => input.disabled = false);
     endMonthField.querySelectorAll('input').forEach(input => input.disabled = false);
-    weekField.querySelectorAll('input').forEach(input => input.disabled = true);
+    weekField.querySelector('input[type="hidden"]').disabled = false;
+    weekField.querySelectorAll('input[type="radio"]').forEach(input => { input.checked = false; });
   } else {
-    dateField.querySelectorAll('input').forEach(input => input.disabled = true);
-    endMonthField.querySelectorAll('input').forEach(input => input.disabled = true);
-    weekField.querySelectorAll('input').forEach(input => input.disabled = false);
+    dateField.querySelectorAll('input').forEach(input => { input.disabled = true; input.value = ''; });
+    endMonthField.querySelectorAll('input[type="checkbox"]').forEach(input => { input.disabled = true; input.checked = false; });
+    weekField.querySelector('input[type="hidden"]').disabled = true;
+    weekField.querySelectorAll('input[type="radio"]').forEach(input => input.disabled = false);
   }
 }

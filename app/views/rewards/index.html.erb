@@ -14,7 +14,7 @@
               <% if @payday.date? %>
                 毎月<%= @payday.date %>日に
               <% elsif @payday.week? %>
-                毎週<%= I18n.t("date.day_names")[@payday.week.to_i] %>に
+                毎週<%= I18n.t("date.day_names")[Payday.weeks[@payday.week]] %>に
               <% elsif @payday.end_month? %>
                 毎月<%= @payday.end_month %>に
               <% end %>
@@ -41,17 +41,21 @@
         <div class="col p-2 m-2 bg-light border border-secondary rounded">
           <% @rewards.each do |reward| %>
             <div class="d-flex">
-              <% if @reward.pieces? %>
+              <% if reward.pieces? %>
                 <%= reward.pieces %>
-              <% elsif @reward.pt_range? %>
+                <spam>個以上達成で</spam>
+              <% elsif reward.pt_range? %>
                 <%= reward.pt_range %>
-              <% elsif @reward.pt_addition? %>
-                <%= reward.pt_addition %>
+                <spam>ポイント以上達成で</spam>
+              <% elsif reward.pt_addition? %>
+                <spam>おやくそく達成で</spam>
               <% end %>
-              <%= render.unit %>達成で<%= render.body %>GET✨
+              <%= reward.body %>GET!!
             </div>
-            <div class="justify-content-between">
-              <%= link_to "編集", edit_child_reward_path(@child), class: 'btn btn-original col-m-4' %>
+            <div class="d-flex justify-content-end">
+              <%= link_to "編集", edit_child_reward_path(@child, reward), class: 'btn btn-original mx-2' %>
+              <%= button_to '削除', child_reward_path(@child, reward), class: 'btn btn-original',
+                           method: :delete, data: { turbo_confirm: "Are you sure?" } %>
             </div>
           <% end %>
         </div>

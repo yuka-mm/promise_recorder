@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     post 'select_child', on: :member
     # 設定系
     resource :payday, only: %i[new edit create update]
-    resources :rewards, only: %i[index new edit]
+    resources :rewards, only: %i[index new edit update create destroy]
   end
 
   # トップページ

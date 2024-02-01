@@ -52,8 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_153523) do
     t.string "body", null: false
     t.integer "pieces"
     t.integer "pt_range"
-    t.integer "pt_addition"
-    t.string "unit", null: false
+    t.string "pt_addition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_rewards_on_child_id"

@@ -6,8 +6,7 @@ class CreateRewards < ActiveRecord::Migration[7.1]
       t.string :body, null: false
       t.integer :pieces
       t.integer :pt_range
-      t.integer :pt_addition
-      t.string :unit, null: false
+      t.string :pt_addition
 
       t.timestamps
     end
