@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     registrations: 'parents/registrations',
   }
   devise_scope :parent do
-  get '/parents/sign_out', to: 'devise/sessions#destroy'
+    get '/parents/sign_out', to: 'devise/sessions#destroy'
   end
   resource :parent, only: %i[show]
 
@@ -17,6 +17,12 @@ Rails.application.routes.draw do
     # 設定系
     resource :payday, only: %i[new edit create update]
     resources :rewards, only: %i[index new edit update create destroy]
+    resources :promises do
+      collection do
+        get 'calendar'
+        get 'list'
+      end
+    end
   end
 
   # トップページ

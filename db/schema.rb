@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_29_153523) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_01_222207) do
   create_table "children", force: :cascade do |t|
     t.integer "parent_id", null: false
     t.string "name", null: false
@@ -46,6 +46,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_153523) do
     t.index ["parent_id"], name: "index_paydays_on_parent_id"
   end
 
+  create_table "promises", force: :cascade do |t|
+    t.integer "child_id", null: false
+    t.integer "reward_id", null: false
+    t.string "description", null: false
+    t.datetime "start_time"
+    t.boolean "monthly_flag"
+    t.integer "frequency"
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_promises_on_child_id"
+    t.index ["reward_id"], name: "index_promises_on_reward_id"
+  end
+
   create_table "rewards", force: :cascade do |t|
     t.integer "payday_id", null: false
     t.integer "child_id", null: false
@@ -62,6 +76,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_153523) do
   add_foreign_key "children", "parents"
   add_foreign_key "paydays", "children"
   add_foreign_key "paydays", "parents"
+  add_foreign_key "promises", "children"
+  add_foreign_key "promises", "rewards"
   add_foreign_key "rewards", "children"
   add_foreign_key "rewards", "paydays"
 end

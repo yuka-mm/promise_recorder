@@ -1,6 +1,7 @@
 class Reward < ApplicationRecord
   belongs_to :child
   belongs_to :payday
+  has_many :promises
 
   validate :reward_type_check
 
