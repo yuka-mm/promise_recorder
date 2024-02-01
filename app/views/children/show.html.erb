@@ -3,8 +3,8 @@
     <div class="grid gap-3">
       <br />
       <div class="d-flex">
-        <h3>お子様情報管理</h3>
-        <div class="dropdown ms-5">
+        <div class="h3">お子様情報管理</div>
+        <div class="dropdown ms-5 px-1">
           <button class="btn btn-original dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             お子様の変更
           </button>
@@ -18,7 +18,7 @@
           </ul>
         </div>
       </div>
-      <div class="row d-flex align-items-center">
+      <div class="row d-flex align-items-start">
         <div class="col-7 p-2 bg-light border border-secondary rounded m-2">
           <div class="d-flex justify-content-center">
             <div class="h3 m-2 fw-bold">
@@ -36,20 +36,13 @@
                            method: :delete, data: { turbo_confirm: "Are you sure?" } %>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-4 m-2">
           <ul class="list-group text-center">
             <li class="list-group-item list-group-item-action list-group-item-secondary border border-secondary">
-              <%= link_to "お約束 設定", '#', class: 'main-link text-wrap' %>
+              <%= link_to "やくそく登録", '#', class: 'main-link text-wrap' %>
             </li>
             <li class="list-group-item list-group-item-action list-group-item-secondary border border-secondary">
-              <%= link_to "ご褒美 設定", '#', class: 'main-link text-wrap' %>
-            </li>
-            <li class="list-group-item list-group-item-action list-group-item-secondary border border-secondary">
-              <% if @child %>
-                <%= link_to '通知日 変更', child_payday_path(@child), class: 'main-link text-wrap' %>
-              <% else %>
-                <%= link_to '通知日 登録', new_child_payday_path(@child), class: 'main-link text-wrap' %>
-              <% end %>
+              <%= link_to 'ご褒美 / 通知設定', child_rewards_path(@child), class: 'main-link text-wrap' %>
             </li>
           </ul>
         </div>

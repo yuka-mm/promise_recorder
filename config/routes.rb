@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'children#index'
-
   # 親ユーザー
   devise_for :parents, controllers: {
     sessions: 'parents/sessions',
@@ -17,9 +15,12 @@ Rails.application.routes.draw do
     post 'check_password', on: :collection
     post 'select_child', on: :member
     # 設定系
-    resource :payday, only: %i[show new edit create update]
+    resource :payday, only: %i[new edit create update]
+    resources :rewards, only: %i[index new edit update create destroy]
   end
 
   # トップページ
   get 'top_page', to: 'top#top'
+
+  root to: 'children#index'
 end

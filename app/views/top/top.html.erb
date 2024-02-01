@@ -3,19 +3,17 @@
     <div class="text-center">
       <br />
       <div class="col">
-        <%= image_tag 'logo.png', class: 'mx-auto d-block', width: '60%' %>
+        <%= image_tag 'logo.png', class: 'mx-auto d-block', width: '70%' %>
       </div>
-      <br />
       <br />
       <div class="p-2 d-grid gap-4 col-7 mx-auto">
         <%= link_to 'Log in', new_parent_session_path, class: 'btn btn-original btn-lg' %>
       </div>
       <br />
       <div class="p-2">
-        <%= image_tag 'top_msg.png', width: '40%' %>
-      </div>
-      <div class="p-2 d-grid gap-4 col-7 mx-auto">
-        <%= link_to 'ナビゲーション', '#', method: :delete, class: 'btn btn-original btn-lg' %>
+      <%= link_to  '#' do %>
+        <%= image_tag 'top_msg.png', width: '60%' %>
+      <% end %>
       </div>
       <br />
       <br />

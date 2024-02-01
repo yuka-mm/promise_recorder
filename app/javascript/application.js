@@ -4,6 +4,7 @@ import "@hotwired/turbo-rails";
 import "./controllers";
 import "./modal.js";
 import "./payday.js";
+import "./reward.js";
 
 document.addEventListener('turbolinks:load', () => {
   // Bootstrap initialization code

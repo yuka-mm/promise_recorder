@@ -1,0 +1,74 @@
+<div id="reward-new-edit">
+  <br />
+  <div class="ms-4 px-2">ご褒美の獲得方法をお選びください</div>
+  <%= render 'shared/error_messages', object: @reward %>
+  <%= form_with model: @reward, url: @reward.new_record? ? child_rewards_path(@child) : child_reward_path(@child, @reward),
+                local: true, method: @reward.new_record? ? :post : :patch do |f| %>
+    <div class="row ms-3">
+      <% if @reward.new_record? || @reward.pieces.present? %>
+        <div class="col-10 p-3 border border-secondary rounded bg-light">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+            <label class="form-check-label" for="flexRadioDefault3">
+              約束を『何個守れたか』でご褒美を決める ※複数登録可
+            </label>
+          </div>
+          <br />
+          <!-- 個数式で管理 -->
+          <div class="field" id="pieces_field">
+            <%= f.text_field :pieces, placeholder: "個数" %>
+            <spam>個以上達成で</spam>
+            <%= f.text_field :body, placeholder: "ご褒美" %>
+            <spam>分GET!!</spam>
+          </div>
+          <div class="initialism">例: 『5』個以上達成で『お菓子』get!!</div>
+        </div>
+        <br />
+      <% end %>
+      <% if @reward.new_record? || @reward.pt_range.present? %>
+        <div class="col-10 p-3 border border-secondary rounded bg-light">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
+            <label class="form-check-label" for="flexRadioDefault4">
+              守れた約束をポイントにして『何ポイント以上獲得できたか』でご褒美を決める ※複数登録可
+            </label>
+          </div>
+          <br />
+          <!-- ポイント範囲式で管理 -->
+          <div class="field" id="range_field">
+            <%= f.text_field :pt_range, placeholder: "ポイント数" %>
+            <spam>ポイント以上達成で</spam>
+            <%= f.text_field :body, placeholder: "ご褒美" %>
+            <spam>GET!!</spam>
+          </div>
+          <div class="initialism">例: 『100』ポイント以上達成で『ゲームの時間を1時間』get!!</div>
+        </div>
+        <br />
+      <% end %>
+      <% if @reward.new_record? || @reward.pt_addition.present? %>
+        <div class="col-10 p-3 border border-secondary rounded bg-light">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+            <label class="form-check-label" for="flexRadioDefault5">
+              守れたお約束をポイントにして『何ポイント獲得できたか』でご褒美を決める
+            </label>
+          </div>
+          <!-- ポイント加算式 -->
+          <div class="field" id="addition_field">
+            <%= f.text_field :body, placeholder: "ご褒美" %>
+            <spam>を〇〇</spam>
+            <%= f.text_field :pt_addition, placeholder: "単位" %>
+            <spam>GET!!</spam>
+          </div>
+          <div class="initialism">例: 『おこづかい』を〇〇『円』GET!!</div>
+        </div>
+        <br />
+      <% end %>
+    <div class="col-10 d-flex justify-content-between align-items-center px-2">
+      <%= link_to '戻る', child_rewards_path, class: 'main-link ' %>
+      <div class="actions p-2">
+        <%= f.submit '登録', class: 'btn btn-original' %>
+      </div>
+    </div>
+  <% end %>
+</div>

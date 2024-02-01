@@ -4,6 +4,7 @@
 class Child < ApplicationRecord
   belongs_to :parent
   has_one :payday, dependent: :destroy
+  has_many :rewards
 
   validates :name, length: { maximum: 10 }
 end
