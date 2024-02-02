@@ -1,11 +1,15 @@
 class PromisesController < ApplicationController
-    before_action :set_promise, only: %i[edit update]
+    before_action :set_child, only: %i[index]
   
-  def index; end
+  def index
+    @promises = @child.promises
+  end
 
   def show; end
 
-  def new; end
+  def new
+
+  end
 
   def edit; end
 
@@ -23,5 +27,7 @@ class PromisesController < ApplicationController
 
   def promise_params; end
 
-  def set_promise; end
+  def set_child
+    @child = Child.find(params[:child_id])
+  end
 end

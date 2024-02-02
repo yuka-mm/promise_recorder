@@ -38,27 +38,29 @@
         <%= link_to "登録", new_child_reward_path(@child), class: 'btn btn-original col-m-4 shadow-sm' %>
       </div>
       <div class="row text-center h4">
-        <div class="col p-2 m-2 bg-light border border-secondary rounded shadow-sm">
-          <% @rewards.each do |reward| %>
-            <div class="d-flex">
-              <% if reward.pieces? %>
-                <%= reward.pieces %>
-                <spam>個以上達成で</spam>
-              <% elsif reward.pt_range? %>
-                <%= reward.pt_range %>
-                <spam>ポイント以上達成で</spam>
-              <% elsif reward.pt_addition? %>
-                <spam>おやくそく達成で</spam>
-              <% end %>
-              <%= reward.body %>GET!!
-            </div>
-            <div class="d-flex justify-content-end">
-              <%= link_to "編集", edit_child_reward_path(@child, reward), class: 'btn btn-original mx-2 shadow-sm' %>
-              <%= button_to '削除', child_reward_path(@child, reward), class: 'btn btn-original shadow-sm',
-                           method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-            </div>
-          <% end %>
-        </div>
+        <ul class="list-group p-2">
+            <% @rewards.each do |reward| %>
+              <li class="list-group-item bg-light border border-secondary rounded shadow-sm list_color">
+                <div class="d-flex">
+                  <% if reward.pieces? %>
+                    <%= reward.pieces %>
+                    <spam>個以上達成で</spam>
+                  <% elsif reward.pt_range? %>
+                    <%= reward.pt_range %>
+                    <spam>ポイント以上達成で</spam>
+                  <% elsif reward.pt_addition? %>
+                    <spam>おやくそく達成で</spam>
+                  <% end %>
+                  <%= reward.body %>GET!!
+                </div>
+                <div class="d-flex justify-content-end">
+                  <%= link_to "編集", edit_child_reward_path(@child, reward), class: 'btn btn-original mx-2 shadow-sm' %>
+                  <%= button_to '削除', child_reward_path(@child, reward), class: 'btn btn-original shadow-sm',
+                               method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+                </div>
+              </li>
+            <% end %>
+        </ul>
       </div>
       <br />
       <br />

@@ -5,6 +5,7 @@ import "./controllers";
 import "./modal.js";
 import "./payday.js";
 import "./reward.js";
+import "./promise.js";
 
 document.addEventListener('turbolinks:load', () => {
   // Bootstrap initialization code

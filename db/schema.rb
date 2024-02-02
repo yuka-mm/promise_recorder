@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_222207) do
     t.integer "child_id", null: false
     t.integer "reward_id", null: false
     t.string "description", null: false
+    t.boolean "completed"
     t.datetime "start_time"
     t.boolean "monthly_flag"
     t.integer "frequency"
