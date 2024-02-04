@@ -43,3 +43,10 @@ footer {
 	0% {opacity: 0;}
 	100% {opacity: 1;}
 }
+
+.page-item.active .page-link {
+    background-color: #69563e !important;  /* ブラウンの背景色を指定 */
+    border-color: #69563e !important;  /* ブラウンのボーダー色を指定 */
+  }
+  
+

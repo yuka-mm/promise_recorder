@@ -1,49 +1,45 @@
 <div id="promises-new-edit">
-  <%# render 'shared/error_messages', object: @promises %>
-  <%= form_with model: @promise do |f| %>
-    <div class="row d-flxe justify-content-center">
-      <div class="col-10 p-3 border border-secondary rounded bg-light shadow-sm m-1">
+  <%# render 'shared/error_messages', object: @promise %>
+  <%= form_with model: [@child, @promise] do |f| %>
+    <div class="row d-flxe justify-content-center p-2">
+      <div class="p-3 border border-secondary rounded bg-light shadow-sm" id="formContainer">
         <div class="field h3 p-2 col">
-          <%= f.label :start_time %><br />
-          <%= f.text_field :start_time %>
+          <%= f.label :description %><br />
+          <%= f.text_field :description %>
         </div>
         <div class="field h3 p-2 col">
-          <%= f.label :start_time %><br />
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
+            <%= f.label :start_time %><br />
             <div class="field" id="date_select">
-              <%= f.date_select :start_time, discard_year: true, use_month_numbers: true %><br />
+              <%= f.date_select :start_time, use_month_numbers: true %><br />
             </div>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
+            <%= f.label :day_of_week %><br />
             <div class="field" id="weekday">
-              <%= f.select :weekday, Date::DAYNAMES.each_with_index.to_a %><br />
+              <%= f.select :day_of_week, Promise.day_of_weeks.keys.map { |w| [I18n.t("date.day_names")[Promise.day_of_weeks[w]], w] } %>
             </div>
           </div>
-          <spam>日付・曜日を固定する</spam>
+          <spam>毎日のやくそくにする</spam>
           <%= f.check_box :monthly_flag %>
         </div>
         <div class="field h3 p-2 col">
           <div class="initialism">
             １日に何回行いますか？
           </div>
-          <%= f.number_field :date, in: 1..10, step: 1 %>
+          <%= f.number_field :frequency, in: 1..10, step: 1, value: f.object.frequency || 1  %>
           <spam>回</spam>
         </div>
         <div class="field h3 p-2 col">
           <div class="initialism">
             守れた時の獲得ポイント
           </div>
-          <%= f.number_field :date, in: 1..10, step: 1 %>
+          <%= f.number_field :points, in: 1..1000, step: 1 %>
           <spam>ポイント</spam>
         </div>
-      </div>
-      <br />
-      <br />
-      <div class="col-10 d-flex justify-content-between align-items-center px-2 m-1">
-        <%= link_to '戻る', child_promises_path, class: 'main-link' %>
-        <div class="actions p-2">
+        <div class="col d-flex justify-content-end">
           <%= f.submit '登録', class: 'btn btn-original shadow-sm' %>
         </div>
       </div>

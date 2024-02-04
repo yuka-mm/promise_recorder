@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     # 設定系
     resource :payday, only: %i[new edit create update]
     resources :rewards, only: %i[index new edit update create destroy]
-    resources :promises do
+    resources :promises, only: %i[index show edit update create destroy] do
       collection do
         get 'calendar'
         get 'list'

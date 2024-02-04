@@ -9,7 +9,7 @@ class RewardsController < ApplicationController
   end
 
   def edit
-    @reward = @child.rewards.find(params[:id])
+    @reward = @rewards.find(params[:id])
   end
 
   def create
@@ -30,8 +30,8 @@ class RewardsController < ApplicationController
       flash[:notice] = "ご褒美を登録しました"
       redirect_to child_rewards_path
     else
-      flash.now[:warning] = "登録に失敗しました"
-      render 'edit'
+      flash[:warning] = "登録が失敗しました"
+      render :edit
     end
   end
 

@@ -77,3 +77,4 @@ gem 'sassc-rails'
 # 機能系のgem
 gem 'devise', '~> 4.9.0'
 gem 'happybirthday'
+gem 'kaminari'
