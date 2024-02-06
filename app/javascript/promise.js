@@ -21,13 +21,16 @@ function setDisabledStatus() {
   console.log("radio7 checked: ", radio7.checked);
   
   let dateSelect = document.getElementById('date_select');
+  let checkFlag = document.getElementById('check_flag');
   let weekDay = document.getElementById('weekday');
 
   if (radio6.checked) {
     dateSelect.querySelectorAll('select').forEach(select => select.disabled = false);
+    checkFlag.querySelectorAll('input').forEach(input => input.disabled = false);
     weekDay.querySelectorAll('select').forEach(select => select.disabled = true);
   } else {
     dateSelect.querySelectorAll('select').forEach(select => select.disabled = true);
+    checkFlag.querySelectorAll('input').forEach(input => { input.disabled = true; input.checked = false; });
     weekDay.querySelectorAll('select').forEach(select => select.disabled = false);
   }
 }

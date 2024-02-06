@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_02_140216) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_06_091817) do
   create_table "children", force: :cascade do |t|
     t.integer "parent_id", null: false
     t.string "name", null: false
@@ -46,22 +46,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_02_140216) do
     t.index ["parent_id"], name: "index_paydays_on_parent_id"
   end
 
-  create_table "promise_rewards", force: :cascade do |t|
+  create_table "promise_counts", force: :cascade do |t|
     t.integer "promise_id", null: false
-    t.integer "reward_id", null: false
     t.boolean "completed", default: false
-    t.date "date"
+    t.date "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["promise_id"], name: "index_promise_rewards_on_promise_id"
-    t.index ["reward_id"], name: "index_promise_rewards_on_reward_id"
+    t.index ["promise_id"], name: "index_promise_counts_on_promise_id"
   end
 
   create_table "promises", force: :cascade do |t|
     t.integer "child_id", null: false
     t.string "description", null: false
     t.integer "day_of_week"
-    t.datetime "start_time"
+    t.datetime "start_day"
     t.boolean "monthly_flag"
     t.integer "frequency"
     t.integer "points"
@@ -86,8 +84,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_02_140216) do
   add_foreign_key "children", "parents"
   add_foreign_key "paydays", "children"
   add_foreign_key "paydays", "parents"
-  add_foreign_key "promise_rewards", "promises"
-  add_foreign_key "promise_rewards", "rewards"
+  add_foreign_key "promise_counts", "promises"
   add_foreign_key "promises", "children"
   add_foreign_key "rewards", "children"
   add_foreign_key "rewards", "paydays"

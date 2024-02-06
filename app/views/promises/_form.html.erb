@@ -1,5 +1,5 @@
 <div id="promises-new-edit">
-  <%# render 'shared/error_messages', object: @promise %>
+  <% render 'shared/error_messages', object: @promise %>
   <%= form_with model: [@child, @promise] do |f| %>
     <div class="row d-flxe justify-content-center p-2">
       <div class="p-3 border border-secondary rounded bg-light shadow-sm" id="formContainer">
@@ -10,11 +10,18 @@
         <div class="field h3 p-2 col">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
-            <%= f.label :start_time %><br />
+            <%= f.label :start_day %><br />
             <div class="field" id="date_select">
-              <%= f.date_select :start_time, use_month_numbers: true %><br />
+              <%= f.date_select :start_day, use_month_numbers: true %><br />
+            </div>
+            <div class="field" id="check_flag">
+              <spam>毎日のやくそくにする</spam>
+              <%= f.hidden_field :monthly_flag, value: false %>
+              <%= f.check_box :monthly_flag %>
             </div>
           </div>
+        </div>
+        <div class="field h3 p-2 col">
           <div class="form-check">
             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
             <%= f.label :day_of_week %><br />
@@ -22,21 +29,19 @@
               <%= f.select :day_of_week, Promise.day_of_weeks.keys.map { |w| [I18n.t("date.day_names")[Promise.day_of_weeks[w]], w] } %>
             </div>
           </div>
-          <spam>毎日のやくそくにする</spam>
-          <%= f.check_box :monthly_flag %>
         </div>
         <div class="field h3 p-2 col">
           <div class="initialism">
-            １日に何回行いますか？
+            <%= '１日に何回行いますか？' %>
           </div>
-          <%= f.number_field :frequency, in: 1..10, step: 1, value: f.object.frequency || 1  %>
+          <%= f.number_field :frequency, in: 1..10, step: 1, value: f.object.frequency || 1 %>
           <spam>回</spam>
         </div>
         <div class="field h3 p-2 col">
           <div class="initialism">
-            守れた時の獲得ポイント
+            <%= '守れた時の獲得ポイント' %>
           </div>
-          <%= f.number_field :points, in: 1..1000, step: 1 %>
+          <%= f.number_field :points, in: 0..1000, value: f.object.frequency || 0 %>
           <spam>ポイント</spam>
         </div>
         <div class="col d-flex justify-content-end">

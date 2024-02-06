@@ -1,1 +1,18 @@
-calendar
+<div class="container">
+  <div class="grid gap-3">
+    <br />
+    <div class="h3"><i class="fa-regular fa-calendar">カレンダー</i></div>
+    <%= month_calendar(events: @promises) do |date, promises| %>
+      <%= date.day %>
+      <% completed, total = PromiseReward.promises_on(date) %>
+      <% if total > 0 %>
+        <div><%= "#{completed}/#{total}" %></div>
+      <% end %>
+      <% promises.each do |promise| %>
+        <div>
+          <%= promise.description %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

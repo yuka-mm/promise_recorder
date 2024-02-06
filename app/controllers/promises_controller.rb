@@ -1,6 +1,6 @@
 class PromisesController < ApplicationController
-  before_action :set_child, only: %i[index show edit create update destroy]
-  before_action :set_promise, only: %i[index show edit create update destroy]
+  before_action :set_child, only: %i[index show edit create update destroy calendar]
+  before_action :set_promise, only: %i[index show edit create update destroy calendar]
   
   def index
     @promise = @promises.new
@@ -23,10 +23,11 @@ class PromisesController < ApplicationController
     @promise = @child.promises.new(promise_params)
   
     if @promise.save
-      flash[:notice] = "やくそくを登録しました"
-      redirect_to child_promise_path(@child, @promise)
+      flash[:motice] = "やくそくを登録しました"
+      redirect_to child_promises_path(@child, @promise)
     else
       @promises = @child.promises.all
+      @list_promises = @promises.where.not(id: nil).page(params[:page])
       flash.now[:warning] = '登録に失敗しました: ' + @promise.errors.full_messages.join(', ')
       Rails.logger.debug(@promise.errors.full_messages.join(', ')) 
       render :index
@@ -53,7 +54,7 @@ class PromisesController < ApplicationController
   private
 
   def promise_params
-    params.require(:promise).permit(:description, :day_of_week, :start_time, :monthly_flag, :frequency, :points)
+    params.require(:promise).permit(:description, :day_of_week, :start_day, :monthly_flag, :frequency, :points)
   end
 
   def set_child

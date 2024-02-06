@@ -12,8 +12,8 @@
           <div class="justify-content-start">
             <% if @promise.day_of_week? %>
               <%= I18n.t("date.day_names")[@promise.day_of_week_before_type_cast]  %>
-            <% elsif @promise.start_time?  %>
-              <%= @promise.start_time.strftime('%Y/%m/%d') %>
+            <% elsif @promise.start_day?  %>
+              <%= @promise.start_day.strftime('%Y/%m/%d') %>
             <% end %>
               ・<%= @promise.frequency %>回
             <% if @promise.points? %>

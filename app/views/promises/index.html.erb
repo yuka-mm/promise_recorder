@@ -2,34 +2,34 @@
   <div class="container">
     <div class="grid gap-3">
       <br />
-      <div class="h3">やくそく一覧</div>
+      <div class="h3"><%= "#{@child.name}のやくそく一覧" %></div>
       <br />
       <div class="row h5">
         <ul class="list-group p-2">
           <li class="list-group-item list-group-item-secondary border border-secondary rounded shadow-sm list_color h6">
-            <div>やくそく日・1日の回数・達成ポイント</div>
-            <div>やくそくの内容</div>
+            <%= 'やくそく日・1日の回数・達成ポイント' %><br />
+            <%= 'やくそくの内容' %>
           </li>
           <% @list_promises.each do |promise| %>
             <li class="list-group-item bg-light border border-secondary rounded shadow-sm list_color">
-              <% puts promise.inspect %>
               <div class="justify-content-start">
-                <% if promise.day_of_week? %>
+                <% if promise.monthly_flag? %>
+                  <%= promise.monthly_flag %>
+                <% elsif promise.day_of_week? %>
                   <%= I18n.t("date.day_names")[promise.day_of_week_before_type_cast]  %>
-                <% elsif promise.start_time?  %>
-                  <%= promise.start_time.strftime('%Y/%m/%d') %>
+                <% elsif promise.start_day?  %>
+                  <%= promise.start_day.strftime('%Y/%m/%d') %>
                 <% end %>
-                  ・<%= promise.frequency %>回
-                <% if promise.points? %>
-                  ・<%= promise.points %>ポイント
-                <% end %>
+                
+                  <%= "・#{promise.frequency}回" %>
+                  <%= "・#{promise.points}ポイント" %>
                 <br />
                 <div class="justify-content-start">
                   <%= promise.description %><br />
                 </div>
               </div>
               <div class="d-flex justify-content-end">
-                <%= link_to "編集", edit_child_promise_path(@child, promise), class: 'btn btn-original mx-2 shadow-sm' %>
+                <%= link_to '編集', edit_child_promise_path(@child, promise), class: 'btn btn-original mx-2 shadow-sm' %>
                 <%= button_to '削除', child_promise_path(@child, promise), class: 'btn btn-original shadow-sm',
                              method: :delete, data: { turbo_confirm: "Are you sure?" } %>
               </div>
