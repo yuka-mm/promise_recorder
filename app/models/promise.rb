@@ -6,10 +6,11 @@ class Promise < ApplicationRecord
   validates :description, presence: true
   validate :either_day_of_week_or_start_day
 
-
   enum day_of_week: { sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6 }
 
-  after_save :create_or_update_promise_counts
+  before_validation :reset_start_day_or_day_of_week
+  after_create :create_promise_counts
+  after_update :recreate_promise_counts
 
   private
 
@@ -19,22 +20,42 @@ class Promise < ApplicationRecord
     end
   end
 
-  def create_or_update_promise_counts
-    if !monthly_flag
-      monthly_flag_false
-    else
-      monthly_flag_true
+  def reset_start_day_or_day_of_week
+    if day_of_week_changed? && day_of_week.present?
+      self.start_day = nil
+      if monthly_flag == true
+        self.monthly_flag = false
+      end
+    elsif start_day_changed? && start_day.present?
+      self.day_of_week = nil
     end
   end
 
-  def monthly_flag_false
+  def create_promise_counts
+    if !monthly_flag
+      create_monthly_flag_false
+    else
+      create_monthly_flag_true
+    end
+  end
+
+  def recreate_promise_counts
+    PromiseCount.where(promise_id: self.id).destroy_all
+
+    if !monthly_flag
+      create_monthly_flag_false
+    else
+      create_monthly_flag_true
+    end
+  end
+
+  def create_monthly_flag_false
     # monthly_flagが選択されていない場合
     if day_of_week.present?
-      day_of_week_number = day_of_week.to_i
-      # day_of_weekが存在する場合、その曜日に基づくPromiseRewardを作成
+      day_of_week_number = Promise.day_of_weeks[self.day_of_week]
       if Date.today.wday == day_of_week_number
         # 今日がその曜日である場合、今日の日付を使用
-        date = Date.today
+        date = Date.today + 7.days
       else
         # そうでない場合、次のその曜日の日付を計算
         date = Date.today + ((day_of_week_number - Date.today.wday + 7) % 7).days
@@ -57,7 +78,7 @@ class Promise < ApplicationRecord
     end
   end
 
-  def monthly_flag_true
+  def create_monthly_flag_true
     # monthly_flagが選択されている場合
     (self.start_day.to_date..(self.start_day.to_date + 30.days)).each do |date|
       PromiseCount.create!(

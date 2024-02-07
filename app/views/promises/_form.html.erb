@@ -19,6 +19,7 @@
               <%= f.hidden_field :monthly_flag, value: false %>
               <%= f.check_box :monthly_flag %>
             </div>
+            <div class="initialism"><%= '※選択すると約１ヶ月間毎日のやくそくとして登録されます' %></div>
           </div>
         </div>
         <div class="field h3 p-2 col">
@@ -28,6 +29,7 @@
             <div class="field" id="weekday">
               <%= f.select :day_of_week, Promise.day_of_weeks.keys.map { |w| [I18n.t("date.day_names")[Promise.day_of_weeks[w]], w] } %>
             </div>
+            <div class="initialism"><%= '※登録から約１ヶ月間毎週のやくそくとして登録されます' %></div>
           </div>
         </div>
         <div class="field h3 p-2 col">

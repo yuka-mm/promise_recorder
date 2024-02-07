@@ -7,9 +7,21 @@
     color: #fff;
 }
 
+.body-link:hover,
+.body-link:active {
+    text-decoration: none;
+    color: #69563e;
+}
+
 .main-link {
     text-decoration: none;
     color: #db7133;
+}
+
+.main-link:hover,
+.main-link:active {
+    text-decoration: none;
+    color: #69563e;
 }
 
 .list_color{

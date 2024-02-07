@@ -15,46 +15,61 @@ class PromisesController < ApplicationController
     @promise = @promises.find(params[:id])
   end
 
-  def calendar; end
+  def calendar
+    @completed_counts = PromiseCount.where(promise_id: @promises, completed: true).group(:start_time).count || {}
+
+    @promises_counts = PromiseCount.where(promise_id: @promises).group(:start_time).count || {}
+    puts "@completed_counts: #{@completed_counts.inspect}" # 追加
+    puts "@promises_counts: #{@promises_counts.inspect}" # 追加
+  end
 
   def list; end
 
   def create
-    @promise = @child.promises.new(promise_params)
-  
+    puts promise_params.inspect
+    @promise = @promises.new(promise_params)
+    puts @promise.inspect 
     if @promise.save
-      flash[:motice] = "やくそくを登録しました"
+      flash[:notice] = "やくそくを登録しました"
       redirect_to child_promises_path(@child, @promise)
     else
-      @promises = @child.promises.all
-      @list_promises = @promises.where.not(id: nil).page(params[:page])
-      flash.now[:warning] = '登録に失敗しました: ' + @promise.errors.full_messages.join(', ')
+      @promises_all = @promises.all
+      @list_promises = @promises_all.where.not(id: nil).page(params[:page])
+      flash.now[:notice] = '登録に失敗しました: ' + @promise.errors.full_messages.join(', ')
       Rails.logger.debug(@promise.errors.full_messages.join(', ')) 
       render :index
     end
   end
 
   def update
-    @promise = @child.promises.find(params[:id])
+    @promise = @promises.find(params[:id])
+    puts "アップデート送信時＝"
+    puts promise_params.inspect 
     if @promise.update(promise_params)
-      flash[:motice] = "やくそくを変更しました"
+        puts "アップデート成功時時＝"
+        puts @promise.attributes.inspect # 更新後の属性を出力
+      flash[:notice] = "やくそくを変更しました"
       redirect_to child_promise_path
     else
-      flash[:warning] = "変更が失敗しました"
+        puts "アップデート失敗時＝"
+        puts @promise.attributes.inspect # 更新後の属性を出力
+        puts @promise.errors.full_messages 
+      flash[:notice] = "変更が失敗しました"
       render :edit
     end
   end
 
   def destroy
-    @promise = @child.promises.find(params[:id])
+    @promise = @promises.find(params[:id])
     @promise.destroy!
-    redirect_to child_promise_path
+    flash[:notice] = "#{@promise.description}を削除しました"
+    redirect_to child_promises_path
   end
 
   private
 
   def promise_params
-    params.require(:promise).permit(:description, :day_of_week, :start_day, :monthly_flag, :frequency, :points)
+    params.require(:promise).permit(:description, :day_of_week, :start_day, :monthly_flag, :hidden_monthly_flag, :frequency, :points)
   end
 
   def set_child

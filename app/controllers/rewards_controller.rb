@@ -25,7 +25,7 @@ class RewardsController < ApplicationController
   end
 
   def update
-    @reward = @child.rewards.find(params[:id])
+    @reward = @rewards.find(params[:id])
     if @reward.update(reward_params)
       flash[:notice] = "ご褒美を登録しました"
       redirect_to child_rewards_path
@@ -36,7 +36,7 @@ class RewardsController < ApplicationController
   end
 
   def destroy
-    @reward = @child.rewards.find(params[:id])
+    @reward = @rewards.find(params[:id])
     @reward.destroy!
     redirect_to child_rewards_path
   end
