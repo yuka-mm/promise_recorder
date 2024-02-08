@@ -1,6 +1,6 @@
 class PromisesController < ApplicationController
-  before_action :set_child, only: %i[index show edit create update destroy calendar]
-  before_action :set_promise, only: %i[index show edit create update destroy calendar]
+  before_action :set_child, only: %i[index show edit create update destroy calendar list]
+  before_action :set_promise, only: %i[index show edit create update destroy calendar list]
   
   def index
     @promise = @promises.new

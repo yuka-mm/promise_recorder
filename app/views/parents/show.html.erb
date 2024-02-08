@@ -6,9 +6,11 @@
         <div class="h2 fw-bold"><%= @current_parent.name %></div>
       </div>
         <br />
-      <div class="d-flex justify-content-between align-items-center">
-        <span class="h3">お子様の登録情報</span>
-        <%= link_to "お子様を登録", new_child_path, class: 'btn btn-original shadow-sm' %>
+      <div class="d-flex align-items-center">
+        <h3>お子様の登録情報</h3>
+        <%= link_to new_child_path, class: 'btn btn-original shadow-sm mx-5' do %>
+          <spam> 登録 </spam><i class="fa-solid fa-user-plus"></i>
+        <% end %>
       </div>
         <br/>
       <div class="row p-3 mb-2 list-group">
@@ -18,13 +20,19 @@
             <div class="h2 clo p-2 m-3 fw-bold">
               <%= child.name %>
             </div>
-            <div class="d-flex justify-content-end align-items-center">
+            <div class="d-flex justify-content-between align-items-center">
               <div class="h4 p-2 m-3">
-                <%= child.birth_date.strftime('%Y/%m/%d') %>
+                <%= child.birth_date.strftime('%Y/%m/%d') %><br />
                 <%= "(#{calculate_age(child.birth_date)}才）" %>
               </div>
-                <%= link_to "管理", child_path(child), class: 'btn btn-original m-3 shadow-sm' %>
-                <%= link_to "編集", edit_child_path(child), class: 'btn btn-original m-3 shadow-sm' %>
+              <div>
+                <%= link_to child_path(child), class: 'btn btn-original m-1 shadow-sm' do %>
+                  <i class="fa-solid fa-user-gear"></i>
+                <% end %>
+                <%= link_to edit_child_path(child), class: 'btn btn-original m-1 shadow-sm' do %>
+                  <i class="fa-solid fa-user-pen"></i>
+                <% end %>
+              </div>
             </div>
           </div>
           </li>

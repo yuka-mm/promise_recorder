@@ -15,7 +15,7 @@
               <%= link_to 'カレンダー確認', calendar_child_promises_path(child), class: 'btn btn-original shadow-sm' %>
             </div>
             <div class="col-sm-4 p-2">
-              <%= link_to '今日のやくそく', '#', class: 'btn btn-original shadow-sm' %>
+              <%= link_to '今日のやくそく', list_child_promises_path(child), class: 'btn btn-original shadow-sm' %>
             </div>
             <div class="col-sm-4 p-2">
               <button id="openModal2Button_<%= child.id %>" data-child-id="<%= child.id %>" class="btn btn-original shadow-sm">お子様情報管理</button>
@@ -36,7 +36,9 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalToggleLabelPass">パスワードを入力してください</h1>
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabelPass">
+            <i class="fa-solid fa-user-lock"></i>
+          </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -61,7 +63,9 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalToggleLabelParent">パスワードを入力してください</h1>
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabelParent">
+          <i class="fa-solid fa-user-lock"></i>
+        </h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

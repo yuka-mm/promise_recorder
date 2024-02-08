@@ -17,7 +17,9 @@
       <%= render'form' %>
       <br />
       <div class="d-flex justify-content-end">
-        <%= link_to '戻る', child_promises_path, class: 'main-link ' %>
+        <%= link_to child_promises_path, class: 'main-link ' do %>
+          <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+        <% end %>
       </div>
       <br />
     </div>

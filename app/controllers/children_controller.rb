@@ -13,6 +13,14 @@ class ChildrenController < ApplicationController
   def show
     @current_parent = current_parent
     @children = @current_parent.children
+    @child_promises = @child.promises
+
+    # それぞれのPromiseからPromiseCountを参照し、今日の日付に対応するものを取得
+    @promise_counts_today = @child_promises.flat_map do |promise|
+      promise.promise_counts.where(start_time: Date.today)
+    end
+    # それぞれのPromiseCountからPromiseを参照し、descriptionを取得
+    @promise_descriptions_today = @promise_counts_today.map { |promise_count| promise_count.promise.description }
   end
 
   def new

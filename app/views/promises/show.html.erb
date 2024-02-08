@@ -25,14 +25,20 @@
             </div>
           </div>
           <div class="d-flex justify-content-end">
-            <%= link_to "編集", edit_child_promise_path(@child, @promise), class: 'btn btn-original mx-2 shadow-sm' %>
-            <%= button_to '削除', child_promise_path(@child, @promise), class: 'btn btn-original shadow-sm',
-                         method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+            <%= link_to edit_child_promise_path(@child, @promise), class: 'btn btn-original mx-2 shadow-sm' do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+            <%= button_to child_promise_path(@child, @promise), class: 'btn btn-original shadow-sm',
+                         method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
+              <i class="fa-solid fa-trash-can"></i>
+            <% end %>
           </div>
         </li>
       </ul>
       <div class="d-flex justify-content-end">
-        <%= link_to '戻る', child_promises_path, class: 'main-link ' %>
+        <%= link_to child_promises_path, class: 'main-link ' do %>
+          <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+        <% end %>
       </div>
     </div>
   </div>

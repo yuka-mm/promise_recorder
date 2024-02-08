@@ -7,7 +7,7 @@
   <br />
   <div class="field h3 p-2 col">
     <%= f.label :birth_date %><br />
-    <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1960, default: Date.new(2024, 1, 1) %>
+    <%= f.date_select :birth_date, use_month_numbers: true, start_year: 1970, end_year: Date.today.year, default: Date.new(2024, 1, 1) %>
   </div>
   <br />
   <br />

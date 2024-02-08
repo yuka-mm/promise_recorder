@@ -5,7 +5,11 @@
       <br />
       <br />
       <br />
-      <div class="h3 col blink">⇩マイページ⇩</div>
+      <div class="col h4">
+        <i class="fa-regular fa-hand-point-down fa-flip-horizontal blink"></i>
+        <spam class="fw-bold">マイページ</spam>
+        <i class="fa-regular fa-hand-point-down blink"></i></spam>
+      </div>
       <button class="btn name-link", data-bs-target="#exampleModalToggleParent", data-bs-toggle="modal"> 
         <div class="display-5 p-2 fw-bold">
           <%= @current_parent.name %> 
@@ -14,7 +18,11 @@
       <br />
       <br />
       <br />
-      <div class="h3 col blink">⇩えらんでね☺︎✻⇩</div>
+      <div class="col h4">
+        <i class="fa-regular fa-hand-point-down fa-flip-horizontal blink"></i>
+        <spam class="fw-bold">えらんでね</spam>
+        <i class="fa-regular fa-hand-point-down blink"></i></spam>
+      </div>
       <div class="d-grid gap-2 p-2 m-4">
         <% @children.each do |child| %>
           <button class="btn btn-original col-9 mx-auto child-modal-trigger fw-bold shadow-sm" data-child-name="<%= child.name %>" data-child-id="<%= child.id %>">

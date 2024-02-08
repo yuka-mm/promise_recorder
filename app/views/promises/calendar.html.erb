@@ -2,15 +2,17 @@
   <div class="grid gap-3">
     <br />
     <div class="h3">
-      <%= "#{@child.name}の" %><br />
-      <i class="fa-regular fa-calendar"></i><%= 'カレンダー' %>
+      <%= @child.name %>
+      <i class="fa-regular fa-calendar-days"></i>
     </div>
     <%= month_calendar do |date| %>
       <%= date.day %>
-      <div>
-        <%= "#{@completed_counts[date]||0} /" %>
-        <%= "#{@promises_counts[date]||0}" %>
-        </div>
+      <div class="h4 text-end">
+        <%= link_to list_child_promises_path(@child),class: 'main-link' do %>
+          <%= "#{@completed_counts[date]||0}" %>
+        <% end %>
+        <%= "/ #{@promises_counts[date]||0}" %>
+      </div>
     <% end %>
   </div>
 </div>
