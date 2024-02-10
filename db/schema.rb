@@ -20,6 +20,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_091817) do
     t.index ["parent_id"], name: "index_children_on_parent_id"
   end
 
+  create_table "counts", force: :cascade do |t|
+    t.integer "promise_id", null: false
+    t.boolean "completed", default: false
+    t.date "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["promise_id"], name: "index_counts_on_promise_id"
+  end
+
   create_table "parents", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -44,15 +53,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_091817) do
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_paydays_on_child_id"
     t.index ["parent_id"], name: "index_paydays_on_parent_id"
-  end
-
-  create_table "promise_counts", force: :cascade do |t|
-    t.integer "promise_id", null: false
-    t.boolean "completed", default: false
-    t.date "start_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["promise_id"], name: "index_promise_counts_on_promise_id"
   end
 
   create_table "promises", force: :cascade do |t|
@@ -82,9 +82,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_091817) do
   end
 
   add_foreign_key "children", "parents"
+  add_foreign_key "counts", "promises"
   add_foreign_key "paydays", "children"
   add_foreign_key "paydays", "parents"
-  add_foreign_key "promise_counts", "promises"
   add_foreign_key "promises", "children"
   add_foreign_key "rewards", "children"
   add_foreign_key "rewards", "paydays"

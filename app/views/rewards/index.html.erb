@@ -56,7 +56,7 @@
                 <% elsif reward.pt_addition? %>
                   <spam>おやくそく達成で</spam>
                 <% end %>
-                <%= reward.body %>GET!!
+                <%= "#{reward.body} GET!!" %>
               </div>
               <div class="d-flex justify-content-end">
                 <%= link_to edit_child_reward_path(@child, reward), class: 'btn btn-original mx-2 shadow-sm' do %>

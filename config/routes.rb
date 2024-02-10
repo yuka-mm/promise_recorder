@@ -14,15 +14,15 @@ Rails.application.routes.draw do
   resources :children do
     post 'check_password', on: :collection
     post 'select_child', on: :member
-    # 設定系
+    # 子ユーザー関連
     resource :payday, only: %i[new edit create update]
     resources :rewards, only: %i[index new edit update create destroy]
-    resources :promises, only: %i[index show edit update create destroy] do
+    resources :promises, only: %i[index show edit update create destroy] do 
       collection do
         get 'calendar'
-        get 'list'
       end
     end
+    resources :counts, only: %i[index update] # 今日のやくそくページ
   end
 
   # トップページ

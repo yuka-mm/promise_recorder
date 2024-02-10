@@ -8,7 +8,7 @@
     <%= month_calendar do |date| %>
       <%= date.day %>
       <div class="h4 text-end">
-        <%= link_to list_child_promises_path(@child),class: 'main-link' do %>
+        <%= link_to  child_counts_path(@child, date: date),class: 'main-link' do %>
           <%= "#{@completed_counts[date]||0}" %>
         <% end %>
         <%= "/ #{@promises_counts[date]||0}" %>

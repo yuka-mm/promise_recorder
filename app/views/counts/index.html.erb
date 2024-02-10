@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="grid gap-3">
+    <br />
+    <div class="d-flex align-items-center">
+      <h3><%= "#{@child.name}のやくそく" %></h3>
+      <i class="fa-regular fa-handshake h2"></i>
+    </div>
+    </br>
+
+    <% @counts.each do |count| %>
+      <li class="list-group-item list-group-item-secondary border border-secondary rounded shadow-sm list_color h6">
+        <%= render 'button', count: count %>
+        <%= count.promise.description %>
+      </li>
+    <% end %>

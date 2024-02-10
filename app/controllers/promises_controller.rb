@@ -1,6 +1,6 @@
 class PromisesController < ApplicationController
-  before_action :set_child, only: %i[index show edit create update destroy calendar list]
-  before_action :set_promise, only: %i[index show edit create update destroy calendar list]
+  before_action :set_child, only: %i[index show edit create update destroy calendar]
+  before_action :set_promise, only: %i[index show edit create update destroy calendar]
   
   def index
     @promise = @promises.new
@@ -16,14 +16,11 @@ class PromisesController < ApplicationController
   end
 
   def calendar
-    @completed_counts = PromiseCount.where(promise_id: @promises, completed: true).group(:start_time).count || {}
-
-    @promises_counts = PromiseCount.where(promise_id: @promises).group(:start_time).count || {}
+    @completed_counts = Count.where(promise_id: @promises, completed: true).group(:start_time).count || {}
+    @promises_counts = Count.where(promise_id: @promises).group(:start_time).count || {}
     puts "@completed_counts: #{@completed_counts.inspect}" # 追加
     puts "@promises_counts: #{@promises_counts.inspect}" # 追加
   end
-
-  def list; end
 
   def create
     puts promise_params.inspect

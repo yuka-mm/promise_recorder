@@ -8,6 +8,13 @@ class ChildrenController < ApplicationController
     @current_parent = current_parent
     @children = @current_parent.children
     @parent_password = current_parent.encrypted_password
+
+      # 当日のcountsとそれに紐づくpromiseを取得
+    @counts = @children.flat_map do |child|
+      child.promises.flat_map do |promise|
+        promise.counts.where(start_time: Date.today)
+      end
+    end
   end
 
   def show
@@ -17,7 +24,7 @@ class ChildrenController < ApplicationController
 
     # それぞれのPromiseからPromiseCountを参照し、今日の日付に対応するものを取得
     @promise_counts_today = @child_promises.flat_map do |promise|
-      promise.promise_counts.where(start_time: Date.today)
+      promise.counts.where(start_time: Date.today)
     end
     # それぞれのPromiseCountからPromiseを参照し、descriptionを取得
     @promise_descriptions_today = @promise_counts_today.map { |promise_count| promise_count.promise.description }

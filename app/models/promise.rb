@@ -1,6 +1,6 @@
 class Promise < ApplicationRecord
   belongs_to :child
-  has_many :promise_counts, dependent: :destroy
+  has_many :counts, dependent: :destroy
 
   validates :description, length: { maximum: 30 }
   validates :description, presence: true
@@ -40,7 +40,7 @@ class Promise < ApplicationRecord
   end
 
   def recreate_promise_counts
-    PromiseCount.where(promise_id: self.id).destroy_all
+    Count.where(promise_id: self.id).destroy_all
 
     if !monthly_flag
       create_monthly_flag_false
@@ -62,7 +62,7 @@ class Promise < ApplicationRecord
       end
       # 指定した日付から4週間後（28日後）まで、毎週その曜日のPromiseRewardを作成
       (date..date + 28.days).step(7) do |date|
-        PromiseCount.create!(
+        Count.create!(
           promise_id: self.id,
           start_time: date,
           completed: false
@@ -70,7 +70,7 @@ class Promise < ApplicationRecord
       end
     elsif start_day.present?
       # start_dayが存在する場合、その日付を使用
-      PromiseCount.create!(
+      Count.create!(
         promise_id: self.id,
         start_time: start_day,
         completed: false
@@ -81,7 +81,7 @@ class Promise < ApplicationRecord
   def create_monthly_flag_true
     # monthly_flagが選択されている場合
     (self.start_day.to_date..(self.start_day.to_date + 30.days)).each do |date|
-      PromiseCount.create!(
+      Count.create!(
         promise_id: self.id,
         start_time: date,
         completed: false

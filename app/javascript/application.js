@@ -6,6 +6,7 @@ import "./modal.js";
 import "./payday.js";
 import "./reward.js";
 import "./promise.js";
+import "./complete.js";
 
 document.addEventListener('turbolinks:load', () => {
   // Bootstrap initialization code
