@@ -1,8 +1,7 @@
-
 <%= link_to child_count_path(count.promise.child, count),
             method: :put,
             remote: true,
             class: 'toggle-completed main-link',
-            data: { status: count.completed ? 'uncomplete' : 'complete' } do %>
-  <i class="fa-<%= count.completed ? 'solid' : 'regular' %> fa-star h1"></i>
+            data: { child_id: count.promise.child.id, count_id: count.id, status: count.completed ? 'uncomplete' : 'complete' } do %>
+  <i class="fa-<%= count.completed ? 'solid' : 'regular' %> fa-star h1 p-2"></i>
 <% end %>

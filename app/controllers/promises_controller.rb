@@ -18,8 +18,7 @@ class PromisesController < ApplicationController
   def calendar
     @completed_counts = Count.where(promise_id: @promises, completed: true).group(:start_time).count || {}
     @promises_counts = Count.where(promise_id: @promises).group(:start_time).count || {}
-    puts "@completed_counts: #{@completed_counts.inspect}" # 追加
-    puts "@promises_counts: #{@promises_counts.inspect}" # 追加
+    @completed_count_this_month = @child.counts.where(completed: true, start_time: (Date.today.beginning_of_month..Date.today.end_of_month)).count
   end
 
   def create

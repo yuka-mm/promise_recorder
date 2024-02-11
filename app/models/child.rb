@@ -6,6 +6,7 @@ class Child < ApplicationRecord
   has_one :payday, dependent: :destroy
   has_many :rewards, dependent: :destroy
   has_many :promises, dependent: :destroy
+  has_many :counts, through: :promises
 
   validates :name, length: { maximum: 10 }
 end

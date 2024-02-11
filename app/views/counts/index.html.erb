@@ -1,15 +1,42 @@
 <div class="container">
   <div class="grid gap-3">
     <br />
-    <div class="d-flex align-items-center">
-      <h3><%= "#{@child.name}のやくそく" %></h3>
+    <div class="d-flex align-items-end">
+      <h3><%= "#{@child.name}" %><br /><%= "#{@date.month}/#{@date.day}のやくそく" %></h3>
       <i class="fa-regular fa-handshake h2"></i>
     </div>
     </br>
 
     <% @counts.each do |count| %>
-      <li class="list-group-item list-group-item-secondary border border-secondary rounded shadow-sm list_color h6">
+      <li class="list-group-item list-group-item-warning border border-secondary border-2 rounded shadow-sm list_color h5">
         <%= render 'button', count: count %>
         <%= count.promise.description %>
       </li>
     <% end %>
+    <br />
+    <div class="row">
+      <div class="d-flex justify-content-end align-items-center p-2">
+        <% if Count.remaining(@child, @date) > 0 %>
+          <p class="remaining-count border border-success border-2 bg-light rounded-pill p-3 h3">
+            <%= "あと#{Count.remaining(@child, @date)}コだよ‼️" %>
+          </p>
+        <% else %>
+          <p class="border border-success border-2 bg-light rounded-pill p-3 h3">達成おめでと〜‼️</p>
+        <% end %>
+        <%= image_tag 'count.png', width: '30%', id: 'count-image',class: 'fluffy', data: { src: asset_path('count.png')}, style: ('display: none;' if Count.remaining(@child, @date)  <= 0) %>
+        <%= image_tag 'complete.png',width: '30%', id: 'complete-image',class: 'frog', data: { src: asset_path('complete.png')}, style: ('display: none;' if Count.remaining(@child, @date) > 0) %>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <%= link_to root_path, class: 'main-link' do %>
+          <i class="fa-solid fa-circle-arrow-left"></i><spam>トップページ</spam>
+        <% end %>
+        <%= link_to calendar_child_promises_path(@child), class: 'main-link' do %>
+            <spam>カレンダー</spam><i class="fa-solid fa-circle-arrow-right"></i>
+        <% end %>
+      </div>
+      <br />
+      <br />
+    </div>
+  </div>
+</div>

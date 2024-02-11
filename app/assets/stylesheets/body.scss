@@ -53,3 +53,34 @@ footer {
     overflow-x: auto;
   }
   
+  /*ジャンプ*/
+  .fluffy {
+    animation: fluffy1 3s ease infinite;
+  }
+  
+  @keyframes fluffy1 {
+    0% { transform:translateY(0) }
+    5% { transform:translateY(0) }
+    10% { transform:translateY(0) }
+    20% { transform:translateY(-15px) }
+    25% { transform:translateY(0) }
+    30% { transform:translateY(-15px) }
+    50% { transform:translateY(0) }
+    100% { transform:translateY(0) }
+  }
+
+  /*横揺れ*/
+  .frog{
+    transform-origin: center bottom;
+    animation: yurayura 3s linear infinite;
+    }
+
+    @keyframes yurayura {
+      0% , 100%{
+          transform: rotate(7deg);
+      }
+      50%{
+          transform: rotate(-2deg);
+      }
+    }
+ 
