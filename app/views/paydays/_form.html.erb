@@ -1,10 +1,10 @@
 <div id="payday-new-edit">
   <br />
-  <div class="ms-4 px-2">通知日をお選びください</div>
+  <div class="ms-3 px-2">通知日をお選びください</div>
   <%= form_with model: @payday, url: child_payday_path do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <div class="row ms-3">
-      <div class="col-10 p-3 border border-secondary rounded bg-light">
+    <div class="row justify-content-center">
+      <div class="col-10 p-3 border border-secondary rounded bg-light shadow-sm m-1">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
           <label class="form-check-label" for="flexRadioDefault1">
@@ -27,7 +27,7 @@
         </div>
       </div>
   
-      <div class="col-10 p-3 border border-secondary rounded bg-light">
+      <div class="col-10 p-3 border border-secondary rounded bg-light shadow-sm m-1">
         <div class="form-check">
           <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
           <label class="form-check-label" for="flexRadioDefault2">
@@ -44,22 +44,22 @@
           <% end %>
         </div>
       </div>
-    </div>
-  
-    <br />
-    <!-- メール通知の選択 -->
-    <div class="field ms-4 px-2">
-      <div>通知方法をお選びください</div>
-      <% Payday.action_types.keys.each do |action_type| %>
-        <%= f.radio_button :action_type, action_type %>
-        <%= action_type.humanize %>
-      <% end %>
-    </div>
-    <br />
-    <div class="col-10 d-flex justify-content-between align-items-center px-2">
-      <%= link_to '戻る', child_rewards_path, class: 'main-link ' %>
-      <div class="actions ms-4">
-        <%= f.submit '登録', class: 'btn btn-original' %>
+      <!-- メール通知の選択 -->
+      <div class="field ms-5 p-3">
+        <div>通知方法をお選びください</div>
+        <% Payday.action_types.keys.each do |action_type| %>
+          <%= f.radio_button :action_type, action_type %>
+          <%= action_type.humanize %>
+        <% end %>
+      </div>
+      <br />
+      <div class="col-10 d-flex justify-content-between align-items-center px-2 m-1">
+        <%= link_to child_rewards_path, class: 'main-link ms-1' do %>
+            <i class="fa-solid fa-circle-arrow-left"></i><spam>もどる</spam>
+        <% end %>
+        <div class="actions p-2">
+          <%= f.submit '登録', class: 'btn btn-original shadow-sm' %>
+        </div>
       </div>
     </div>
   <% end %>

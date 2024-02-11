@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="grid gap-3">
+    <br />
+    <div class="h3">
+      <%= @child.name %>
+      <i class="fa-regular fa-calendar-days"></i>
+    </div>
+    <%= month_calendar do |date| %>
+      <%= date.day %>
+      <div class="h4 text-end">
+        <%= link_to  child_counts_path(@child, date: date),class: 'main-link' do %>
+          <%= "#{@completed_counts[date]||0}" %>
+        <% end %>
+        <%= "/ #{@promises_counts[date]||0}" %>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="d-flex align-items-center m-2">
+        <%= image_tag 'calendar.png', width: '30%',class: 'fluffy' %>
+        <p class="remaining-count border border-success border-2 bg-light rounded-pill p-3 h4">
+          <%= "今月は#{@completed_count_this_month}コの" %><br />
+          <%= "やくそくを守れたよ♪" %>
+        </p>
+      </div>
+    </div>
+    <br />
+    <%= link_to root_path, class: 'main-link' do %>
+      <i class="fa-solid fa-circle-arrow-left"></i><spam>トップページ</spam>
+    <% end %>
+    <br />
+    <br />
+  </div>
+</div>

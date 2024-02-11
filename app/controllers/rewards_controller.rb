@@ -1,22 +1,18 @@
 class RewardsController < ApplicationController
+  before_action :set_child, only: %i[index new create edit update destroy]
   before_action :set_reward, only: %i[index edit update destroy]
 
   def index; end
 
   def new
-    @child = Child.find(params[:child_id])
     @reward = Reward.new
-
-   # @reward = Reward.new(child_id: params[:child_id])
-   
   end
 
   def edit
-    @reward = @child.rewards.find(params[:id])
+    @reward = @rewards.find(params[:id])
   end
 
   def create
-    @child = Child.find(params[:child_id])
     @reward = Reward.new(reward_params.merge(child_id: @child.id, payday_id: @child.payday.id))
 
     if @reward.save
@@ -29,18 +25,18 @@ class RewardsController < ApplicationController
   end
 
   def update
-    @reward = @child.rewards.find(params[:id])
+    @reward = @rewards.find(params[:id])
     if @reward.update(reward_params)
       flash[:notice] = "ご褒美を登録しました"
       redirect_to child_rewards_path
     else
-      flash.now[:warning] = "登録に失敗しました"
-      render 'edit'
+      flash[:warning] = "登録が失敗しました"
+      render :edit
     end
   end
 
   def destroy
-    @reward = @child.rewards.find(params[:id])
+    @reward = @rewards.find(params[:id])
     @reward.destroy!
     redirect_to child_rewards_path
   end
@@ -51,8 +47,11 @@ class RewardsController < ApplicationController
     params.require(:reward).permit(:pieces, :pt_range, :pt_addition, :body, :unit)
   end  
 
-  def set_reward
+  def set_child
     @child = Child.find(params[:child_id])
+  end
+
+  def set_reward
     @rewards = @child.rewards
     @payday = @child.payday
   end

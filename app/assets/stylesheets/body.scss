@@ -43,3 +43,44 @@ footer {
 	0% {opacity: 0;}
 	100% {opacity: 1;}
 }
+
+.page-item.active .page-link {
+    background-color: #69563e !important;  /* ブラウンの背景色を指定 */
+    border-color: #69563e !important;  /* ブラウンのボーダー色を指定 */
+  }
+  
+  .container {
+    overflow-x: auto;
+  }
+  
+  /*ジャンプ*/
+  .fluffy {
+    animation: fluffy1 3s ease infinite;
+  }
+  
+  @keyframes fluffy1 {
+    0% { transform:translateY(0) }
+    5% { transform:translateY(0) }
+    10% { transform:translateY(0) }
+    20% { transform:translateY(-15px) }
+    25% { transform:translateY(0) }
+    30% { transform:translateY(-15px) }
+    50% { transform:translateY(0) }
+    100% { transform:translateY(0) }
+  }
+
+  /*横揺れ*/
+  .frog{
+    transform-origin: center bottom;
+    animation: yurayura 3s linear infinite;
+    }
+
+    @keyframes yurayura {
+      0% , 100%{
+          transform: rotate(7deg);
+      }
+      50%{
+          transform: rotate(-2deg);
+      }
+    }
+ 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_29_153523) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_06_091817) do
   create_table "children", force: :cascade do |t|
     t.integer "parent_id", null: false
     t.string "name", null: false
@@ -18,6 +18,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_153523) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "index_children_on_parent_id"
+  end
+
+  create_table "counts", force: :cascade do |t|
+    t.integer "promise_id", null: false
+    t.boolean "completed", default: false
+    t.date "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["promise_id"], name: "index_counts_on_promise_id"
   end
 
   create_table "parents", force: :cascade do |t|
@@ -46,6 +55,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_153523) do
     t.index ["parent_id"], name: "index_paydays_on_parent_id"
   end
 
+  create_table "promises", force: :cascade do |t|
+    t.integer "child_id", null: false
+    t.string "description", null: false
+    t.integer "day_of_week"
+    t.datetime "start_day"
+    t.boolean "monthly_flag"
+    t.integer "frequency"
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_promises_on_child_id"
+  end
+
   create_table "rewards", force: :cascade do |t|
     t.integer "payday_id", null: false
     t.integer "child_id", null: false
@@ -60,8 +82,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_29_153523) do
   end
 
   add_foreign_key "children", "parents"
+  add_foreign_key "counts", "promises"
   add_foreign_key "paydays", "children"
   add_foreign_key "paydays", "parents"
+  add_foreign_key "promises", "children"
   add_foreign_key "rewards", "children"
   add_foreign_key "rewards", "paydays"
 end
