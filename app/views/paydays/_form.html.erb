@@ -49,7 +49,7 @@
         <div>通知方法をお選びください</div>
         <% Payday.action_types.keys.each do |action_type| %>
           <%= f.radio_button :action_type, action_type %>
-          <%= action_type.humanize %>
+          <%= I18n.t("payday.action_type.#{action_type}") %>
         <% end %>
       </div>
       <br />

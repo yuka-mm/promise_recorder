@@ -1,7 +1,7 @@
 <div crass="container">
   <div class="row grid gap-3">
     <div class="text-center">
-      <div class="display-5 p-4">Sign up</div>
+      <div class="display-5 p-4">ユーザー登録</div>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>  
@@ -34,7 +34,7 @@
         </div>
           <br />
         <div class="actions p-2 d-grid gap-4 col-5 mx-auto">
-          <%= f.submit "Sign up", class: 'btn btn-original shadow-sm' %>
+          <%= f.submit "登録する", class: 'btn btn-original shadow-sm' %>
         </div>
       <% end %>
         <br />

@@ -14,7 +14,7 @@
             <li class="list-group-item bg-light border border-secondary rounded shadow-sm list_color">
               <div class="justify-content-start">
                 <% if promise.monthly_flag? %>
-                  <%= promise.monthly_flag %>
+                  <%= I18n.t("promise.monthly_flag.true") %>
                 <% elsif promise.day_of_week? %>
                   <%= I18n.t("date.day_names")[promise.day_of_week_before_type_cast]  %>
                 <% elsif promise.start_day?  %>

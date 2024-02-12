@@ -15,9 +15,9 @@
               <% elsif @payday.week? %>
                 毎週<%= I18n.t("date.day_names")[Payday.weeks[@payday.week]] %>に
               <% elsif @payday.end_month? %>
-                毎月<%= @payday.end_month %>に
+                毎月<%= I18n.t("payday.end_month.true") %>に
               <% end %>
-              <%= @payday.action_type %>
+              <%= I18n.t("payday.action_type.#{@payday.action_type}") %>
             </div>
             <div class="d-flex justify-content-end">
               <%= link_to edit_child_payday_path(@child), class: 'btn btn-original col-m-4 shadow-sm' do %>

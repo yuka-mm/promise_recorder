@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      parent: 'ユーザー'
+    attributes:
+      parent:
+        name: 'お名前（ニックネーム可）'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        remember_me: 'ログインを継続する'
+      child:
+        name: 'お名前（ニックネーム可）'
+        birth_date: 'お誕生日'
+      payday:
+        end_month: '月末'
+      promise:
+        description: 'やくそくの内容'
+        start_day: '日付で登録'
+        day_of_week: '曜日で登録'
+  payday:
+    action_type:
+      mail_type: 'メールで通知'
+      line_type: 'LINEで通知'
+      not_set: '通知しない'
+    end_month:
+      true: '月末'
+  promise:
+    monthly_flag:
+      true: '毎日'
