@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   end
 
   # トップページ
-  get 'top_page', to: 'top#top'
+  get 'top_page', to: 'top#top_page'
+  get 'help_page', to: 'top#help_page'
+  get 'terms_of_service', to: 'top#terms_of_service'
+  get 'privacy_policy', to: 'top#privacy_policy'
+  get 'navigate', to: 'top#navigate'
 
   root to: 'children#index'
 end
