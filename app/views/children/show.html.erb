@@ -59,6 +59,15 @@
           </li>
         <% end %>
       </ul>
+      <br />
+      <div class="d-flex justify-content-between align-items-center">
+        <%= link_to root_path, class: 'main-link ' do %>
+          <i class="fa-solid fa-circle-arrow-left"></i><spam>トップページ</spam>
+        <% end %>
+        <%= link_to parent_path, class: 'main-link' do %>
+            <spam>マイページ</spam><i class="fa-solid fa-circle-arrow-right"></i>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

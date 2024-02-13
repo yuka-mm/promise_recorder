@@ -6,12 +6,11 @@
       <h1>ご利用いただきましてありがとうございます</h1>
     </div>
     <div class="text-center p-4">
-      <p>このページでは PROMISE RECORDER の使用方法などを掲載しています</p>
-      <p>どんなアプリケーション？</p>
-      <p>どうやって使うの？</p>
-      <p>チュートリアルにお使いください</p>
+      <p>このページでは</p>
+      <p> PROMISE RECORDER の</p>
+      <p>ご利用手順をご紹介します！</p>
     </div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide bg-body-tertiary" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -42,7 +41,14 @@
       </button>
     </div>
     <div class="text-center p-5">
-      <%= link_to "さっそく使ってみる", new_parent_registration_path, class: 'btn btn-original shadow-sm' %>
+      <% if parent_signed_in? %>
+        <%= link_to "さっそく使ってみる", new_parent_registration_path, class: 'btn btn-original shadow-sm' %>
+      <% end %>
+    </div>
+    <div class="p-2">
+      <%= link_to top_page_path, class: 'main-link ' do %>
+        <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+      <% end %>
     </div>
   </div>
 </div>
