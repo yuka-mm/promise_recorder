@@ -7,7 +7,7 @@ class Payday < ApplicationRecord
   has_many :rewards
 
   enum week: { sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6 }
-  enum action_type: { mail_type: 0, line_type: 1, not_set: 3}
+  enum action_type: { mail_type: 0, line_type: 1, not_set: 3 }
 
   after_initialize :set_default_action_type, if: :new_record?
 

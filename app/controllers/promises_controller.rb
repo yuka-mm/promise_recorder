@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# PromisesController is responsible for managing promise resources.
 class PromisesController < ApplicationController
   before_action :set_child, only: %i[index show edit create update destroy calendar]
   before_action :set_promise, only: %i[index show edit create update destroy calendar]
@@ -26,7 +29,7 @@ class PromisesController < ApplicationController
     @promise = @promises.new(promise_params)
     puts @promise.inspect 
     if @promise.save
-      flash[:notice] = "やくそくを登録しました"
+      flash[:notice] = 'やくそくを登録しました'
       redirect_to child_promises_path(@child, @promise)
     else
       @promises_all = @promises.all
@@ -39,18 +42,18 @@ class PromisesController < ApplicationController
 
   def update
     @promise = @promises.find(params[:id])
-    puts "アップデート送信時＝"
+    puts 'アップデート送信時＝'
     puts promise_params.inspect 
     if @promise.update(promise_params)
-        puts "アップデート成功時時＝"
+        puts 'アップデート成功時時＝'
         puts @promise.attributes.inspect # 更新後の属性を出力
-      flash[:notice] = "やくそくを変更しました"
+      flash[:notice] = 'やくそくを変更しました'
       redirect_to child_promise_path
     else
-        puts "アップデート失敗時＝"
+        puts 'アップデート失敗時＝'
         puts @promise.attributes.inspect # 更新後の属性を出力
         puts @promise.errors.full_messages 
-      flash[:notice] = "変更が失敗しました"
+      flash[:notice] = '変更が失敗しました'
       render :edit
     end
   end

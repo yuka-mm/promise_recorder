@@ -2,7 +2,7 @@
 class Parents::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
-  #GitHub認証などを行うコントローラ
+  # GitHub認証などを行うコントローラ
   
   # You should also create an action method in this controller like this:
   # def twitter

@@ -9,7 +9,7 @@ class ChildrenController < ApplicationController
     @children = @current_parent.children
     @parent_password = current_parent.encrypted_password
 
-      # 当日のcountsとそれに紐づくpromiseを取得
+    # 当日のcountsとそれに紐づくpromiseを取得
     @counts = @children.flat_map do |child|
       child.promises.flat_map do |promise|
         promise.counts.where(start_time: Date.today)
@@ -59,7 +59,8 @@ class ChildrenController < ApplicationController
     redirect_to root_path
   end
 
-  def check_password  # パスチェック
+  def check_password
+    # パスチェック
     @current_parent = current_parent
 
     if params[:source] == 'children_show'
@@ -69,7 +70,8 @@ class ChildrenController < ApplicationController
     end
   end
 
-  def select_child  # セッションに選択された子供の名前を保存
+  def select_child
+    # セッションに選択された子供の名前を保存
     Rails.logger.debug('select_child action called')
     session[:selected_child_name] = @child.name
   end
@@ -84,11 +86,12 @@ class ChildrenController < ApplicationController
     @child = current_parent.children.find(params[:id])
   end
 
-  def check_and_redirect_to_children_show  # モーダル１　管理ボタン後のパスチェック
+  def check_and_redirect_to_children_show
+    # モーダル１　管理ボタン後のパスチェック
     @children = @current_parent.children
     selected_child_id = params[:child_id]
     selected_child = @children.find_by(id: selected_child_id)
-  
+
     if @current_parent.valid_password?(params[:password])
       redirect_to child_path(selected_child)
     else
@@ -96,7 +99,8 @@ class ChildrenController < ApplicationController
     end
   end
 
-  def check_and_redirect_to_parents_show  # モーダル３　マイページのパスチェック
+  def check_and_redirect_to_parents_show
+    # モーダル３　マイページのパスチェック
     if @current_parent.valid_password?(params[:password])
       redirect_to parent_path
     else
@@ -104,7 +108,8 @@ class ChildrenController < ApplicationController
     end
   end
 
-  def handle_failed_password_check  # パスチェック失敗時
+  def handle_failed_password_check
+    # パスチェック失敗時
     respond_to do |format|
       format.any { head 422 }
     end
