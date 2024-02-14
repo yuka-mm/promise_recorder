@@ -39,6 +39,7 @@
           <%= f.number_field :frequency, in: 1..10, step: 1, value: f.object.frequency || 1 %>
           <spam>回</spam>
         </div>
+        <% if  @rewards.any? { |reward| reward.pt_range? || reward.pt_addition? } %>
         <div class="field h3 p-2 col">
           <div class="initialism">
             <%= '守れた時の獲得ポイント' %>
@@ -46,6 +47,7 @@
           <%= f.number_field :points, in: 0..1000, value: f.object.frequency || 0 %>
           <spam>ポイント</spam>
         </div>
+        <% end %>
         <div class="col d-flex justify-content-end">
           <%= f.submit '登録', class: 'btn btn-original shadow-sm' %>
         </div>

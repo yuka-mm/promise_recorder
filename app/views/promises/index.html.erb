@@ -20,9 +20,10 @@
                 <% elsif promise.start_day?  %>
                   <%= promise.start_day.strftime('%Y/%m/%d') %>
                 <% end %>
-                
                   <%= "・#{promise.frequency}回" %>
-                  <%= "・#{promise.points}ポイント" %>
+                  <% if promise.points? %>
+                    <%= "・#{promise.points}ポイント" %>
+                  <% end %>
                 <br />
                 <div class="justify-content-start">
                   <%= promise.description %><br />

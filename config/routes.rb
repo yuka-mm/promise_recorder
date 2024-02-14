@@ -33,4 +33,9 @@ Rails.application.routes.draw do
   get 'navigate', to: 'top#navigate'
 
   root to: 'children#index'
+
+  # テストメール用
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

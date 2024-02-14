@@ -8,6 +8,7 @@ class PromisesController < ApplicationController
   def index
     @promise = @promises.new
     @list_promises = @promises.where.not(id: nil).page(params[:page])
+    @rewards = @child.rewards
   end
 
   def show

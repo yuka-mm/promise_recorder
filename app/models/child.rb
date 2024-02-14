@@ -9,12 +9,4 @@ class Child < ApplicationRecord
   has_many :counts, through: :promises
 
   validates :name, length: { maximum: 10 }
-
-  after_destroy :destroy_counts
-
-  private
-
-  def destroy_counts
-    self.promises.destroy_all
-  end
 end
