@@ -44,7 +44,11 @@
         <%= link_to "アカウント名変更", edit_parent_registration_path, class: 'btn btn-original shadow-sm' %>
         <%# link_to "メールアドレス変更", '#', class: 'btn btn-original shadow-sm' %>
         <%# link_to "パスワード変更", '#', class: 'btn btn-original shadow-sm' %>
-        <%= link_to 'LINE連携はここに入れる', '#', class: 'btn btn-original shadow-sm' %>
+        <% if current_parent.provider.present? && current_parent.uid.present? %>
+          <button class="btn btn-original shadow-sm" disabled>連携済み</button>
+        <% else %>
+          <%= link_to "LINEと連携する", parent_line_omniauth_authorize_path(provider: :line), class: 'btn btn-original shadow-sm' %>
+        <% end %>
       </div>
       <br />
       <br />
@@ -54,7 +58,7 @@
         <% end %>
       </div>
       <div class="text-center p-5">
-        <%= button_to 'アカウントを削除する', parent_registration_path, class: 'main-link', method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+        <%= button_to 'アカウントを削除する', parent_registration_path, class: 'btn btn-original shadow-sm', method: :delete, data: { turbo_confirm: "Are you sure?" } %>
       </div>
     </div>
   </div>

@@ -46,11 +46,12 @@
             </li>
             <li class="list-group-item list-group-item-action list-group-item-secondary border border-secondary">
               <%= link_to 'ご褒美 / 通知設定', child_rewards_path(@child), class: 'main-link text-wrap' %>
+              <p class="initialism list_color">※先にご登録ください</p>
             </li>
           </ul>
         </div>
       </div>
-      <br />
+
       <h3> 今日のやくそく</h3>
       <ul class="list-group">
         <% @promise_descriptions_today.each do |description| %>

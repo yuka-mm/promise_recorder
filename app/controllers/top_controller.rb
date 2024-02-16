@@ -13,4 +13,6 @@ class TopController < ApplicationController
   def privacy_policy; end
 
   def navigate; end
+
+  def welcome; end
 end

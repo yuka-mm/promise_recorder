@@ -6,7 +6,8 @@ class Parent < ApplicationRecord
   has_many :paydays, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[line]
 
   validates :name, length: { maximum: 10 }
   validates :password, presence: true, on: :create

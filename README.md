@@ -63,7 +63,6 @@ SNSやRUNTEQコミュニティを通じてサービスをアピールし、サ�
 * お子様の登録
 * やくそく設定
 * 通知日とご褒美の設定
-* メール通知
 * LINE通知
 * 利用規約、プライバシーポリシー
 * 退会
@@ -79,4 +78,4 @@ SNSやRUNTEQコミュニティを通じてサービスをアピールし、サ�
 figmaのリンク:https://www.figma.com/file/U3jWosjwUxRJwZDBnV0sVi/promise-recorder?type=design&node-id=0%3A1&mode=design&t=cnL2qxYZyYsLsCQK-1
 
 ### ER図
-画像リンク:https://gyazo.com/99f9b43382e272eb8f58c755a6f592c8
+画像リンク:https://gyazo.com/4aaa32525eca64ba9d89213069f5525b

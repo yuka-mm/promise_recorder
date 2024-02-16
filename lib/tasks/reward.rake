@@ -43,8 +43,18 @@ namespace :reward do
         # 親ユーザーにメール送信
         ParentMailer.achievement_notification(child.parent, child, message).deliver_now
       when 'line_type'
-        # LINE通知の処理
-        # （ここにLINE通知の処理を書く）
+        line_message = {
+          type: 'text',
+          text: "いつもご利用ありがとうございます！\n" +
+        "今日は #{child.name}さんのご褒美dayです🎁✨\n" +
+        "たくさん頑張ったと思うのでいっぱい褒めてあげてください😆‼️\n\n" +
+        "＝＝＝＝今回のご褒美＝＝＝\n" +
+        "#{message}\n"
+}
+
+
+        response = client.push_message(child.parent.uid, line_message)
+        p response
       when 'not_set'
         next
       end

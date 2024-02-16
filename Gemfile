@@ -70,8 +70,12 @@ end
 
 # 設定系のgem
 gem 'dockerfile-rails', '>= 1.6', group: :development
+gem 'dotenv-rails'
 gem 'font-awesome-sass'
 gem 'mini_racer'
+gem 'omniauth', '~> 1.9.1'
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n'
 gem 'sassc-rails'
 
@@ -79,5 +83,6 @@ gem 'sassc-rails'
 gem 'devise', '~> 4.9.0'
 gem 'happybirthday'
 gem 'kaminari'
+gem 'line-bot-api'
 gem 'simple_calendar'
 gem 'whenever', require: false
