@@ -14,15 +14,16 @@
             <li class="list-group-item bg-light border border-secondary rounded shadow-sm list_color">
               <div class="justify-content-start">
                 <% if promise.monthly_flag? %>
-                  <%= promise.monthly_flag %>
+                  <%= I18n.t("promise.monthly_flag.true") %>
                 <% elsif promise.day_of_week? %>
                   <%= I18n.t("date.day_names")[promise.day_of_week_before_type_cast]  %>
                 <% elsif promise.start_day?  %>
                   <%= promise.start_day.strftime('%Y/%m/%d') %>
                 <% end %>
-                
                   <%= "・#{promise.frequency}回" %>
-                  <%= "・#{promise.points}ポイント" %>
+                  <% if promise.points? %>
+                    <%= "・#{promise.points}ポイント" %>
+                  <% end %>
                 <br />
                 <div class="justify-content-start">
                   <%= promise.description %><br />
@@ -48,7 +49,7 @@
       </div>
       <%= render'form' %>
       <br />
-      <div class="d-flex justify-content-end">
+      <div class="p-2">
         <%= link_to child_path(@child.id), class: 'main-link ' do %>
           <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
         <% end %>

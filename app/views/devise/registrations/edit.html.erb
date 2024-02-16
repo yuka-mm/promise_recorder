@@ -1,9 +1,9 @@
 <div class="parent_main">
   <div crass="container">
     <div class="row grid gap-3">
-      <div class="text-center">
+      <div class="text-center p-2">
           <br />
-        <div class="display-5 p-4">Edit</div>
+        <div class="display-5 p-4">ユーザー名変更</div>
           <br />
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>  
@@ -14,12 +14,15 @@
           </div>  
             <br />
           <div class="actions p-2 d-grid gap-4 col-5 mx-auto">
-            <%= f.submit "Update", class: 'btn btn-original shadow-sm' %>
+            <%= f.submit "更新する", class: 'btn btn-original shadow-sm' %>
           </div>
+          <% end %>
           <br />
-          <br />
-          <%= link_to "マイページに戻る", parent_path, class: 'main-link' %>
-        <% end %>
+        <div class="text-start p-5">
+          <%= link_to parent_path, class: 'main-link' do %>
+            <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

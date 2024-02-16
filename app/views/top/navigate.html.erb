@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="grid gap-3 p-2 mx-3">
+    <br />
+    <br />
+    <div class="text-center p-3">
+      <h1>ご利用いただきましてありがとうございます</h1>
+    </div>
+    <div class="text-center p-4">
+      <p>このページでは</p>
+      <p> PROMISE RECORDER の</p>
+      <p>ご利用手順をご紹介します！</p>
+    </div>
+    <div id="carouselExampleIndicators" class="carousel slide bg-body-tertiary" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= image_tag 'first.png', class: 'd-block w-100', alt: '画像が読み込めません' %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'second.png', class: 'd-block w-100', alt: '画像が読み込めません' %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'third.png', class: 'd-block w-100', alt: '画像が読み込めません' %>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'forth.png', class: 'd-block w-100', alt: '画像が読み込めません' %>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="text-center p-5">
+      <% if parent_signed_in? %>
+        <%= link_to "さっそく使ってみる", new_parent_registration_path, class: 'btn btn-original shadow-sm' %>
+      <% end %>
+    </div>
+    <div class="p-2">
+      <%= link_to root_path, class: 'main-link ' do %>
+        <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+      <% end %>
+    </div>
+  </div>
+</div>
+    

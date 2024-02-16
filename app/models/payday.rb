@@ -4,15 +4,16 @@
 class Payday < ApplicationRecord
   belongs_to :parent
   belongs_to :child
-  has_many :rewards
+  has_many :rewards, dependent: :destroy
 
   enum week: { sunday: 0, monday: 1, tuesday: 2, wednesday: 3, thursday: 4, friday: 5, saturday: 6 }
-  enum action_type: { mail_type: 0, line_type: 1, not_set: 3}
+  enum action_type: { mail_type: 0, line_type: 1, not_set: 3 }
 
   after_initialize :set_default_action_type, if: :new_record?
 
   validate :date_or_week
   before_validation :check_month
+  before_validation :clear_week_if_date_present
 
   private
 
@@ -29,5 +30,9 @@ class Payday < ApplicationRecord
 
   def check_month
     self.date = nil if end_month == true
+  end
+
+  def clear_week_if_date_present
+    self.date = nil if week_changed? && week.present?
   end
 end

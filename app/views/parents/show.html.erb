@@ -42,15 +42,23 @@
         <br />
       <div class="actions p-2 d-grid gap-4 col-8 mx-auto">
         <%= link_to "アカウント名変更", edit_parent_registration_path, class: 'btn btn-original shadow-sm' %>
-        <%= link_to "メールアドレス変更", '#', class: 'btn btn-original shadow-sm' %>
-        <%= link_to "パスワード変更", '#', class: 'btn btn-original shadow-sm' %>
-        <%= link_to 'LINE連携はここに入れる', '#', class: 'btn btn-original shadow-sm' %>
-        <br />
-        <br />
-        <br />
-        <%= button_to 'Cancel my accountアカウントを削除する', parent_registration_path, class: 'btn btn-original shadow-sm', method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-        <br />
-        <br />
+        <%# link_to "メールアドレス変更", '#', class: 'btn btn-original shadow-sm' %>
+        <%# link_to "パスワード変更", '#', class: 'btn btn-original shadow-sm' %>
+        <% if current_parent.provider.present? && current_parent.uid.present? %>
+          <button class="btn btn-original shadow-sm" disabled>連携済み</button>
+        <% else %>
+          <%= link_to "LINEと連携する", parent_line_omniauth_authorize_path(provider: :line), class: 'btn btn-original shadow-sm' %>
+        <% end %>
+      </div>
+      <br />
+      <br />
+      <div class="p-2">
+        <%= link_to root_path, class: 'main-link ' do %>
+          <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+        <% end %>
+      </div>
+      <div class="text-center p-5">
+        <%= button_to 'アカウントを削除する', parent_registration_path, class: 'btn btn-original shadow-sm', method: :delete, data: { turbo_confirm: "Are you sure?" } %>
       </div>
     </div>
   </div>

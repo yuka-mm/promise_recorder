@@ -5,7 +5,7 @@
       <div class="h3"><%= @child.name %>の設定</div>
       <br />
       <br />
-      <div class="h4">通知</div>
+      <div class="h4">①通知日を設定してください</div>
       <div class="row text-center h4">
         <div class="col p-2 m-2 bg-light border border-secondary rounded shadow-sm">
           <% if @child.payday.present? %>
@@ -15,9 +15,9 @@
               <% elsif @payday.week? %>
                 毎週<%= I18n.t("date.day_names")[Payday.weeks[@payday.week]] %>に
               <% elsif @payday.end_month? %>
-                毎月<%= @payday.end_month %>に
+                毎月<%= I18n.t("payday.end_month.true") %>に
               <% end %>
-              <%= @payday.action_type %>
+              <%= I18n.t("payday.action_type.#{@payday.action_type}") %>
             </div>
             <div class="d-flex justify-content-end">
               <%= link_to edit_child_payday_path(@child), class: 'btn btn-original col-m-4 shadow-sm' do %>
@@ -36,44 +36,46 @@
       <br />
       <br />
       <br />
-      <div class="d-flex justify-content-between">
-        <div class="h3">ご褒美</div>
-        <%= link_to new_child_reward_path(@child), class: 'btn btn-original col-m-4 shadow-sm' do %>
-          <i class="fa-solid fa-plus"></i>
-        <% end %>
-      </div>
-      <div class="row text-center h4">
-        <ul class="list-group p-2">
-          <% @rewards.each do |reward| %>
-            <li class="list-group-item bg-light border border-secondary rounded shadow-sm list_color">
-              <div class="d-flex">
-                <% if reward.pieces? %>
-                  <%= reward.pieces %>
-                  <spam>個以上達成で</spam>
-                <% elsif reward.pt_range? %>
-                  <%= reward.pt_range %>
-                  <spam>ポイント以上達成で</spam>
-                <% elsif reward.pt_addition? %>
-                  <spam>おやくそく達成で</spam>
-                <% end %>
-                <%= "#{reward.body} GET!!" %>
-              </div>
-              <div class="d-flex justify-content-end">
-                <%= link_to edit_child_reward_path(@child, reward), class: 'btn btn-original mx-2 shadow-sm' do %>
-                  <i class="fa-solid fa-pen-to-square"></i>
-                <% end %>
-                <%= button_to child_reward_path(@child, reward), class: 'btn btn-original shadow-sm',
-                             method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
-                  <i class="fa-solid fa-trash-can"></i>
-                <% end %>
-              </div>
-            </li>
+      <% if @payday.present? %>
+        <div class="d-flex justify-content-between">
+          <div class="h3">②ご褒美を登録してください</div>
+          <%= link_to new_child_reward_path(@child), class: 'btn btn-original col-m-4 shadow-sm' do %>
+            <i class="fa-solid fa-plus"></i>
           <% end %>
-        </ul>
-      </div>
+        </div>
+        <div class="row text-center h4">
+          <ul class="list-group p-2">
+            <% @rewards.each do |reward| %>
+              <li class="list-group-item bg-light border border-secondary rounded shadow-sm list_color">
+                <div class="d-flex">
+                  <% if reward.pieces? %>
+                    <%= reward.pieces %>
+                    <spam>個以上達成で</spam>
+                  <% elsif reward.pt_range? %>
+                    <%= reward.pt_range %>
+                    <spam>ポイント以上達成で</spam>
+                  <% elsif reward.pt_addition? %>
+                    <spam>おやくそく達成で</spam>
+                  <% end %>
+                  <%= "#{reward.body} GET!!" %>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <%= link_to edit_child_reward_path(@child, reward), class: 'btn btn-original mx-2 shadow-sm' do %>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  <% end %>
+                  <%= button_to child_reward_path(@child, reward), class: 'btn btn-original shadow-sm',
+                               method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
+                    <i class="fa-solid fa-trash-can"></i>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+          </div>
+        <% end %>
       <br />
       <br />
-      <div class="d-flex justify-content-end">
+      <div class="p-2">
         <%= link_to child_path(@child.id), class: 'main-link ' do %>
           <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
         <% end %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     sessions: 'parents/sessions',
     passwords: 'parents/passwords',
     registrations: 'parents/registrations',
+    omniauth_callbacks: 'parents/omniauth_callbacks'
   }
   devise_scope :parent do
     get '/parents/sign_out', to: 'devise/sessions#destroy'
@@ -26,7 +27,17 @@ Rails.application.routes.draw do
   end
 
   # トップページ
-  get 'top_page', to: 'top#top'
+  get 'top_page', to: 'top#top_page'
+  get 'help_page', to: 'top#help_page'
+  get 'terms_of_service', to: 'top#terms_of_service'
+  get 'privacy_policy', to: 'top#privacy_policy'
+  get 'navigate', to: 'top#navigate'
+  get 'welcome', to: 'top#welcome'
 
   root to: 'children#index'
+
+  # テストメール用
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end

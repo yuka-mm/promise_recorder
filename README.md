@@ -61,16 +61,15 @@ SNSやRUNTEQコミュニティを通じてサービスをアピールし、サ�
 * ログイン
 * マイページ
 * お子様の登録
-* タスク設定
-* PaydayとRewardの設定
+* やくそく設定
+* 通知日とご褒美の設定
 * LINE通知
 * 利用規約、プライバシーポリシー
+* 退会
 
 ### その後の機能
-* タスクのグラフ化
 * パスワードリセット機能
 * メールアドレスの変更
-* 退会
 * 利用案内（サイトの簡単な案内と利用例を数ページ、ログイン前に閲覧しイメージを掴んでもらう）
 * ヘルプページ（各設定の仕方などを記載、管理者にメールできるリンクをつける）
 * 管理画面
@@ -79,4 +78,4 @@ SNSやRUNTEQコミュニティを通じてサービスをアピールし、サ�
 figmaのリンク:https://www.figma.com/file/U3jWosjwUxRJwZDBnV0sVi/promise-recorder?type=design&node-id=0%3A1&mode=design&t=cnL2qxYZyYsLsCQK-1
 
 ### ER図
-画像リンク:https://gyazo.com/99f9b43382e272eb8f58c755a6f592c8
+画像リンク:https://gyazo.com/4aaa32525eca64ba9d89213069f5525b

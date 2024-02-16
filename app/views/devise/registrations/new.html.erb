@@ -1,7 +1,7 @@
 <div crass="container">
   <div class="row grid gap-3">
     <div class="text-center">
-      <div class="display-5 p-4">Sign up</div>
+      <div class="display-5 p-4">ユーザー登録</div>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>  
@@ -23,7 +23,7 @@
         <div class="field h3 p-2 col">
           <%= f.label :password %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
@@ -34,12 +34,17 @@
         </div>
           <br />
         <div class="actions p-2 d-grid gap-4 col-5 mx-auto">
-          <%= f.submit "Sign up", class: 'btn btn-original shadow-sm' %>
+          <%= f.submit "登録する", class: 'btn btn-original shadow-sm' %>
         </div>
       <% end %>
         <br />
       <div class="field col">
         <%= render "devise/shared/links" %>
+      </div>
+      <div class="text-start p-5">
+        <%= link_to top_page_path, class: 'main-link ' do %>
+          <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+        <% end %>
       </div>
     </div>
   </div>

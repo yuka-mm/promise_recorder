@@ -49,13 +49,13 @@
         <div>通知方法をお選びください</div>
         <% Payday.action_types.keys.each do |action_type| %>
           <%= f.radio_button :action_type, action_type %>
-          <%= action_type.humanize %>
+          <%= I18n.t("payday.action_type.#{action_type}") %>
         <% end %>
       </div>
       <br />
       <div class="col-10 d-flex justify-content-between align-items-center px-2 m-1">
         <%= link_to child_rewards_path, class: 'main-link ms-1' do %>
-            <i class="fa-solid fa-circle-arrow-left"></i><spam>もどる</spam>
+            <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
         <% end %>
         <div class="actions p-2">
           <%= f.submit '登録', class: 'btn btn-original shadow-sm' %>

@@ -61,10 +61,10 @@ class Promise < ApplicationRecord
         date = Date.today + ((day_of_week_number - Date.today.wday + 7) % 7).days
       end
       # 指定した日付から4週間後（28日後）まで、毎週その曜日のPromiseRewardを作成
-      (date..date + 28.days).step(7) do |date|
+      (date..date + 28.days).step(7) do |m_date|
         Count.create!(
           promise_id: self.id,
-          start_time: date,
+          start_time: m_date,
           completed: false
         )
       end
@@ -80,10 +80,10 @@ class Promise < ApplicationRecord
 
   def create_monthly_flag_true
     # monthly_flagが選択されている場合
-    (self.start_day.to_date..(self.start_day.to_date + 30.days)).each do |date|
+    (self.start_day.to_date..(self.start_day.to_date + 30.days)).each do |f_date|
       Count.create!(
         promise_id: self.id,
-        start_time: date,
+        start_time: f_date,
         completed: false
       )
     end

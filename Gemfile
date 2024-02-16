@@ -46,6 +46,7 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
+  gem 'letter_opener_web', '~> 2.0'
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'rubocop'
@@ -69,8 +70,12 @@ end
 
 # 設定系のgem
 gem 'dockerfile-rails', '>= 1.6', group: :development
+gem 'dotenv-rails'
 gem 'font-awesome-sass'
 gem 'mini_racer'
+gem 'omniauth', '~> 1.9.1'
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n'
 gem 'sassc-rails'
 
@@ -78,4 +83,6 @@ gem 'sassc-rails'
 gem 'devise', '~> 4.9.0'
 gem 'happybirthday'
 gem 'kaminari'
+gem 'line-bot-api'
 gem 'simple_calendar'
+gem 'whenever', require: false

@@ -12,10 +12,10 @@ class PaydaysController < ApplicationController
 
   def create
     @child = Child.find(params[:child_id])
-    @payday = Payday.new(payday_params.merge(child_id: @child.id, parent_id: @current_parent.id)) 
+    @payday = Payday.new(payday_params.merge(child_id: @child.id, parent_id: @current_parent.id))
 
     if @payday.save
-      flash[:notice] = "通知日を設定しました"
+      flash[:notice] = '通知日を設定しました'
       redirect_to child_rewards_path
     else
       render 'new'

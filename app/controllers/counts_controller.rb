@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# CountsController is responsible for managing count resources.
 class CountsController < ApplicationController
   def index
     @child = Child.find(params[:child_id])
