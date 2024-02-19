@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   # 親ユーザー
   devise_for :parents, controllers: {
@@ -39,5 +41,9 @@ Rails.application.routes.draw do
   # テストメール用
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  if Rails.env.development?
+    mount Sidekiq::Web, at: '/sidekiq'
   end
 end
