@@ -52,6 +52,7 @@ gem 'omniauth', '~> 1.9.1'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n'
+gem 'redis'
 gem 'sassc-rails'
 
 # 機能系のgem

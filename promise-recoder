@@ -1,0 +1,12 @@
+
+[Interface]
+PrivateKey = i+5oNZl82TVtLhQJ/Wc7tN0vAntI40wOsz3O+4gtnns=
+Address = fdaa:4:e7da:a7b:8f98:0:a:302/120
+DNS = fdaa:4:e7da::3
+
+[Peer]
+PublicKey = Tci67nvqsrdkvmKJBuqzbbs6sEnUUUI/cnDsgOFDLDE=
+AllowedIPs = fdaa:4:e7da::/48
+Endpoint = nrt2.gateway.6pn.dev:51820
+PersistentKeepalive = 15
+

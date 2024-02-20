@@ -13,6 +13,6 @@ set :environment, rails_env
 set :output, "#{Rails.root}/log/cron.log"
 set :timezone, 'Asia/Tokyo'
 
-every 1.day, at: '10:30 am' do
+every 1.day, at: '9:00 am' do
   rake 'reward:send_reward'
 end
