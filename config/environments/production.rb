@@ -94,4 +94,22 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_caching = false
+
+  host = 'promise-recorder.fly.dev'
+  config.action_mailer.default_url_options = { protocol: 'https', host: host }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'promise-recorder.fly.dev',
+    user_name: ENV['GOOGLE_NAME'],
+    password:  ENV['GOOGLE_PASS'],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end

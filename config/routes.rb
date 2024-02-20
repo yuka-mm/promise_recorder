@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get 'navigate', to: 'top#navigate'
   get 'welcome', to: 'top#welcome'
 
+  get '/up', to: 'application#up'
+
   root to: 'children#index'
 
   # テストメール用
