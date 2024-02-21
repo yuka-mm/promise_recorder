@@ -54,15 +54,15 @@ gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n'
 gem 'redis'
 gem 'sassc-rails'
+gem 'sidekiq'
+gem 'sidekiq-cron', '~> 1.2'
 
 # 機能系のgem
 gem 'devise', '~> 4.9.0'
 gem 'happybirthday'
 gem 'kaminari'
 gem 'line-bot-api'
-gem 'sidekiq'
 gem 'simple_calendar'
-gem 'whenever', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

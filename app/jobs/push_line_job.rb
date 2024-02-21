@@ -2,6 +2,7 @@ class PushLineJob < ApplicationJob
   queue_as :default
 
   def perform(child, message)
+    begin
     line_message = {
       type: 'text',
       text: "いつもご利用ありがとうございます！\n" +
@@ -12,6 +13,10 @@ class PushLineJob < ApplicationJob
     }
   
     response = client.push_message(child.parent.uid, line_message)
+    rescue => e
+      Rails.logger.error("Failed to send LINE notification: #{e.message}")
+      Rails.logger.error(e.backtrace.join("\n"))
+    end
   end
 
   private
