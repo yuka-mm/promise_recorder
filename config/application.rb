@@ -43,5 +43,11 @@ module PromiseRecorder
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.active_job.queue_adapter = :sidekiq
+
+    config.after_initialize do
+      SidekiqCronJob.schedule
+    end
   end
 end
