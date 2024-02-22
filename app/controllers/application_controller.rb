@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     birthday.age.years_old
   end
 
+  def up
+    render plain: 'OK'
+  end
+
   private
 
   def login_status

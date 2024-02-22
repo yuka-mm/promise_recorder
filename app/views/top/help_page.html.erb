@@ -1,1 +1,70 @@
-help_page
+<div class="container">
+  <div class="grid gap-3 text-center p-1 mx-2">
+    <div class="p-2 m-2">
+      <%= link_to navigate_path, class: 'h4 main-link' do %>ご使用方法はこちら<% end %>
+    <div>
+    <br />
+    <br />
+    <div class="row bg-light border border-secondary shadow-sm">
+      <h2>アイコン説明</h2>
+      <div class="mx-2">
+        <h4>＜ログアウト＞</h4>
+        <h2><i class="fa-solid fa-person-walking-arrow-right"></i></h2>
+      </div>
+      <div class="m-2">
+        <h5>＜複数登録時・表示している子ユーザーを変更＞</h5>
+        <h2><i class="fa-solid fa-people-arrows"></i></i></h2>
+      </div>
+      <div class="m-2">
+        <h4>＜ユーザー＞</h4>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex">
+            <h2><i class="fa-solid fa-user-plus"></i></h2>
+            <h4>登録</h4>
+          </div>
+          <div class="d-flex">
+            <h2><i class="fa-solid fa-user-gear"></i></h2>
+            <h4>設定</h4>
+          </div>
+          <div class="d-flex">
+            <h2><i class="fa-solid fa-user-pen"></i></h2>
+            <h4>変更</h4>
+          </div>
+          <div class="d-flex">
+            <h2><i class="fa-solid fa-user-xmark"></i></h2>
+            <h4>削除</h4>
+          </div>
+        </div>
+      </div>
+      <div class="m-2">
+        <h4>＜一般＞</h4>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex">
+            <h2><i class="fa-solid fa-plus"></i></h2>
+            <h4>登録</h4>
+          </div>
+          <div class="d-flex">
+            <h2><i class="fa-solid fa-pen-to-square"></i></h2>
+            <h4>編集</h4>
+          </div>
+          <div class="d-flex">
+            <h2><i class="fa-solid fa-trash-can"></i></h2>
+            <h4>削除</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <%= link_to 'お問い合わせはこちら', 'https://forms.gle/RaSm2KgnVxpKUa689', class: "main-link h4" %>
+    <br />
+    <br />
+    <div class="p-2 text-start">
+        <%= link_to :back, class: 'main-link ' do %>
+          <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+        <% end %>
+    </div>
+    <br />
+    <br />
+  </div>
+</div>

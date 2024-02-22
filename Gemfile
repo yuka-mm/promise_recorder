@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.1.2'
+gem 'rails', '~> 7.1.3'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -43,6 +43,27 @@ gem 'bootsnap', require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
 
+# 設定系のgem
+gem 'dockerfile-rails', '>= 1.6', group: :development
+gem 'dotenv-rails'
+gem 'font-awesome-sass'
+gem 'mini_racer'
+gem 'omniauth', '~> 1.9.1'
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
+gem 'rails-i18n'
+gem 'redis'
+gem 'sassc-rails'
+gem 'sidekiq'
+gem 'sidekiq-cron', '~> 1.2'
+
+# 機能系のgem
+gem 'devise', '~> 4.9.0'
+gem 'happybirthday'
+gem 'kaminari'
+gem 'line-bot-api'
+gem 'simple_calendar'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
@@ -67,22 +88,3 @@ end
 group :production do
   gem 'pg', '~> 1.1'
 end
-
-# 設定系のgem
-gem 'dockerfile-rails', '>= 1.6', group: :development
-gem 'dotenv-rails'
-gem 'font-awesome-sass'
-gem 'mini_racer'
-gem 'omniauth', '~> 1.9.1'
-gem 'omniauth-line'
-gem 'omniauth-rails_csrf_protection'
-gem 'rails-i18n'
-gem 'sassc-rails'
-
-# 機能系のgem
-gem 'devise', '~> 4.9.0'
-gem 'happybirthday'
-gem 'kaminari'
-gem 'line-bot-api'
-gem 'simple_calendar'
-gem 'whenever', require: false
