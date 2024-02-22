@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   # 親ユーザー
   devise_for :parents, controllers: {
@@ -34,10 +36,16 @@ Rails.application.routes.draw do
   get 'navigate', to: 'top#navigate'
   get 'welcome', to: 'top#welcome'
 
+  get '/up', to: 'application#up'
+
   root to: 'children#index'
 
   # テストメール用
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
+  if Rails.env.development?
+    mount Sidekiq::Web, at: '/sidekiq'
   end
 end
