@@ -55,7 +55,7 @@ class Promise < ApplicationRecord
       day_of_week_number = Promise.day_of_weeks[self.day_of_week]
       if Date.today.wday == day_of_week_number
         # 今日がその曜日である場合、今日の日付を使用
-        date = Date.today
+        date = Date.today + 7.days
       else
         # そうでない場合、次のその曜日の日付を計算
         date = Date.today + ((day_of_week_number - Date.today.wday + 7) % 7).days
