@@ -34,7 +34,7 @@
                   <i class="fa-solid fa-pen-to-square"></i>
                 <% end %>
                 <%= button_to child_promise_path(@child, promise), class: 'btn btn-original shadow-sm',
-                             method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
+                             method: :delete, data: { turbo_confirm: "#{promise.description}のやくそくを削除しますか?" } do %>
                   <i class="fa-solid fa-trash-can"></i>
                 <% end %>
               </div>

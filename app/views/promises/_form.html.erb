@@ -14,12 +14,12 @@
             <div class="field" id="date_select">
               <%= f.date_select :start_day, use_month_numbers: true %><br />
             </div>
-            <div class="field" id="check_flag">
+            <div class="field p-2" id="check_flag">
               <spam>毎日のやくそくにする</spam>
               <%= f.hidden_field :monthly_flag, value: false %>
               <%= f.check_box :monthly_flag %>
             </div>
-            <div class="initialism"><%= '※選択すると約１ヶ月間毎日のやくそくとして登録されます' %></div>
+            <div class="initialism"><%= '※選択すると１ヶ月分毎日のやくそくとして自動登録されます' %></div>
           </div>
         </div>
         <div class="field h3 p-2 col">

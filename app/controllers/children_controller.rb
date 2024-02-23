@@ -93,7 +93,11 @@ class ChildrenController < ApplicationController
     selected_child = @children.find_by(id: selected_child_id)
 
     if @current_parent.valid_password?(params[:password])
-      redirect_to child_path(selected_child)
+      if selected_child.payday.present?
+        redirect_to child_path(selected_child)
+      else
+        redirect_to child_rewards_path(selected_child)
+      end
     else
       handle_failed_password_check
     end

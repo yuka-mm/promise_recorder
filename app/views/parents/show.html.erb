@@ -14,28 +14,51 @@
       </div>
         <br/>
       <div class="row p-3 mb-2 list-group">
-        <% @parent_children.each do |child| %>
-          <li class="list-group-item bg-light border border-secondary shadow-sm">
-          <div class="row">
-            <div class="h2 clo p-2 m-3 fw-bold">
-              <%= child.name %>
-            </div>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="h4 p-2 m-3">
-                <%= child.birth_date.strftime('%Y/%m/%d') %><br />
-                <%= "(#{calculate_age(child.birth_date)}才）" %>
+        <% if @parent_children.present? %>
+          <% @parent_children.each do |child| %>
+            <li class="list-group-item bg-light border border-secondary shadow-sm">
+              <div class="row">
+                <div class="h2 clo p-2 m-3 fw-bold">
+                  <%= child.name %>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="h4 p-2 m-3">
+                    <%= child.birth_date.strftime('%Y/%m/%d') %><br />
+                    <%= "(#{calculate_age(child.birth_date)}才）" %>
+                  </div>
+                  <div>
+                  <% if child.payday.present? %>
+                    <%= link_to child_path(child), class: 'btn btn-original m-1 shadow-sm' do %>
+                      <i class="fa-solid fa-user-gear"></i>
+                    <% end %>
+                  <% else %>
+                  <%= link_to child_rewards_path(child), class: 'btn btn-original m-1 shadow-sm' do %>
+                    <i class="fa-solid fa-user-gear"></i>
+                  <% end %>
+                  <% end %>
+                    <%= link_to edit_child_path(child), class: 'btn btn-original m-1 shadow-sm' do %>
+                      <i class="fa-solid fa-user-pen"></i>
+                    <% end %>
+                  </div>
+                </div>
               </div>
-              <div>
-                <%= link_to child_path(child), class: 'btn btn-original m-1 shadow-sm' do %>
-                  <i class="fa-solid fa-user-gear"></i>
-                <% end %>
-                <%= link_to edit_child_path(child), class: 'btn btn-original m-1 shadow-sm' do %>
-                  <i class="fa-solid fa-user-pen"></i>
-                <% end %>
-              </div>
-            </div>
+            </li>
+          <% end %>
+          <div class="p-2 text-center">
+            <spam>やくそくは</spam>
+              <i class="fa-solid fa-user-gear"></i>
+            <spam>で登録!!</spam>
           </div>
-          </li>
+        <% else %>
+          <h4>誰とやくそくする？？</h4>
+          <div>
+            <spam>まずは</spam>
+            <%= link_to new_child_path, class: 'btn btn-original shadow-sm' do %>
+              <spam> 登録 </spam><i class="fa-solid fa-user-plus"></i>
+            <% end %>
+            <spam> から登録を </spam>
+            <i class="fa-regular fa-hand-point-up"></i>
+          </div>
         <% end %>
       </div>
         <br />
@@ -58,7 +81,7 @@
         <% end %>
       </div>
       <div class="text-center p-5">
-        <%= button_to 'アカウントを削除する', parent_registration_path, class: 'btn btn-original shadow-sm', method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+        <%= button_to 'アカウントを削除する', parent_registration_path, class: 'btn btn-original shadow-sm', method: :delete, data: { turbo_confirm: "アカウントを削除しますか?" } %>
       </div>
     </div>
   </div>

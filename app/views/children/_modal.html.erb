@@ -4,24 +4,26 @@
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+          <div class="p-2">
+            <button id="openModal2Button_<%= child.id %>" data-child-id="<%= child.id %>" class="btn btn-original shadow-sm">
+              <i class="fa-solid fa-user-gear"></i>
+            </button>
+            <%= form_with url: check_password_children_path, method: :post do |f| %>
+              <%= f.hidden_field :child_id, id: "child_id_input_#{child.id}" %>
+            <% end %>
+          </div>
+          <div class="modal-title fs-5" id="exampleModalToggleLabel">
             <%= child.name %>
-          </h1>
+          </div>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row">
             <div class="col-sm-4 p-2">
-              <%= link_to 'カレンダー確認', calendar_child_promises_path(child), class: 'btn btn-original shadow-sm' %>
+              <%= link_to '１月カレンダー', calendar_child_promises_path(child), class: 'btn btn-original shadow-sm' %>
             </div>
             <div class="col-sm-4 p-2">
               <%= link_to '今日のやくそく', child_counts_path(child), class: 'btn btn-original shadow-sm' %>
-            </div>
-            <div class="col-sm-4 p-2">
-              <button id="openModal2Button_<%= child.id %>" data-child-id="<%= child.id %>" class="btn btn-original shadow-sm">お子様情報管理</button>
-              <%= form_with url: check_password_children_path, method: :post do |f| %>
-                <%= f.hidden_field :child_id, id: "child_id_input_#{child.id}" %>
-              <% end %>
             </div>
           </div>
         </div>

@@ -11,9 +11,10 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  #アカウント登録後のリダイレクト先
+  def after_sign_up_path_for(resource)
+    parent_path(resource)
+  end
 
   # GET /resource/edit
   # def edit
