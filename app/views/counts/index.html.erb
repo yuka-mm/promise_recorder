@@ -9,15 +9,21 @@
 
     <% @counts.each do |count| %>
       <li class="list-group-item list-group-item-warning border border-secondary border-2 rounded shadow-sm list_color h5">
-        <%= render 'button', count: count %>
-        <%= "『#{count.promise.description}』のやくそくを" %>
-        <% if count.promise.frequency > 1 %>
-          <%= "#{count.promise.frequency}回" %>
-        <% end %>
-        <spam>まもれた</spam>
-        <% if count.promise.points? %>
-          <%= "/#{count.promise.points}ポイントGET!!" %>
-        <% end %>
+        <div class="d-flex">
+          <div>
+            <%= render 'button', count: count %>
+          </div>
+          <div class="p-1">
+            <%= "『#{count.promise.description}』のやくそくを" %>
+            <% if count.promise.frequency > 1 %>
+              <%= "#{count.promise.frequency}回" %>
+            <% end %>
+            <spam>まもれた</spam>
+            <% if count.promise.points? %>
+              <%= "/#{count.promise.points}ポイントGET!!" %>
+            <% end %>
+          </div>
+        </div>
       </li>
     <% end %>
     <br />

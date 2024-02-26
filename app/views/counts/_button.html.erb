@@ -3,5 +3,5 @@
             remote: true,
             class: 'toggle-completed main-link',
             data: { child_id: count.promise.child.id, count_id: count.id, status: count.completed ? 'uncomplete' : 'complete' } do %>
-  <i class="fa-<%= count.completed ? 'solid' : 'regular' %> fa-star h1 p-2"></i>
+  <i class="fa-<%= count.completed ? 'solid' : 'regular' %> fa-star display-2 p-2 circle"></i>
 <% end %>
