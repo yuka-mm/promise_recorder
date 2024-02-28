@@ -22,9 +22,13 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # パスワードなしで更新できるメソッド
+  # パスワードなしで名前を変更できるメソッド
   def update_resource(resource, params)
-    resource.update_without_password(params)
+    if params[:password].blank? && params[:password_confirmation].blank?
+      resource.update_without_password(params)
+    else
+      resource.update(params)
+    end
   end
 
   # 編集後のリダイレクト先を指定するメソッド

@@ -10,7 +10,7 @@
 
 <div class="field h5 p-2 col">
   <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-    <%# link_to "パスワードをお忘れですか?", new_password_path(resource_name), class: 'main-link' %><br />
+    <%= link_to "パスワードをお忘れですか?", new_password_path(resource_name), class: 'main-link' %><br />
   <% end %>
   
   <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

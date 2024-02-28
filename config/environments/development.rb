@@ -19,6 +19,8 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
+  config.cache_classes = false
+
   if Rails.root.join("tmp/caching-dev.txt").exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
@@ -42,8 +44,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :letter_opener_web
 
-  host = 'promise-recorder.fly.dev'
-  config.action_mailer.default_url_options = { protocol: 'https', host: host }
+  host = 'localhost'
+  config.action_mailer.default_url_options = { protocol: 'http', host: host, port: 3000 }
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.delivery_method = :smtp
 
@@ -56,6 +58,8 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
+
+  config.action_mailer.default_options = {from: "PromiseRecorder <#{ENV['GOOGLE_NAME']}>"}
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

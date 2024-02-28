@@ -113,5 +113,7 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
+  config.action_mailer.default_options = {from: "PromiseRecorder <#{ENV['GOOGLE_NAME']}>"}
+
   config.assets.initialize_on_precompile = false
 end

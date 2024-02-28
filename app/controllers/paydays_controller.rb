@@ -28,7 +28,7 @@ class PaydaysController < ApplicationController
     if result
       redirect_to child_rewards_path
     else
-      flash.now[:warning] = '登録に失敗しました'
+      flash.now[:notice] = '登録に失敗しました'
       render :edit
     end
     Rails.logger.debug "Payday after update: #{@payday.inspect}"
