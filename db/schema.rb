@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_15_085710) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_29_214133) do
   create_table "children", force: :cascade do |t|
     t.integer "parent_id", null: false
     t.string "name", null: false
@@ -41,6 +41,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_085710) do
     t.datetime "updated_at", null: false
     t.string "provider"
     t.string "uid"
+    t.string "unconfirmed_email"
+    t.string "email_confirmation_token"
     t.index ["email"], name: "index_parents_on_email", unique: true
     t.index ["provider", "uid"], name: "index_parents_on_provider_and_uid", unique: true
     t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
