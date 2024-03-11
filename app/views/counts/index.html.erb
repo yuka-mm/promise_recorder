@@ -18,7 +18,7 @@
             <% if count.promise.frequency > 1 %>
               <%= "#{count.promise.frequency}回" %>
             <% end %>
-            <spam>まもれた</spam>
+            <span>まもれた</span>
             <% if count.promise.points? %>
               <%= "/#{count.promise.points}ポイントGET!!" %>
             <% end %>
@@ -42,10 +42,10 @@
 
       <div class="d-flex justify-content-between align-items-center">
         <%= link_to root_path, class: 'main-link' do %>
-          <i class="fa-solid fa-circle-arrow-left"></i><spam>トップページ</spam>
+          <i class="fa-solid fa-circle-arrow-left"></i><span>トップページ</span>
         <% end %>
         <%= link_to calendar_child_promises_path(@child), class: 'main-link' do %>
-            <spam>カレンダー</spam><i class="fa-solid fa-circle-arrow-right"></i>
+            <span>カレンダー</span><i class="fa-solid fa-circle-arrow-right"></i>
         <% end %>
       </div>
       <br />

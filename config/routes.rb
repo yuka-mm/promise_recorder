@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   end
   resource :parent, only: %i[show]
 
+  resources :notices, only: %i[index] do
+    delete :destroy_all, on: :collection
+  end
+
   # 子ユーザー
   resources :children do
     post 'check_password', on: :collection

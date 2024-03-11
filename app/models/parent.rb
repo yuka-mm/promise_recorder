@@ -4,6 +4,7 @@
 class Parent < ApplicationRecord
   has_many :children, dependent: :destroy
   has_many :paydays, dependent: :destroy
+  has_many :notices, dependent: :destroy
 
   devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :validatable, :omniauthable,

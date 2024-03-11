@@ -2,10 +2,10 @@
   <div class="row grid gap-3">
     <div class="text-center">
       <div class="h3 p-4">パスワードをお忘れですか?</div>
-      <div class="p-5">
-        <p>パスワード変更フォームをお送りいたします。</p>
-        <p>下記にご登録中のメールアドレスを入力し、メール送信ボタンを押してください。</p>
-      </div>
+        <div class="p-5">
+          <p>パスワード変更フォームをお送りいたします。</p>
+          <p>下記にご登録中のメールアドレスを入力し、メール送信ボタンを押してください。</p>
+        </div>
 
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
@@ -13,9 +13,9 @@
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
-            <br />
-            <br />
-            <br />
+          <br />
+          <br />
+          <br />
           <div class="actions p-2 d-grid gap-4 col-5 mx-auto">
             <%= f.submit "メール送信", class: 'btn btn-original' %><br /><br />
           </div>

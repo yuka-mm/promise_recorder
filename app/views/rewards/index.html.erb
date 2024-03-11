@@ -64,12 +64,12 @@
                 <div class="d-flex">
                   <% if reward.pieces? %>
                     <%= reward.pieces %>
-                    <spam>個以上達成で</spam>
+                    <span>個以上達成で</span>
                   <% elsif reward.pt_range? %>
                     <%= reward.pt_range %>
-                    <spam>ポイント以上達成で</spam>
+                    <span>ポイント以上達成で</span>
                   <% elsif reward.pt_addition? %>
-                    <spam>おやくそく達成で</spam>
+                    <span>おやくそく達成で</span>
                   <% end %>
                   <%= "#{reward.body} GET!!" %>
                 </div>
@@ -92,7 +92,7 @@
       <% if @rewards.present? %>
         <div class="p-2">
           <%= link_to child_path(@child.id), class: 'main-link ' do %>
-            <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+            <i class="fa-solid fa-circle-arrow-left"></i><span>戻る</span>
           <% end %>
         </div>
       <% end %>

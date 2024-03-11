@@ -9,7 +9,7 @@
       <div class="d-flex align-items-center">
         <h3>お子様の登録情報</h3>
         <%= link_to new_child_path, class: 'btn btn-original shadow-sm mx-5' do %>
-          <spam> 登録 </spam><i class="fa-solid fa-user-plus"></i>
+          <span> 登録 </span><i class="fa-solid fa-user-plus"></i>
         <% end %>
       </div>
         <br/>
@@ -45,18 +45,18 @@
             </li>
           <% end %>
           <div class="p-2 text-center">
-            <spam>やくそくは</spam>
+            <span>やくそくは</span>
               <i class="fa-solid fa-user-gear"></i>
-            <spam>で登録!!</spam>
+            <span>で登録!!</span>
           </div>
         <% else %>
           <h4>誰とやくそくする？？</h4>
           <div>
-            <spam>まずは</spam>
+            <span>まずは</span>
             <%= link_to new_child_path, class: 'btn btn-original shadow-sm' do %>
-              <spam> 登録 </spam><i class="fa-solid fa-user-plus"></i>
+              <span> 登録 </span><i class="fa-solid fa-user-plus"></i>
             <% end %>
-            <spam> から登録を </spam>
+            <span> から登録を </span>
             <i class="fa-regular fa-hand-point-up"></i>
           </div>
         <% end %>
@@ -77,7 +77,7 @@
       <br />
       <div class="p-2">
         <%= link_to root_path, class: 'main-link ' do %>
-          <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+          <i class="fa-solid fa-circle-arrow-left"></i><span>戻る</span>
         <% end %>
       </div>
       <div class="text-center p-5">
