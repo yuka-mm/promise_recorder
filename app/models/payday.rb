@@ -13,7 +13,7 @@ class Payday < ApplicationRecord
 
   validate :date_or_week
   before_validation :check_month
-  before_validation :clear_week_if_date_present
+#  before_validation :clear_week_if_date_present
 
   private
 
@@ -32,7 +32,7 @@ class Payday < ApplicationRecord
     self.date = nil if end_month == true
   end
 
-  def clear_week_if_date_present
-    self.date = nil if week_changed? && week.present?
-  end
+#  def clear_week_if_date_present
+#    self.date = nil if week_changed? && week.present?
+#  end
 end

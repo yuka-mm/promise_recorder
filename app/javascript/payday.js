@@ -1,38 +1,34 @@
 document.addEventListener('turbo:load', function() {
-  if (document.getElementById('payday-new-edit') !== null) {
-    // 初期状態の設定
-    setDisabledStatus();
-  
-    // ラジオボタンが選択されたときの動作
-    document.getElementsByName('flexRadioDefault').forEach(function(radio) {
-      radio.addEventListener('change', function() {
-        console.log('Radio button changed:', radio);
+    if (document.getElementById('payday-new-edit') !== null) {
+      // セレクトボックスが変更されたときの動作
+      document.getElementById('notification_type').addEventListener('change', function() {
+        console.log('Select box changed:', this.value);
         setDisabledStatus();
       });
-    });
-  }
-});
-
-function setDisabledStatus() {
-  let radio1 = document.getElementById('flexRadioDefault1');
-  let radio2 = document.getElementById('flexRadioDefault2');
-
-  console.log("radio1 checked: ", radio1.checked);
-  console.log("radio2 checked: ", radio2.checked);
+      // 初期表示時にもフォームの状態を設定する
+      setDisabledStatus();
+    }
+  });
   
-  let dateField = document.getElementById('date_field');
-  let endMonthField = document.getElementById('end_month_field');
-  let weekField = document.getElementById('week_field');
-
-  if (radio1.checked) {
-    dateField.querySelectorAll('input').forEach(input => input.disabled = false);
-    endMonthField.querySelectorAll('input').forEach(input => input.disabled = false);
-    weekField.querySelector('input[type="hidden"]').disabled = false;
-    weekField.querySelectorAll('input[type="radio"]').forEach(input => { input.checked = false; });
-  } else {
-    dateField.querySelectorAll('input').forEach(input => { input.disabled = true; input.value = ''; });
-    endMonthField.querySelectorAll('input[type="checkbox"]').forEach(input => { input.disabled = true; input.checked = false; });
-    weekField.querySelector('input[type="hidden"]').disabled = true;
-    weekField.querySelectorAll('input[type="radio"]').forEach(input => input.disabled = false);
+  function setDisabledStatus() {
+    let selectBox = document.getElementById('notification_type');
+    let selectedOption = selectBox.options[selectBox.selectedIndex].value;
+  
+    let dateField = document.getElementById('date_field');
+    let endMonthField = document.getElementById('end_month');
+    let weekField = document.getElementById('week_field');
+  
+    console.log('Selected option:', selectedOption);
+  
+    // 日付を指定し月に１度通知する場合は日付フォームを表示し、曜日フォームを非表示にする
+    if (selectedOption === '日付を指定し月に１度通知する') {
+        dateField.style.display = 'block';
+        weekField.style.display = 'none';
+      }
+      // 曜日を指定し週に１度通知する場合
+      else if (selectedOption === '曜日を指定し週に１度通知する') {
+        dateField.style.display = 'none';
+        weekField.style.display = 'block';
+    }
   }
-}
+  
