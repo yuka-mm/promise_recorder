@@ -6,17 +6,17 @@
     <div class="row justify-content-center">
       <div class="col-10 p-3 border border-secondary rounded bg-light shadow-sm m-1">
         <div class="form-check">
-        <% if !@payday.week? %>
-          <select id="notification_type" name="notification_type">
-            <option value="日付を指定し月に１度通知する">日付を指定し月に１度通知する</option>
-            <option value="曜日を指定し週に１度通知する">曜日を指定し週に1度通知する</option>
-          </select>
-        <% else %>
-          <select id="notification_type" name="notification_type">
-            <option value="曜日を指定し週に１度通知する">曜日を指定し週に1度通知する</option>
-            <option value="日付を指定し月に１度通知する">日付を指定し月に１度通知する</option>
-          </select>
-        <% end %>
+          <% if !@payday.week? %>
+            <select id="notification_type" name="notification_type">
+              <option value="日付を指定し月に１度通知する">日付を指定し月に１度通知する</option>
+              <option value="曜日を指定し週に１度通知する">曜日を指定し週に1度通知する</option>
+            </select>
+          <% else %>
+            <select id="notification_type" name="notification_type">
+              <option value="曜日を指定し週に１度通知する">曜日を指定し週に1度通知する</option>
+              <option value="日付を指定し月に１度通知する">日付を指定し月に１度通知する</option>
+            </select>
+          <% end %>
         </div>
         <br />
         <!-- 日付の選択 -->

@@ -7,3 +7,11 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Week.create(day_name: 'monday')
+Week.create(day_name: 'tuesday')
+Week.create(day_name: 'wednesday')
+Week.create(day_name: 'thursday')
+Week.create(day_name: 'friday')
+Week.create(day_name: 'saturday')
+Week.create(day_name: 'sunday')

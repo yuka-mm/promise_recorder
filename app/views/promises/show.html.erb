@@ -10,8 +10,12 @@
         </li>
         <li class="list-group-item bg-light border border-secondary rounded shadow-sm list_color h4">
           <div class="justify-content-start">
-            <% if @promise.day_of_week? %>
-              <%= I18n.t("date.day_names")[@promise.day_of_week_before_type_cast]  %>
+            <% if @promise.monthly_flag? %>
+              <%= I18n.t("promise.monthly_flag.true") %>
+            <% elsif @promise.weeks.present? %>
+              <% @promise.weeks.each do |week| %>
+                <%= I18n.t("date.day_names")[week.id % 7] %>
+              <% end %>
             <% elsif @promise.start_day?  %>
               <%= @promise.start_day.strftime('%Y/%m/%d') %>
             <% end %>

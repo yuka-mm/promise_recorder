@@ -7,14 +7,27 @@
           <%= f.label :description %><br />
           <%= f.text_field :description %>
         </div>
-        <div class="field p-2 col">
+
+        <div class="field h3 p-2 col">
+          <% if @promise.start_day? %>
+            <select id="select_type" name="select_type" class="h3">
+              <option value="日付を指定して登録する">日付を指定して登録する</option>
+              <option value="曜日を指定して登録する">曜日を指定して登録する</option>
+            </select>
+          <% else %>
+            <select id="select_type" name="select_type" class="h3">
+              <option value="曜日を指定して登録する">曜日を指定して登録する</option>
+              <option value="日付を指定して登録する">日付を指定して登録する</option>
+            </select>
+          <% end %>
+        </div>
+
+        <div class="field p-2 col" id="date_field2" style="display: none;">
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6" checked>
-            <h3>日付で登録</h3><br />
-            <div class="field h3" id="date_select">
+            <div class="h3" id="date_select">
               <%= f.date_select :start_day, use_month_numbers: true %><br />
             </div>
-            <div class="field h3 p-2" id="check_flag">
+            <div class="h3 p-2" id="check_flag">
               <span>毎日のやくそくにする</span>
               <%= f.hidden_field :monthly_flag, value: false %>
               <%= f.check_box :monthly_flag %>
@@ -22,32 +35,38 @@
             <p><%= '※選択すると１ヶ月分毎日のやくそくとして自動登録されます' %></p>
           </div>
         </div>
-        <div class="field p-2 col">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
-            <h3>曜日で登録</h3><br />
-            <div class="field h3" id="weekday">
-              <%= f.select :day_of_week, Promise.day_of_weeks.keys.map { |w| [I18n.t("date.day_names")[Promise.day_of_weeks[w]], w] } %>
+
+        <div class="field p-2 col" id="week_field2" style="display: none;">
+          <div class="form-check d-flex flex-wrap" >
+            <% (1..7).each do |week_id| %>
+              <div class="h3">
+                <% week_id_present = @promise.week_ids.present? ? @promise.week_ids.include?(week_id) : false %>
+                <%= check_box_tag "week_ids[]", week_id, week_id_present, id: "week_id_#{week_id}" %>
+                <%= I18n.t('date.day_names')[week_id % 7] %>
+              </div>
+            <% end %>
             </div>
             <p><%= '※登録から約１ヶ月間毎週のやくそくとして登録されます' %></p>
-          </div>
         </div>
-        <div class="field h3 p-2 col">
+
+        <div class="h3 p-2 col">
           <div class="initialism">
             <%= '１日に何回行いますか？' %>
           </div>
           <%= f.number_field :frequency, in: 1..10, step: 1, value: f.object.frequency || 1 %>
           <span>回</span>
         </div>
+
         <% if  @rewards.any? { |reward| reward.pt_range? || reward.pt_addition? } %>
-        <div class="field h3 p-2 col">
-          <div class="initialism">
-            <%= '守れた時の獲得ポイント' %>
+          <div class="h3 p-2 col">
+            <div class="initialism">
+              <%= '守れた時の獲得ポイント' %>
+            </div>
+            <%= f.number_field :points, in: 0..1000, value: f.object.frequency || 0 %>
+            <span>ポイント</span>
           </div>
-          <%= f.number_field :points, in: 0..1000, value: f.object.frequency || 0 %>
-          <span>ポイント</span>
-        </div>
         <% end %>
+
         <div class="col d-flex justify-content-end">
           <%= f.submit '登録', class: 'btn btn-original shadow-sm' %>
         </div>

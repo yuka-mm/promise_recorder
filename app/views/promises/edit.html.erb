@@ -6,13 +6,6 @@
         <div class="h3">
           <%= 'やくそく編集' %>
         </div>
-        <% if @promise.monthly_flag? %>
-        <%= '毎日のやくそく' %>
-        <% elsif @promise.day_of_week? %>
-          <%= "毎週#{I18n.t("date.day_names")[@promise.day_of_week_before_type_cast.to_i]}のやくそく"  %>
-        <% elsif @promise.start_day?  %>
-          <%= "#{@promise.start_day.strftime('%m/%d')}のやくそく" %>
-        <% end %>
       </div>
       <%= render 'form' %>
       <br />
