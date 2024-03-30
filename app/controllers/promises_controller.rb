@@ -84,7 +84,7 @@ class PromisesController < ApplicationController
   private
 
   def promise_params
-    params.require(:promise).permit(:description, :day_of_week, :start_day, :monthly_flag, :hidden_monthly_flag, :frequency, :points)
+    params.require(:promise).permit(:description, :start_day, :monthly_flag, :hidden_monthly_flag, :frequency, :points)
   end
 
   def set_child

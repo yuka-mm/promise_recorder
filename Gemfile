@@ -56,6 +56,7 @@ gem 'redis'
 gem 'sassc-rails'
 gem 'sidekiq'
 gem 'sidekiq-cron', '~> 1.2'
+gem 'meta-tags'
 
 # 機能系のgem
 gem 'devise', '~> 4.9.0'
