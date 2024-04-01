@@ -17,9 +17,9 @@
           <!-- 個数式で管理 -->
           <div class="field" id="pieces_field">
             <%= f.text_field :pieces, placeholder: "個数(半角数字)" %>
-            <spam>個以上達成で</spam>
+            <span>個以上達成で</span>
             <%= f.text_field :body, placeholder: "ご褒美" %>
-            <spam>get!!</spam>
+            <span>get!!</span>
           </div>
           <div class="initialism"><%= '例: 『5』個以上達成で『お菓子』get!!' %></div>
         </div>
@@ -36,9 +36,9 @@
           <!-- ポイント範囲式で管理 -->
           <div class="field" id="range_field">
             <%= f.text_field :pt_range, placeholder: "ポイント数(半角数字)" %>
-            <spam>ポイント以上達成で</spam>
+            <span>ポイント以上達成で</span>
             <%= f.text_field :body, placeholder: "ご褒美" %>
-            <spam>get!!</spam>
+            <span>get!!</span>
           </div>
           <div class="initialism"><%= '例: 『100』ポイント以上達成で『ゲームの時間を1時間』get!!' %></div>
         </div>
@@ -54,16 +54,16 @@
           <!-- ポイント加算式 -->
           <div class="field" id="addition_field">
             <%= f.text_field :body, placeholder: "ご褒美" %>
-            <spam>を</spam>
+            <span>を</span>
             <%= f.text_field :pt_addition, placeholder: "単位" %>
-            <spam>分get!!</spam>
+            <span>分get!!</span>
           </div>
           <div class="initialism"><%= '例: 『おこづかい』を〇〇『円』分GET!!' %></div>
         </div>
       <% end %>
     <div class="col-10 d-flex justify-content-between align-items-center px-2 m-1">
       <%= link_to child_rewards_path, class: 'main-link' do %>
-        <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+        <i class="fa-solid fa-circle-arrow-left"></i><span>戻る</span>
       <% end %>
       <div class="actions p-2">
         <%= f.submit '登録', class: 'btn btn-original shadow-sm' %>

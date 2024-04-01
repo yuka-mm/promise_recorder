@@ -83,5 +83,16 @@ footer {
           transform: rotate(-2deg);
       }
     }
- 
+
+    .circle {
+        animation: mochimochi 3s infinite;
+     }
+     
+     @keyframes mochimochi {
+       0% { transform: scale(1.1, 1.1); }
+       25% { transform: scale(0.9, 0.9); }
+       50% { transform: scale(1.1, 1.1); }
+       75% { transform: scale(0.9, 0.9); }
+       100% { transform: scale(1.1, 1.1); }
+     }
 

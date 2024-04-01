@@ -4,6 +4,15 @@
       <a class="navbar-brand" href="/"><%= image_tag 'header.png', width: '50%' %></a>
     </div>
     <% if parent_signed_in? %>
+      <% if current_parent.notices.where(check: false).exists? %>
+        <%= link_to notices_path do %>
+          <i class="fa-solid fa-bell main-link p-2 mx-4 h4"></i>
+        <% end %>
+      <% else %>
+        <%= link_to notices_path do %>
+          <i class="fa-solid fa-bell body-link p-2 mx-4 h4"></i>
+        <% end %>
+      <% end %>
       <%= link_to destroy_parent_session_path, method: :delete do %>
         <i class="fa-solid fa-person-walking-arrow-right body-link p-2 h3"></i>
       <% end %>

@@ -1,0 +1,6 @@
+:concurrency: 3
+:queues:
+  - default
+  - critical
+:retry: 5
+:poll_interval_average: 60

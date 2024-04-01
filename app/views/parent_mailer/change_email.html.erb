@@ -1,0 +1,12 @@
+<h3>Promise Recorder</h3>
+<h3>メールアドレス変更のご案内</h3>
+
+<p><%= @parent.name %>様</p>
+
+<p>メールアドレスを変更するには以下のリンクをクリックしてください。</p>
+
+<%= link_to 'メールアドレスを更新する', confirm_email_url(token: @token), target: '_blank' %>
+
+<p>もしメールアドレスの変更をリクエストしていない場合は、このメッセージを無視してください。</p>
+
+<p> < PromiseRecorder > </p>

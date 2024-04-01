@@ -26,10 +26,10 @@ document.addEventListener('turbo:load', (event) => {
 
         // `completed`の状態に応じてアイコンと色を変更
         if (data.completed) {
-          icon.className = 'fa-solid fa-star h1 p-2';
+          icon.className = 'fa-solid fa-star display-2 p-2';
           link.style.color = '#db7133';
         } else {
-          icon.className = 'fa-regular fa-star h1 p-2';
+          icon.className = 'fa-regular fa-star display-2 p-2 circle';
           link.style.color = '#db7133';
         }
 

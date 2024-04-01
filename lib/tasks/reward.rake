@@ -29,7 +29,7 @@ namespace :reward do
   
       # 通知文作成
       message = if point_sum.nil? || point_sum <= 0
-                  "まだタスクを達成していません。次は頑張ろう💪‼️"
+                  "まだタスクを達成していません。\n次は頑張ろう💪‼️"
                 else
                   if reward
                     if reward.pieces.present? && reward_by_pieces
@@ -51,9 +51,13 @@ namespace :reward do
       when 'line_type'
         # 親ユーザーにライン送信
         PushLineJob.perform_later(child, message)
-      when 'not_set'
-        next
       end
+
+      # Noticeを作成
+      notice = Notice.new
+      notice.parent_id = child.parent_id
+      notice.msg = "#{child.name}さんのご褒美dayです✼\nたくさん頑張ったと思うのでいっぱい褒めてあげてください‼️\n\n＝＝＝＝今回のご褒美＝＝＝\n#{message}"
+      notice.save
   
       # monthly_pointsのリセットとcompletedのリセット
       child.update(monthly_points: 0)

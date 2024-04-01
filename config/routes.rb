@@ -6,12 +6,21 @@ Rails.application.routes.draw do
     sessions: 'parents/sessions',
     passwords: 'parents/passwords',
     registrations: 'parents/registrations',
-    omniauth_callbacks: 'parents/omniauth_callbacks'
+    omniauth_callbacks: 'parents/omniauth_callbacks',
   }
   devise_scope :parent do
     get '/parents/sign_out', to: 'devise/sessions#destroy'
+    get 'confirm_email', to: 'parents#confirm_email', as: :confirm_email
+    get 'change_email', to: 'parents#edit_email', as: :edit_email
+    post 'change_email', to: 'parents#update_email'
+    get 'password_edit', to: 'parents#password_edit', as: :password_edit  # パスワードリセットメール送信フォームの表示
+    post 'create_reset', to: 'parents#create_reset' 
   end
   resource :parent, only: %i[show]
+
+  resources :notices, only: %i[index] do
+    delete :destroy_all, on: :collection
+  end
 
   # 子ユーザー
   resources :children do
@@ -48,4 +57,6 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount Sidekiq::Web, at: '/sidekiq'
   end
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end

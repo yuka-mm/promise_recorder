@@ -34,7 +34,7 @@
                 <i class="fa-solid fa-user-pen"></i>
             <% end %>
             <%= button_to child_path(@child), class: 'btn btn-original m-1 shadow-sm',
-                           method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
+                           method: :delete, data: { turbo_confirm: "#{@child.name}を削除しますか?" } do %>
               <i class="fa-solid fa-user-xmark"></i>
             <% end %>
           </div>
@@ -46,7 +46,6 @@
             </li>
             <li class="list-group-item list-group-item-action list-group-item-secondary border border-secondary">
               <%= link_to 'ご褒美 / 通知設定', child_rewards_path(@child), class: 'main-link text-wrap' %>
-              <p class="initialism list_color">※先にご登録ください</p>
             </li>
           </ul>
         </div>
@@ -63,10 +62,13 @@
       <br />
       <div class="d-flex justify-content-between align-items-center">
         <%= link_to root_path, class: 'main-link ' do %>
-          <i class="fa-solid fa-circle-arrow-left"></i><spam>トップページ</spam>
+          <i class="fa-solid fa-circle-arrow-left"></i><span>トップページ</span>
+        <% end %>
+        <%= link_to navigate_path, class: 'main-link' do %>
+            <i class="fa-sharp fa-solid fa-lightbulb"></i><span>使い方</span>
         <% end %>
         <%= link_to parent_path, class: 'main-link' do %>
-            <spam>マイページ</spam><i class="fa-solid fa-circle-arrow-right"></i>
+            <span>マイページ</span><i class="fa-solid fa-circle-arrow-right"></i>
         <% end %>
       </div>
     </div>

@@ -44,13 +44,17 @@ gem 'bootsnap', require: false
 # gem 'image_processing', '~> 1.2'
 
 # 設定系のgem
+gem 'cancancan'
 gem 'dockerfile-rails', '>= 1.6', group: :development
 gem 'dotenv-rails'
+gem 'enum_help'
 gem 'font-awesome-sass'
+gem 'meta-tags'
 gem 'mini_racer'
 gem 'omniauth', '~> 1.9.1'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
+gem 'rails_admin', '~> 3.0'
 gem 'rails-i18n'
 gem 'redis'
 gem 'sassc-rails'
@@ -71,7 +75,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'rubocop'
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="grid gap-3">
+    <br />
+    <div class="d-flex justify-content-between align-items-center">
+      <h3>おしらせ</h3>
+      <%= button_to destroy_all_notices_path, class: 'btn btn-original shadow-sm h4',
+                         method: :delete, data: { turbo_confirm: "おしらせを全て削除しますか?" } do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+    </div>
+    <br />
+    <div class="row">
+      <% if @notices.present? %>
+        <ul class="list-group p-2">
+          <% @notices.each do |notice| %>
+            <li class="list-group-item list-group-item-warning border border-secondary border-2 rounded shadow-sm list_color h5">
+              <div class="h6 p-1">
+                <%= notice.created_at.strftime("%Y/%m/%d") %>
+              </div>
+              <div class="h5 p-1 br">
+                <%= notice.msg %>
+              </div>
+            </li>
+          <% end %>
+          <%= paginate @notices %>
+        </ul>
+      <% else %>
+        <div class="text-center h3 p-5">おしらせはありません</div>
+      <% end %>
+    </div>
+    <div class="p-2">
+      <%= link_to :back, class: 'main-link ' do %>
+        <i class="fa-solid fa-circle-arrow-left"></i><span>戻る</span>
+      <% end %>
+    </div>
+  </div>
+</div>

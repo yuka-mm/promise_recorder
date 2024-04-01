@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class Parents::ConfirmationsController < Devise::ConfirmationsController
-  # メールアドレスの変更
+  # メールアドレスの承認
   # まだ導入を行っていないためルート未設定
-
   skip_before_action :login_status
 
   # GET /resource/confirmation/new

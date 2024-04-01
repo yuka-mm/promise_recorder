@@ -4,6 +4,7 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
   skip_before_action :login_status
+  
 
   # GET /resource/sign_up
   # def new
@@ -11,9 +12,10 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  #アカウント登録後のリダイレクト先
+  def after_sign_up_path_for(resource)
+    parent_path(resource)
+  end
 
   # GET /resource/edit
   # def edit
@@ -21,9 +23,13 @@ class Parents::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # パスワードなしで更新できるメソッド
+  # パスワードなしで名前を変更できるメソッド
   def update_resource(resource, params)
-    resource.update_without_password(params)
+    if params[:password].blank? && params[:password_confirmation].blank?
+      resource.update_without_password(params)
+    else
+      resource.update(params)
+    end
   end
 
   # 編集後のリダイレクト先を指定するメソッド

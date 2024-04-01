@@ -6,37 +6,34 @@
     <div class="row justify-content-center">
       <div class="col-10 p-3 border border-secondary rounded bg-light shadow-sm m-1">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-          <label class="form-check-label" for="flexRadioDefault1">
-            日付を指定し月に１度通知する
-          </label>
+          <% if !@payday.week? %>
+            <select id="notification_type" name="notification_type">
+              <option value="日付を指定し月に１度通知する">日付を指定し月に１度通知する</option>
+              <option value="曜日を指定し週に１度通知する">曜日を指定し週に1度通知する</option>
+            </select>
+          <% else %>
+            <select id="notification_type" name="notification_type">
+              <option value="曜日を指定し週に１度通知する">曜日を指定し週に1度通知する</option>
+              <option value="日付を指定し月に１度通知する">日付を指定し月に１度通知する</option>
+            </select>
+          <% end %>
         </div>
         <br />
         <!-- 日付の選択 -->
-        <div class="field" id="date_field">
+        <div class="field" id="date_field" style="display: none;">
           <%= f.number_field :date, in: 1..28, step: 1 %>
-          <spam>日</spam>
-        </div>
-        <br />
-        <!-- 月末指定のチェックボックス -->
-        <div class="field" id="end_month_field">
-          <%= f.check_box :end_month %>
-          <%= f.label :end_month %>
+          <span>日</span>
+          <br />
+          <br />
+          <%= f.check_box :end_month, id: 'end_month' %>
+          <span>月末指定</span>
+          <br />
+          <br />
           <div class="initialism">※28日以降の場合は月末にチェックをお願いします</div>
           <div class="initialism">※月末にチェックをつけた場合チェックが優先され、日付を入力しても適応されませんのでご注意ください</div>
         </div>
-      </div>
-  
-      <div class="col-10 p-3 border border-secondary rounded bg-light shadow-sm m-1">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-          <label class="form-check-label" for="flexRadioDefault2">
-            曜日を指定し週に1度通知する
-          </label>
-        </div>
-        <br />
         <!-- 曜日の選択 -->
-        <div class="field" id="week_field">
+        <div class="field" id="week_field" style="display: none;">
           <%= f.hidden_field :week, value: nil %>
           <% Payday.weeks.keys.each do |w| %>
             <%= f.radio_button :week, w %>
@@ -55,7 +52,7 @@
       <br />
       <div class="col-10 d-flex justify-content-between align-items-center px-2 m-1">
         <%= link_to child_rewards_path, class: 'main-link ms-1' do %>
-            <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
+          <i class="fa-solid fa-circle-arrow-left"></i><span>戻る</span>
         <% end %>
         <div class="actions p-2">
           <%= f.submit '登録', class: 'btn btn-original shadow-sm' %>

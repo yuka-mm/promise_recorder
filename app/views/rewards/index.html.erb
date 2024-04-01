@@ -4,7 +4,22 @@
       <br />
       <div class="h3"><%= @child.name %>の設定</div>
       <br />
-      <br />
+      <div class="p-1 m-1">
+        <h6>こちらの登録を元にやくそく達成時のご褒美を決定します♪</h6>
+      </div>
+      <% if !@rewards.present? %>
+        <div class="p-3 m-4">
+          <h6>はじめにやくそく達成時のご褒美と</h6>
+          <h6>ご褒美を渡す日の通知設定を行います</h6>
+        </div>
+      <% end %>
+      <%if !@payday.present? %>
+        <div class="p-3 m-4">
+          <h6>通知方法のデフォルトはメールですが</h6>
+          <h6>マイページからLINE連携することで</h6>
+          <h6>LINE通知もご利用いただけます</h6>
+        </div>
+      <% end %>
       <div class="h4">①通知日を設定してください</div>
       <div class="row text-center h4">
         <div class="col p-2 m-2 bg-light border border-secondary rounded shadow-sm">
@@ -35,7 +50,6 @@
       </div>
       <br />
       <br />
-      <br />
       <% if @payday.present? %>
         <div class="d-flex justify-content-between">
           <div class="h3">②ご褒美を登録してください</div>
@@ -50,12 +64,12 @@
                 <div class="d-flex">
                   <% if reward.pieces? %>
                     <%= reward.pieces %>
-                    <spam>個以上達成で</spam>
+                    <span>個以上達成で</span>
                   <% elsif reward.pt_range? %>
                     <%= reward.pt_range %>
-                    <spam>ポイント以上達成で</spam>
+                    <span>ポイント以上達成で</span>
                   <% elsif reward.pt_addition? %>
-                    <spam>おやくそく達成で</spam>
+                    <span>おやくそく達成で</span>
                   <% end %>
                   <%= "#{reward.body} GET!!" %>
                 </div>
@@ -64,7 +78,7 @@
                     <i class="fa-solid fa-pen-to-square"></i>
                   <% end %>
                   <%= button_to child_reward_path(@child, reward), class: 'btn btn-original shadow-sm',
-                               method: :delete, data: { turbo_confirm: "Are you sure?" } do %>
+                               method: :delete, data: { turbo_confirm: "#{reward.body}を削除しますか?" } do %>
                     <i class="fa-solid fa-trash-can"></i>
                   <% end %>
                 </div>
@@ -75,11 +89,13 @@
         <% end %>
       <br />
       <br />
-      <div class="p-2">
-        <%= link_to child_path(@child.id), class: 'main-link ' do %>
-          <i class="fa-solid fa-circle-arrow-left"></i><spam>戻る</spam>
-        <% end %>
-      </div>
+      <% if @rewards.present? %>
+        <div class="p-2">
+          <%= link_to child_path(@child.id), class: 'main-link ' do %>
+            <i class="fa-solid fa-circle-arrow-left"></i><span>戻る</span>
+          <% end %>
+        </div>
+      <% end %>
       <br />
     </div>
   </div>
