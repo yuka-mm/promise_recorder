@@ -57,4 +57,6 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount Sidekiq::Web, at: '/sidekiq'
   end
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end

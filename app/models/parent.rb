@@ -12,4 +12,6 @@ class Parent < ApplicationRecord
 
   validates :name, length: { maximum: 10 }
   validates :password, presence: true, on: :create
+
+  enum role: { general: 0, admin: 1 }
 end

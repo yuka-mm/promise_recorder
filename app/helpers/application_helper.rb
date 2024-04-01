@@ -8,7 +8,7 @@ module ApplicationHelper
       title: '約束を毎日の習慣に！',
       reverse: true,
       charset: 'utf-8',
-      description: '子どもとの約束を登録管理して『できた！』を増やそう',
+      description: '子どもとの約束を登録管理して『できた！』を増やすお手伝いをします',
       keywords: '子ども,約束,約束守らせる,約束守らない',
       canonical: request.original_url,
       separator: '|',
@@ -18,7 +18,7 @@ module ApplicationHelper
         description: :description, 
         type: 'website',
         url: request.original_url,
-        image: image_url('ogp.png'),
+        image: image_url('logo.png'),
         locale: 'ja_JP',
       },
       twitter: {
