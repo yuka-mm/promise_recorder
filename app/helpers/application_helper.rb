@@ -18,7 +18,7 @@ module ApplicationHelper
         description: :description, 
         type: 'website',
         url: request.original_url,
-        image: image_url('logo.png'),
+        image: image_url('logo2.png'),
         locale: 'ja_JP',
       },
       twitter: {
