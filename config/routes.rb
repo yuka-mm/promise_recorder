@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
@@ -6,15 +8,15 @@ Rails.application.routes.draw do
     sessions: 'parents/sessions',
     passwords: 'parents/passwords',
     registrations: 'parents/registrations',
-    omniauth_callbacks: 'parents/omniauth_callbacks',
+    omniauth_callbacks: 'parents/omniauth_callbacks'
   }
   devise_scope :parent do
     get '/parents/sign_out', to: 'devise/sessions#destroy'
     get 'confirm_email', to: 'parents#confirm_email', as: :confirm_email
     get 'change_email', to: 'parents#edit_email', as: :edit_email
     post 'change_email', to: 'parents#update_email'
-    get 'password_edit', to: 'parents#password_edit', as: :password_edit  # パスワードリセットメール送信フォームの表示
-    post 'create_reset', to: 'parents#create_reset' 
+    get 'password_edit', to: 'parents#password_edit', as: :password_edit # パスワードリセットメール送信フォームの表示
+    post 'create_reset', to: 'parents#create_reset'
   end
   resource :parent, only: %i[show]
 
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
     # 子ユーザー関連
     resource :payday, only: %i[new edit create update]
     resources :rewards, only: %i[index new edit update create destroy]
-    resources :promises, only: %i[index show edit update create destroy] do 
+    resources :promises, only: %i[index show edit update create destroy] do
       collection do
         get 'calendar'
       end
@@ -50,13 +52,9 @@ Rails.application.routes.draw do
   root to: 'children#index'
 
   # テストメール用
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
-  if Rails.env.development?
-    mount Sidekiq::Web, at: '/sidekiq'
-  end
+  mount Sidekiq::Web, at: '/sidekiq' if Rails.env.development?
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end

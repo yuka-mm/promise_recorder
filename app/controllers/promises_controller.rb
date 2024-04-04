@@ -24,14 +24,15 @@ class PromisesController < ApplicationController
   def calendar
     @completed_counts = Count.where(promise_id: @promises, completed: true).group(:start_time).count || {}
     @promises_counts = Count.where(promise_id: @promises).group(:start_time).count || {}
-    @completed_count_this_month = @child.counts.where(completed: true, start_time: (Date.today.beginning_of_month..Date.today.end_of_month)).count
+    @completed_count_this_month = @child.counts.where(completed: true,
+                                                      start_time: (Date.today.beginning_of_month..Date.today.end_of_month)).count
   end
 
   def create
     @promise = @promises.new(promise_params)
     @promise.select_type = params[:select_type]
 
-    if @promise.select_type == "曜日を指定して登録する"
+    if @promise.select_type == '曜日を指定して登録する'
       week_ids = params[:week_ids]
       @promise.week_ids = week_ids
     end
@@ -42,7 +43,7 @@ class PromisesController < ApplicationController
     else
       @promises_all = @promises.all
       @list_promises = @promises_all.where.not(id: nil).page(params[:page])
-      flash.now[:notice] = '登録に失敗しました: ' + @promise.errors.full_messages.join(', ')
+      flash.now[:notice] = "登録に失敗しました: #{@promise.errors.full_messages.join(', ')}"
       Rails.logger.debug(@promise.errors.full_messages.join(', '))
       render :index
     end
@@ -52,23 +53,23 @@ class PromisesController < ApplicationController
     @promise = @promises.find(params[:id])
     @promise.select_type = params[:select_type]
 
-    if @promise.select_type == "曜日を指定して登録する"
+    if @promise.select_type == '曜日を指定して登録する'
       week_ids = params[:week_ids]
       @promise.week_ids = week_ids
     end
 
     puts 'アップデート送信時＝'
-    puts promise_params.inspect 
+    puts promise_params.inspect
 
     if @promise.update(promise_params)
-        puts 'アップデート成功時時＝'
-        puts @promise.attributes.inspect # 更新後の属性を出力
+      puts 'アップデート成功時時＝'
+      puts @promise.attributes.inspect # 更新後の属性を出力
       flash[:notice] = 'やくそくを変更しました'
       redirect_to child_promise_path
     else
-        puts 'アップデート失敗時＝'
-        puts @promise.attributes.inspect # 更新後の属性を出力
-        puts @promise.errors.full_messages 
+      puts 'アップデート失敗時＝'
+      puts @promise.attributes.inspect # 更新後の属性を出力
+      puts @promise.errors.full_messages
       flash[:notice] = '変更が失敗しました'
       render :edit
     end

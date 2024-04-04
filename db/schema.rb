@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,115 +12,115 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_01_050353) do
-  create_table "children", force: :cascade do |t|
-    t.integer "parent_id", null: false
-    t.string "name", null: false
-    t.datetime "birth_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "monthly_points"
-    t.index ["parent_id"], name: "index_children_on_parent_id"
+ActiveRecord::Schema[7.1].define(version: 20_240_401_050_353) do
+  create_table 'children', force: :cascade do |t|
+    t.integer 'parent_id', null: false
+    t.string 'name', null: false
+    t.datetime 'birth_date'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'monthly_points'
+    t.index ['parent_id'], name: 'index_children_on_parent_id'
   end
 
-  create_table "counts", force: :cascade do |t|
-    t.integer "promise_id", null: false
-    t.boolean "completed", default: false
-    t.date "start_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["promise_id"], name: "index_counts_on_promise_id"
+  create_table 'counts', force: :cascade do |t|
+    t.integer 'promise_id', null: false
+    t.boolean 'completed', default: false
+    t.date 'start_time'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['promise_id'], name: 'index_counts_on_promise_id'
   end
 
-  create_table "notices", force: :cascade do |t|
-    t.string "msg"
-    t.integer "parent_id", null: false
-    t.boolean "check", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["parent_id"], name: "index_notices_on_parent_id"
+  create_table 'notices', force: :cascade do |t|
+    t.string 'msg'
+    t.integer 'parent_id', null: false
+    t.boolean 'check', default: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['parent_id'], name: 'index_notices_on_parent_id'
   end
 
-  create_table "parents", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
-    t.string "unconfirmed_email"
-    t.string "email_confirmation_token"
-    t.integer "role", default: 0, null: false
-    t.index ["email"], name: "index_parents_on_email", unique: true
-    t.index ["provider", "uid"], name: "index_parents_on_provider_and_uid", unique: true
-    t.index ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
+  create_table 'parents', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.string 'name', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'provider'
+    t.string 'uid'
+    t.string 'unconfirmed_email'
+    t.string 'email_confirmation_token'
+    t.integer 'role', default: 0, null: false
+    t.index ['email'], name: 'index_parents_on_email', unique: true
+    t.index %w[provider uid], name: 'index_parents_on_provider_and_uid', unique: true
+    t.index ['reset_password_token'], name: 'index_parents_on_reset_password_token', unique: true
   end
 
-  create_table "paydays", force: :cascade do |t|
-    t.integer "parent_id", null: false
-    t.integer "child_id", null: false
-    t.integer "date"
-    t.integer "week"
-    t.boolean "end_month"
-    t.integer "action_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["child_id"], name: "index_paydays_on_child_id"
-    t.index ["parent_id"], name: "index_paydays_on_parent_id"
+  create_table 'paydays', force: :cascade do |t|
+    t.integer 'parent_id', null: false
+    t.integer 'child_id', null: false
+    t.integer 'date'
+    t.integer 'week'
+    t.boolean 'end_month'
+    t.integer 'action_type'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['child_id'], name: 'index_paydays_on_child_id'
+    t.index ['parent_id'], name: 'index_paydays_on_parent_id'
   end
 
-  create_table "promises", force: :cascade do |t|
-    t.integer "child_id", null: false
-    t.string "description", null: false
-    t.datetime "start_day"
-    t.boolean "monthly_flag"
-    t.integer "frequency"
-    t.integer "points"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["child_id"], name: "index_promises_on_child_id"
+  create_table 'promises', force: :cascade do |t|
+    t.integer 'child_id', null: false
+    t.string 'description', null: false
+    t.datetime 'start_day'
+    t.boolean 'monthly_flag'
+    t.integer 'frequency'
+    t.integer 'points'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['child_id'], name: 'index_promises_on_child_id'
   end
 
-  create_table "rewards", force: :cascade do |t|
-    t.integer "payday_id", null: false
-    t.integer "child_id", null: false
-    t.string "body", null: false
-    t.integer "pieces"
-    t.integer "pt_range"
-    t.string "pt_addition"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["child_id"], name: "index_rewards_on_child_id"
-    t.index ["payday_id"], name: "index_rewards_on_payday_id"
+  create_table 'rewards', force: :cascade do |t|
+    t.integer 'payday_id', null: false
+    t.integer 'child_id', null: false
+    t.string 'body', null: false
+    t.integer 'pieces'
+    t.integer 'pt_range'
+    t.string 'pt_addition'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['child_id'], name: 'index_rewards_on_child_id'
+    t.index ['payday_id'], name: 'index_rewards_on_payday_id'
   end
 
-  create_table "weeklies", force: :cascade do |t|
-    t.integer "promise_id", null: false
-    t.integer "week_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["promise_id"], name: "index_weeklies_on_promise_id"
-    t.index ["week_id"], name: "index_weeklies_on_week_id"
+  create_table 'weeklies', force: :cascade do |t|
+    t.integer 'promise_id', null: false
+    t.integer 'week_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['promise_id'], name: 'index_weeklies_on_promise_id'
+    t.index ['week_id'], name: 'index_weeklies_on_week_id'
   end
 
-  create_table "weeks", force: :cascade do |t|
-    t.string "day_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'weeks', force: :cascade do |t|
+    t.string 'day_name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "children", "parents"
-  add_foreign_key "counts", "promises"
-  add_foreign_key "notices", "parents"
-  add_foreign_key "paydays", "children"
-  add_foreign_key "paydays", "parents"
-  add_foreign_key "promises", "children"
-  add_foreign_key "rewards", "children"
-  add_foreign_key "rewards", "paydays"
-  add_foreign_key "weeklies", "promises"
-  add_foreign_key "weeklies", "weeks"
+  add_foreign_key 'children', 'parents'
+  add_foreign_key 'counts', 'promises'
+  add_foreign_key 'notices', 'parents'
+  add_foreign_key 'paydays', 'children'
+  add_foreign_key 'paydays', 'parents'
+  add_foreign_key 'promises', 'children'
+  add_foreign_key 'rewards', 'children'
+  add_foreign_key 'rewards', 'paydays'
+  add_foreign_key 'weeklies', 'promises'
+  add_foreign_key 'weeklies', 'weeks'
 end

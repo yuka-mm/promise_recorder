@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ParentMailer < ApplicationMailer
   def achievement_notification(parent, child, message)
     @parent = parent

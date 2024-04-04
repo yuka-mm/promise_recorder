@@ -22,9 +22,9 @@ class Payday < ApplicationRecord
 
   def date_or_week
     puts "date: #{date}, week: #{week}, end_month: #{end_month}"
-    if date.blank? && week.blank? && end_month == false
-      errors.add(:base, "日付または曜日を選択してください")
-    end
+    return unless date.blank? && week.blank? && end_month == false
+
+    errors.add(:base, '日付または曜日を選択してください')
   end
 
   def check_month

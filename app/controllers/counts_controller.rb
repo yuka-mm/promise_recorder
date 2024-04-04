@@ -14,6 +14,6 @@ class CountsController < ApplicationController
     @count = Count.find(params[:id])
     @count.update(completed: !@count.completed)
     remaining_count = Count.remaining(@count.promise.child_id, @count.start_time)
-    render json: { completed: @count.completed, remaining_count: remaining_count }
+    render json: { completed: @count.completed, remaining_count: }
   end
 end

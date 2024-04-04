@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# NoticesController is responsible for managing notice resources.
 class NoticesController < ApplicationController
   def index
     # 未読の通知を取得し、既読に更新する

@@ -22,7 +22,7 @@ class RewardsController < ApplicationController
       flash[:notice] = 'ご褒美を設定しました'
       redirect_to child_rewards_path
     else
-      flash[:alert] = @reward.errors.full_messages.join(", ")
+      flash[:alert] = @reward.errors.full_messages.join(', ')
       redirect_to new_child_reward_path(@child)
     end
   end
@@ -48,7 +48,7 @@ class RewardsController < ApplicationController
 
   def reward_params
     params.require(:reward).permit(:pieces, :pt_range, :pt_addition, :body, :unit)
-  end  
+  end
 
   def set_child
     @child = Child.find(params[:child_id])
