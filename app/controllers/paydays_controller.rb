@@ -51,7 +51,7 @@ class PaydaysController < ApplicationController
   end
 
   def set_payday
-    @child = Child.find(params[:child_id])
+    @child = current_parent.children.find(params[:child_id])
     @payday = @child.payday
   end
 end

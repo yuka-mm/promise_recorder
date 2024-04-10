@@ -3,7 +3,7 @@
 # CountsController is responsible for managing count resources.
 class CountsController < ApplicationController
   def index
-    @child = Child.find(params[:child_id])
+    @child = current_parent.children.find(params[:child_id])
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @counts = @child.promises.flat_map do |promise|
       promise.counts.where(start_time: @date.beginning_of_day)

@@ -89,7 +89,7 @@ class PromisesController < ApplicationController
   end
 
   def set_child
-    @child = Child.find(params[:child_id])
+    @child = current_parent.children.find(params[:child_id])
   end
 
   def set_promise
