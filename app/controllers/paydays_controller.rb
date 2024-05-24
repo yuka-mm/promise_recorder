@@ -5,7 +5,7 @@ class PaydaysController < ApplicationController
   before_action :set_payday, only: %i[edit update]
 
   def new
-    @payday =  Payday.new(child_id: params[:child_id])
+    @payday = Payday.new(child_id: params[:child_id])
   end
 
   def edit; end
@@ -26,13 +26,13 @@ class PaydaysController < ApplicationController
     notification_type = params[:notification_type]
     if notification_type == '日付を指定し月に１度通知する'
       params[:payday][:week] = nil
-      puts "日付を指定し月に１度通知する側"
+      puts '日付を指定し月に１度通知する側'
     elsif notification_type == '曜日を指定し週に１度通知する'
       params[:payday][:date] = nil
       params[:payday][:end_month] = false
-      puts "曜日を指定し週に１度通知する側"
+      puts '曜日を指定し週に１度通知する側'
     end
-  
+
     result = @payday.update(payday_params)
     Rails.logger.debug "Update result: #{result}"
     if result
@@ -51,7 +51,7 @@ class PaydaysController < ApplicationController
   end
 
   def set_payday
-    @child = Child.find(params[:child_id])
+    @child = current_parent.children.find(params[:child_id])
     @payday = @child.payday
   end
 end

@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Parents", type: :request do
-  describe "GET /show" do
-    it "returns http success" do
-      get "/parents/show"
+RSpec.describe 'Parents', type: :request do
+  describe 'GET /show' do
+    it 'returns http success' do
+      get '/parents/show'
       expect(response).to have_http_status(:success)
     end
   end
-
 end

@@ -15,15 +15,15 @@ module ApplicationHelper
       og: {
         site_name: :site,
         title: :title,
-        description: :description, 
+        description: :description,
         type: 'website',
         url: request.original_url,
-        image: image_url('logo.png'),
-        locale: 'ja_JP',
+        image: image_url('logo2.png'),
+        locale: 'ja_JP'
       },
       twitter: {
         card: 'summary_large_image',
-        site: '@yuka_ponnchann',
+        site: '@yuka_ponnchann'
       }
     }
   end

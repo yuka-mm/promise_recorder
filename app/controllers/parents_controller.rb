@@ -19,8 +19,8 @@ class ParentsController < ApplicationController
     new_email = params[:parent][:email]
 
     # メールアドレスのフォーマット検証
-    if new_email.blank? || !(new_email =~ URI::MailTo::EMAIL_REGEXP)
-      flash[:alert] = "有効なメールアドレスを入力してください。"
+    if new_email.blank? || new_email !~ URI::MailTo::EMAIL_REGEXP
+      flash[:alert] = '有効なメールアドレスを入力してください。'
       render :edit_email
       return
     end
@@ -29,12 +29,12 @@ class ParentsController < ApplicationController
     token = SecureRandom.hex(10)
     if current_parent.update(unconfirmed_email: new_email, email_confirmation_token: token)
       ParentMailer.change_email(current_parent, new_email, token).deliver_now
-  
+
       flash[:notice] = "#{new_email} に確認メールを送信しました。メール内のリンクからメールアドレスの変更を完了してください。"
       redirect_to root_path
     else
       logger.debug "Update failed: #{current_parent.errors.full_messages}"
-      flash[:alert] = "メールアドレスの変更に失敗しました。"
+      flash[:alert] = 'メールアドレスの変更に失敗しました。'
       render :edit_email
     end
   end
@@ -43,15 +43,15 @@ class ParentsController < ApplicationController
   def confirm_email
     token = params[:token]
     parent = Parent.find_by(email_confirmation_token: token)
-  
+
     if parent && token.present? && parent.unconfirmed_email.present?
       # トークンと一時保存されたメールアドレスを使用してユーザーを検証
       parent.update(email: parent.unconfirmed_email, unconfirmed_email: nil, email_confirmation_token: nil)
-      flash[:notice] = "メールアドレスが変更されました。"
+      flash[:notice] = 'メールアドレスが変更されました。'
       redirect_to parent_path(parent)
     else
       # トークンが無効、または一時保存されたメールアドレスが存在しない場合
-      flash[:alert] = "メールアドレスの変更リンクが無効、または期限切れです。"
+      flash[:alert] = 'メールアドレスの変更リンクが無効、または期限切れです。'
       redirect_to root_path
     end
   end

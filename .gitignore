@@ -47,6 +47,7 @@
 .yarnrc
 .yarn
 fly.toml
+dump.rdb
 .DS_Store
 
 /public/packs

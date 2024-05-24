@@ -3,7 +3,7 @@
 # TopController is responsible for handling top-level actions.
 class TopController < ApplicationController
   skip_before_action :login_status
-  
+
   def top_page; end
 
   def help_page; end

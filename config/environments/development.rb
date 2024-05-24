@@ -1,4 +1,6 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -21,13 +23,13 @@ Rails.application.configure do
   # Run rails dev:cache to toggle caching.
   config.cache_classes = false
 
-  if Rails.root.join("tmp/caching-dev.txt").exist?
+  if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
     config.action_controller.perform_caching = false
@@ -45,7 +47,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener_web
 
   host = 'localhost'
-  config.action_mailer.default_url_options = { protocol: 'http', host: host, port: 3000 }
+  config.action_mailer.default_url_options = { protocol: 'http', host:, port: 3000 }
   config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.delivery_method = :smtp
 
@@ -54,12 +56,12 @@ Rails.application.configure do
     port: 587,
     domain: 'promise-recorder.fly.dev',
     user_name: ENV['GOOGLE_NAME'],
-    password:  ENV['GOOGLE_PASS'],
+    password: ENV['GOOGLE_PASS'],
     authentication: 'plain',
     enable_starttls_auto: true
   }
 
-  config.action_mailer.default_options = {from: "PromiseRecorder <#{ENV['GOOGLE_NAME']}>"}
+  config.action_mailer.default_options = { from: "PromiseRecorder <#{ENV['GOOGLE_NAME']}>" }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
